@@ -15,7 +15,12 @@ import "../../components/tooltip.ts";
 import { ThemeBrandIcon } from "../../components/theme-brand-icon.tsx";
 import { registerAboutEnglish } from "../../i18n/locales/en-about.ts";
 import { buildExternalLinkRel, EXTERNAL_LINK_TARGET } from "../../lib/external-link.ts";
-import { COMMUNITY_DISCORD_URL, OFFICIAL_SUPPORT_URL } from "../../lib/product-links.ts";
+import {
+  SHARDSCLAW_DOCUMENTATION_URL,
+  SHARDSCLAW_ISSUES_URL,
+  SHARDSCLAW_RELEASES_URL,
+  SHARDSCLAW_REPOSITORY_URL,
+} from "../../lib/product-links.ts";
 import {
   formatDateMs,
   formatDateTimeMs,
@@ -39,35 +44,31 @@ type AboutProps = {
 };
 
 const SHORT_COMMIT_LENGTH = 12;
-// Keep official support distinct from self-service docs and social links.
 type AboutLink = { href: string; labelKey: string } & (
   | { kind: "icon"; name: IconName }
   | { kind: "brand"; name: BrandIconName }
 );
 const ABOUT_LINKS: readonly AboutLink[] = [
   {
-    href: OFFICIAL_SUPPORT_URL,
+    href: SHARDSCLAW_ISSUES_URL,
     kind: "icon",
     name: "messageSquare",
     labelKey: "aboutPage.linkSupport",
   },
-  { href: "https://openclaw.ai", kind: "icon", name: "globe", labelKey: "aboutPage.linkWebsite" },
-  { href: "https://docs.openclaw.ai", kind: "icon", name: "book", labelKey: "aboutPage.linkDocs" },
   {
-    href: "https://github.com/openclaw/openclaw",
+    href: SHARDSCLAW_DOCUMENTATION_URL,
+    kind: "icon",
+    name: "book",
+    labelKey: "aboutPage.linkDocs",
+  },
+  {
+    href: SHARDSCLAW_REPOSITORY_URL,
     kind: "brand",
     name: "github",
     labelKey: "aboutPage.linkGitHub",
   },
   {
-    href: COMMUNITY_DISCORD_URL,
-    kind: "brand",
-    name: "discord",
-    labelKey: "aboutPage.linkDiscord",
-  },
-  { href: "https://x.com/openclaw", kind: "brand", name: "x", labelKey: "aboutPage.linkX" },
-  {
-    href: "https://docs.openclaw.ai/releases",
+    href: SHARDSCLAW_RELEASES_URL,
     kind: "icon",
     name: "scrollText",
     labelKey: "aboutPage.linkChangelog",

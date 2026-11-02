@@ -50,7 +50,7 @@ const enApprovals = {
     },
   },
   approvalPage: {
-    brandName: "OpenClaw",
+    brandName: "Shardsclaw",
     eyebrow: "Operator approval",
     loadingTitle: "Loading approval",
     loadingDescription: "Checking the current approval state with the Gateway.",
@@ -59,7 +59,7 @@ const enApprovals = {
       "This approval could not be found or this device is not authorized to review it.",
     connectionErrorTitle: "Connection interrupted",
     connectionErrorDescription:
-      "OpenClaw cannot confirm or record a decision while disconnected. Reconnect to check the current status.",
+      "Shardsclaw cannot confirm or record a decision while disconnected. Reconnect to check the current status.",
     retry: "Retry",
     execTitle: "Command approval",
     watcherTitle: "Watcher approval: {name}",

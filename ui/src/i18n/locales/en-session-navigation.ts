@@ -8,8 +8,8 @@ const enSessionNavigation = {
       remoteViewOnly: "This session is on a paired device and is view-only.",
       unsupportedViewOnly: "This external session source is view-only.",
       sessionMenu: "External session actions",
-      openInOpenClaw: "Open in OpenClaw",
-      importToOpenClaw: "Import to OpenClaw",
+      openInShardsclaw: "Open in Shardsclaw",
+      importToShardsclaw: "Import to Shardsclaw",
       importComplete: "Imported {count} transcript items.",
       importUnchanged: "The imported transcript is up to date.",
       importIncomplete:
@@ -18,7 +18,7 @@ const enSessionNavigation = {
       openInTerminal: "Open in terminal",
       deleteSession: "Delete",
       deleteSessionConfirm:
-        "Delete this external session from OpenClaw? Make sure no other runner is using it. Beamed sessions are deleted permanently. Sessions kept by another tool, such as Codex, are archived there and may be restorable.",
+        "Delete this external session from Shardsclaw? Make sure no other runner is using it. Beamed sessions are deleted permanently. Sessions kept by another tool, such as Codex, are archived there and may be restorable.",
       terminalUnavailable: "Terminal opening is unavailable for this session.",
     },
     sessionSuggestions: {

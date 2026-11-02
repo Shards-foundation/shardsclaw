@@ -1,18 +1,6 @@
-<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="lobster-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff4d4d"/>
-      <stop offset="100%" stop-color="#991b1b"/>
-    </linearGradient>
-  </defs>
-  <!-- OpenClaw mascot (static): the Clawd lobster, mirroring ui/public/favicon.svg base pose. -->
-  <path d="M60 10 C30 10 15 35 15 55 C15 75 30 95 45 100 L45 110 L55 110 L55 100 C55 100 60 102 65 100 L65 110 L75 110 L75 100 C90 95 105 75 105 55 C105 35 90 10 60 10Z" fill="url(#lobster-gradient)"/>
-  <path d="M20 45 C5 40 0 50 5 60 C10 70 20 65 25 55 C28 48 25 45 20 45Z" fill="url(#lobster-gradient)"/>
-  <path d="M100 45 C115 40 120 50 115 60 C110 70 100 65 95 55 C92 48 95 45 100 45Z" fill="url(#lobster-gradient)"/>
-  <path d="M45 15 Q35 5 30 8" stroke="#ff4d4d" stroke-width="3" stroke-linecap="round"/>
-  <path d="M75 15 Q85 5 90 8" stroke="#ff4d4d" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="45" cy="35" r="6" fill="#050810"/>
-  <circle cx="75" cy="35" r="6" fill="#050810"/>
-  <circle cx="46" cy="34" r="2.5" fill="#00e5cc"/>
-  <circle cx="76" cy="34" r="2.5" fill="#00e5cc"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><rect width="120" height="120" fill="#0D1628"/><g transform="translate(10.800000000000002 10.800000000000002) scale(0.82)">
+  <path d="M60 7 104 61 102 77 92 73 97 95 78 82 72 111 60 93 46 110 41 83 22 96 28 73 14 79 18 61Z" fill="#0D1628"/>
+  <path d="M60 18L96 64L94 72L86 71L91 89L76 80L72 101L60 84L47 100L43 79L28 89L33 69L22 74Z" fill="#24D6C1"/>
+  <path d="M22 74 33 69 43 79 47 100 28 89Z" fill="#0E9B91"/>
+  <path d="M60 18 96 64 94 72 80 66Z" fill="#D3DCE7"/>
+</g></svg>

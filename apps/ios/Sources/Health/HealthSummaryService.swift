@@ -71,7 +71,7 @@ actor HealthSummaryService: HealthSummaryServicing {
         guard HealthAuthorization.isEnabled else {
             throw NSError(domain: "Health", code: 2, userInfo: [
                 NSLocalizedDescriptionKey:
-                    "HEALTH_ACCESS_DISABLED: enable Apple Health Summaries in OpenClaw Settings",
+                    "HEALTH_ACCESS_DISABLED: enable Apple Health Summaries in Shardsclaw Settings",
             ])
         }
 

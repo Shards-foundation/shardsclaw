@@ -91,11 +91,11 @@ final class ShareComposeView: UIView, UITextViewDelegate {
             self.statusContainer.isHidden = true
         case .sending:
             self.showFooter(
-                text: NSLocalizedString("Sending to OpenClaw gateway…", comment: "Share extension sending status"),
+                text: NSLocalizedString("Sending to Shardsclaw gateway…", comment: "Share extension sending status"),
                 icon: nil)
         case .sent:
             self.showFooter(
-                text: NSLocalizedString("Sent to OpenClaw.", comment: "Share extension success status"),
+                text: NSLocalizedString("Sent to Shardsclaw.", comment: "Share extension success status"),
                 icon: (name: "checkmark.circle.fill", tint: .systemGreen))
         case let .blocked(message), let .failed(message):
             self.showFooter(
@@ -149,7 +149,7 @@ final class ShareComposeView: UIView, UITextViewDelegate {
     private func configureSubviews() {
         self.backgroundColor = .systemGroupedBackground
 
-        self.titleLabel.text = "OpenClaw"
+        self.titleLabel.text = "Shardsclaw"
         self.titleLabel.font = .preferredFont(forTextStyle: .headline)
         self.titleLabel.adjustsFontForContentSizeCategory = true
         self.titleLabel.accessibilityTraits.insert(.header)
@@ -295,7 +295,7 @@ final class ShareComposeView: UIView, UITextViewDelegate {
         configuration.imagePadding = 8
         configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(textStyle: .subheadline)
         configuration.attributedTitle = self.attributedTitle(
-            NSLocalizedString("Send to OpenClaw", comment: "Share extension send action"),
+            NSLocalizedString("Send to Shardsclaw", comment: "Share extension send action"),
             style: .headline)
         return configuration
     }

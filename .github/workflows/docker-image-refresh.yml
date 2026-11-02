@@ -127,7 +127,7 @@ jobs:
   publish:
     name: Refresh ${{ matrix.channel }} Docker images
     needs: plan
-    if: needs.plan.outputs.dry_run != 'true'
+    if: ${{ github.repository == 'openclaw/openclaw' && (needs.plan.outputs.dry_run != 'true') }}
     strategy:
       fail-fast: false
       matrix:

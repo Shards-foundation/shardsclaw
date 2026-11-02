@@ -42,5 +42,13 @@
   {
     "source": "iMessage",
     "target": "iMessage"
+  },
+  {
+    "source": "Shardsclaw",
+    "target": "Shardsclaw"
+  },
+  {
+    "source": "ClawHub",
+    "target": "ClawHub"
   }
 ]

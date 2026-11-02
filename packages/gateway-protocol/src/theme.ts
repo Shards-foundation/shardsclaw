@@ -124,12 +124,14 @@ export function resolveThemeBranding(
       >
     | undefined,
 ): ThemeBranding {
-  const mascot = source?.mascot ?? "claw";
+  const mascot = source?.mascot ?? "none";
   return {
     mascot,
-    brandName: source?.brandName ?? "OpenClaw",
+    brandName: source?.brandName ?? "Shardsclaw",
     brandIcon: source?.brandIcon ?? (mascot === "claw" ? "claw" : "mark"),
-    workingIndicator: source?.workingIndicator ?? (mascot === "claw" ? "claw" : "dots"),
+    workingIndicator:
+      source?.workingIndicator ??
+      (source?.mascot === undefined ? "brand" : mascot === "claw" ? "claw" : "dots"),
     lobsterdex: source?.lobsterdex ?? true,
     communityLinks: source?.communityLinks ?? true,
     workingPhrases: source?.workingPhrases,
@@ -143,9 +145,9 @@ export const BUILTIN_THEMES: readonly ThemeDescriptor[] = (
   [
     {
       id: "claw",
-      name: "Claw",
+      name: "Shardsclaw",
       description:
-        "Signature coral red and teal on charcoal or pale surfaces, with Instrument Sans throughout. A balanced everyday workspace.",
+        "Midnight blue surfaces, electric teal accents, and silver shard facets on deep or pale canvases, with Instrument Sans throughout. The signature Shardsclaw workspace.",
     },
     {
       id: "knot",

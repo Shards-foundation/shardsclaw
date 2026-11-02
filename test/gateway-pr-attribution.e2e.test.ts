@@ -116,19 +116,21 @@ it(
           ).toMatchObject({ status: "ok" });
           return JSON.stringify(requests.at(-1));
         };
-        expect(await run("default")).not.toContain("Made with [OpenClaw]");
+        expect(await run("default")).not.toContain("Made with [Shardsclaw]");
         expect(
           await client.request("users.prefs.set", {
             entries: { "github.prAttribution.enabled": true },
           }),
         ).toMatchObject({ status: "ok" });
-        expect(await run("enabled")).toContain("🦞 Made with [OpenClaw](https://openclaw.ai)");
+        expect(await run("enabled")).toContain(
+          "🦞 Made with [Shardsclaw](https://github.com/Shards-inc/shardsclaw)",
+        );
         expect(
           await client.request("users.prefs.set", {
             entries: { "github.prAttribution.enabled": false },
           }),
         ).toMatchObject({ status: "ok" });
-        expect(await run("disabled")).not.toContain("Made with [OpenClaw]");
+        expect(await run("disabled")).not.toContain("Made with [Shardsclaw]");
         expect(requests).toHaveLength(3);
       } finally {
         await disconnectGatewayClient(client);

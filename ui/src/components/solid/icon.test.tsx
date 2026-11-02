@@ -43,7 +43,11 @@ describe("Solid icons", () => {
     flush();
     expect(svg.getAttribute("viewBox")).toBe("0 0 120 120");
     expect(svg.querySelector("rect")?.getAttribute("rx")).toBe("28");
-    expect(svg.querySelector("path")?.getAttribute("stroke-width")).toBe("11");
+    expect(svg.querySelector("path")?.getAttribute("d")).toBe(
+      "M60 18L96 64L94 72L86 71L91 89L76 80L72 101L60 84L47 100L43 79L28 89L33 69L22 74Z",
+    );
+    expect(svg.querySelector("path")?.style.fill).toBe("var(--primary-foreground)");
+    expect(svg.querySelector("path")?.style.stroke).toBe("none");
     expect([...svg.querySelectorAll("*")].every((node) => node.namespaceURI === svgNamespace)).toBe(
       true,
     );

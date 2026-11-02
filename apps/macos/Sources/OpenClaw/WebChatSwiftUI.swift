@@ -921,8 +921,8 @@ private struct MacChatSurface: View {
     private static let emptyAssistantPrompts: [OpenClawChatView.StarterPrompt] = [
         .init(
             id: "check-status",
-            title: String(localized: "Check OpenClaw status"),
-            prompt: String(localized: "Summarize the current OpenClaw status and tell me what needs attention.")),
+            title: String(localized: "Check Shardsclaw status"),
+            prompt: String(localized: "Summarize the current Shardsclaw status and tell me what needs attention.")),
         .init(
             id: "show-capabilities",
             title: String(localized: "What can you do?"),
@@ -982,7 +982,7 @@ final class WebChatSwiftUIWindowController: NSObject, NSWindowDelegate {
         connection: GatewayConnection = .shared,
         gatewayID: String? = nil,
         gatewayTarget: DashboardGatewayTarget = .primary,
-        windowTitle: String = "OpenClaw Chat",
+        windowTitle: String = "Shardsclaw Chat",
         windowAutosaveName: String = WebChatSwiftUILayout.windowFrameAutosaveName)
     {
         // Primary route changes retire the owning window synchronously,
@@ -1014,7 +1014,7 @@ final class WebChatSwiftUIWindowController: NSObject, NSWindowDelegate {
         gatewayTarget: DashboardGatewayTarget? = nil,
         cachedRoutingIdentity: OpenClawChatSessionRoutingIdentity?,
         store: OpenClawChatSQLiteTranscriptCache?,
-        windowTitle: String = "OpenClaw Chat",
+        windowTitle: String = "Shardsclaw Chat",
         windowAutosaveName: String = WebChatSwiftUILayout.windowFrameAutosaveName)
     {
         let explicitAgentID = WebChatRoute.normalizedAgentID(agentID)
@@ -1048,7 +1048,7 @@ final class WebChatSwiftUIWindowController: NSObject, NSWindowDelegate {
         initialSessionRoutingContract: String? = nil,
         transcriptCache: (any OpenClawChatTranscriptCache)? = nil,
         outbox: (any OpenClawChatCommandOutbox)? = nil,
-        windowTitle: String = "OpenClaw Chat",
+        windowTitle: String = "Shardsclaw Chat",
         windowAutosaveName: String = WebChatSwiftUILayout.windowFrameAutosaveName)
     {
         let initialActiveAgentID = WebChatRoute.normalizedAgentID(initialActiveAgentID)

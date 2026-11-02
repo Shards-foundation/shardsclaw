@@ -1,41 +1,24 @@
 ---
-summary: "OpenClaw is an open-source AI assistant that runs on your own hardware and meets you in every chat app you already use."
+summary: "Shardsclaw is an independently maintained OpenClaw fork: an open-source AI assistant that runs on your own hardware and meets you in the chat apps you choose."
 read_when:
-  - Introducing OpenClaw to newcomers
-title: "OpenClaw"
+  - Introducing Shardsclaw to newcomers
+title: "Shardsclaw"
 ---
 
-# OpenClaw 🦞
+# Shardsclaw
 
 <p align="center">
-    <img
-        src="/assets/openclaw-hero-light.png"
-        alt="OpenClaw"
-        width="500"
-        class="dark:hidden"
-    />
-    <img
-        src="/assets/openclaw-hero-dark.png"
-        alt="OpenClaw"
-        width="500"
-        class="hidden dark:block"
-    />
-</p>
-
-> _"EXFOLIATE! EXFOLIATE!"_ — A space lobster, probably
-
-<p align="center">
-  <strong>Your AI assistant, on your own hardware, in every chat app you already use.</strong><br />
+  <strong>Your AI assistant, on your own hardware, in the chat apps you choose.</strong><br />
   One Gateway. Any model. Any device. No hosted service in the middle.<br />
-  Developed in the open by the <a href="https://openclaw.org">OpenClaw Foundation</a>, an independent 501(c)(3). No paid tier, no telemetry by default beyond a <a href="/gateway/telemetry">version check</a> you can turn off, no lab owns it.
+  An independently maintained fork of <a href="https://github.com/openclaw/openclaw">OpenClaw</a>; upstream history and attribution are preserved.
 </p>
 
 <Columns>
   <Card title="Get Started" href="/start/getting-started" icon="rocket">
-    Install OpenClaw and bring up the Gateway in minutes.
+    Build and run Shardsclaw from this source repository.
   </Card>
   <Card title="Run Onboarding" href="/start/wizard" icon="list-checks">
-    Guided setup with `openclaw onboard` and pairing flows.
+    Guided setup with `shardsclaw onboard`; the legacy `openclaw` command remains available for compatibility.
   </Card>
   <Card title="Connect a Channel" href="/channels" icon="message-circle">
     Link Discord, Signal, Telegram, WhatsApp, and more to chat from anywhere.
@@ -54,8 +37,8 @@ these hub links to reach the same top-level docs areas from the page body.
   <Card title="Get started" href="/start/getting-started" icon="rocket">
     Overview, first steps, and setup guides.
   </Card>
-  <Card title="Install" href="/install" icon="download">
-    Install paths, updates, containers, hosting, and advanced setup.
+  <Card title="Build from source" href="/install" icon="download">
+    Shardsclaw source-build steps; inherited upstream install guides are clearly labeled and are not Shardsclaw downloads.
   </Card>
   <Card title="Channels" href="/channels" icon="messages-square">
     Messaging channels, pairing, routing, access groups, and channel QA.
@@ -66,8 +49,8 @@ these hub links to reach the same top-level docs areas from the page body.
   <Card title="Capabilities" href="/tools" icon="wand-sparkles">
     Tools, skills, cron, webhooks, and automation capabilities.
   </Card>
-  <Card title="ClawHub" href="/clawhub" icon="store">
-    Plugin marketplace, publishing, curation, and trust guidance.
+  <Card title="ClawHub (external)" href="/clawhub" icon="store">
+    Upstream ClawHub reference; the marketplace and its support channels are not operated by Shardsclaw.
   </Card>
   <Card title="Models" href="/providers" icon="brain">
     Providers, model configuration, failover, and local model services.
@@ -81,37 +64,37 @@ these hub links to reach the same top-level docs areas from the page body.
   <Card title="Reference" href="/cli" icon="terminal">
     CLI reference, schemas, RPC, and templates.
   </Card>
-  <Card title="Releases" href="/releases" icon="tag">
-    Release notes for each version, with highlights and source links.
+  <Card title="Upstream releases (external)" href="/releases" icon="tag">
+    Inherited OpenClaw release notes, not Shardsclaw releases.
   </Card>
   <Card title="Help" href="/help" icon="life-buoy">
     Troubleshooting, FAQs, testing, diagnostics, and environment checks.
   </Card>
 </Columns>
 
-## What is OpenClaw?
+## What is Shardsclaw?
 
-OpenClaw is a **self-hosted gateway** that connects your favorite chat apps — Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more via channel plugins — to AI coding agents. You run a single Gateway process on your own machine (or a server), and it becomes the bridge between your messaging apps and an always-available AI assistant.
+Shardsclaw is an **independently maintained fork of OpenClaw**, a self-hosted gateway that connects chat apps — Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more via channel plugins — to AI coding agents. You run a single Gateway process on your own machine (or a server), and it becomes the bridge between your messaging apps and an always-available AI assistant.
 
-**Who is it for?** Developers, power users, and teams who want an AI assistant they can message from anywhere — without giving up control of their data or relying on a hosted service. The same gateway runs as a personal assistant on one laptop or as a shared [team deployment](/start/teams); configuration is the only difference.
+**Who is it for?** Developers and power users who want a self-hosted assistant they can message from anywhere, while retaining control of their data. See the [team deployment guide](/start/teams) for deployment trade-offs.
 
 **What makes it different?**
 
 - **Self-hosted**: runs on your hardware, your rules
 - **Multi-channel**: one Gateway serves every configured channel plugin simultaneously
 - **Agent-native**: built for coding agents with tool use, sessions, memory, and multi-agent routing
-- **Open source**: MIT licensed, community-driven
+- **Open source**: MIT licensed
 
-The full architecture case — a trusted gateway, untrusted execution, policy enforced by code, and how one product spans personal and team use — is in [Why OpenClaw](/start/why-openclaw).
+This repository's documentation includes upstream-authored OpenClaw reference material. It remains attributable to OpenClaw and is not evidence that Shardsclaw controls upstream services or plans.
 
-**What do you need?** Node 26 (recommended), or another supported release: Node 24.22.1+ or Node 26.12.1+. You also need an API key from your chosen provider and 5 minutes. For best quality and security, use the strongest latest-generation model available.
+**What do you need?** A Node.js version and pnpm release supported by the current source checkout, plus an API key from your chosen provider. See the `engines` and `packageManager` fields in the repository's `package.json` for exact requirements.
 
 ## How it works
 
 ```mermaid
 flowchart LR
   A["Chat apps + plugins"] --> B["Gateway"]
-  B --> C["OpenClaw agent"]
+  B --> C["Shardsclaw agent runtime"]
   B --> D["CLI"]
   B --> E["Web Control UI"]
   B --> F["macOS app"]
@@ -127,7 +110,7 @@ The Gateway is the single source of truth for sessions, routing, and channel con
     Discord, iMessage, Signal, Slack, Telegram, WhatsApp, WebChat, and more with a single Gateway process.
   </Card>
   <Card title="Plugin channels" icon="plug" href="/tools/plugin">
-    Channel plugins add Matrix, Nostr, Twitch, Zalo, and more; official plugins install on demand.
+    The source checkout includes channel plugins such as Matrix, Nostr, Twitch, and Zalo; separately published packages remain under their respective owners.
   </Card>
   <Card title="Multi-agent routing" icon="route" href="/concepts/multi-agent">
     Isolated sessions per agent, workspace, or sender.
@@ -152,58 +135,24 @@ The Gateway is the single source of truth for sessions, routing, and channel con
   </Card>
 </Columns>
 
-## Quick start
+## Build from source
 
-<Steps>
-  <Step title="Install OpenClaw">
-    <Tabs>
-      <Tab title="macOS / Linux / WSL2">
-        ```bash
-        curl -fsSL https://openclaw.ai/install.sh | bash
-        ```
-      </Tab>
-      <Tab title="Windows (PowerShell)">
-        ```powershell
-        iwr -useb https://openclaw.ai/install.ps1 | iex
-        ```
-      </Tab>
-    </Tabs>
+This source checkout does not provide a Shardsclaw installer or published package.
+Use the Node.js and pnpm versions declared by the repository:
 
-    The installer detects your OS, installs Node if needed, installs OpenClaw,
-    and then starts onboarding. Other install methods (npm, pnpm, bun, Docker,
-    Nix, from source) are on the [Install](/install) page.
+```bash
+git clone https://github.com/Shards-inc/shardsclaw.git
+cd shardsclaw
+pnpm install --frozen-lockfile
+pnpm build
+pnpm ui:build
+pnpm dev
+```
 
-  </Step>
-  <Step title="Complete onboarding">
-    Onboarding offers **Quick start** and **Custom setup**. Quick start reuses
-    detected AI access, verifies it with a real completion, and opens the web
-    dashboard with a Gateway in the foreground. Custom setup walks the full
-    guided flow. `openclaw onboard --classic` opens the classic step-by-step
-    wizard instead.
-
-  </Step>
-  <Step title="Install the Gateway service">
-    Quick start leaves the Gateway in the foreground. Press **Ctrl+C**, then
-    install the background service:
-
-    ```bash
-    openclaw gateway install
-    ```
-
-  </Step>
-  <Step title="Chat">
-    Open the Control UI in your browser and send a message:
-
-    ```bash
-    openclaw dashboard
-    ```
-
-    Or connect a channel ([Telegram](/channels/telegram) is fastest) and chat from your phone.
-
-  </Step>
-</Steps>
-
-Need the full install and dev setup? See [Getting Started](/start/getting-started).
+The `openclaw` CLI name and related configuration paths remain for compatibility.
+See [Getting Started](/start/getting-started) for source development and
+[OpenClaw upstream installation options](https://docs.openclaw.ai/install) only
+when you specifically intend to install the upstream project.
 
 ## Dashboard
 
@@ -213,14 +162,14 @@ Open the browser Control UI after the Gateway starts.
 - Remote access: [Web surfaces](/web) and [Tailscale](/gateway/tailscale)
 
 <p align="center">
-  <img src="/whatsapp-openclaw.jpg" alt="OpenClaw" width="420" />
+  <img src="/whatsapp-openclaw.jpg" alt="Interface example inherited from OpenClaw upstream" width="420" />
 </p>
 
 ## Configuration (optional)
 
 Config lives at `~/.openclaw/openclaw.json`.
 
-- If you **do nothing**, OpenClaw uses the bundled OpenClaw agent runtime; DMs share the agent's main session, and each group chat gets its own session.
+- If you **do nothing**, Shardsclaw uses the bundled agent runtime; DMs share the agent's main session, and each group chat gets its own session.
 - If you want to lock it down, start with `channels.whatsapp.allowFrom` and (for groups) mention rules.
 
 Example:

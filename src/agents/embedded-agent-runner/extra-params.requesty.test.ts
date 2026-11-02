@@ -46,7 +46,10 @@ it.each(["deepseek-v4-pro", "mimo-v2.5-pro"])(
       model,
     );
     await agent.streamFn(model, { messages: [] });
-    expect(headers).toMatchObject({ "X-Title": "OpenClaw", "HTTP-Referer": "https://openclaw.ai" });
+    expect(headers).toMatchObject({
+      "X-Title": "Shardsclaw",
+      "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
+    });
     expect(payload).toMatchObject({
       thinking: { type: "enabled" },
       reasoning_effort: "high",

@@ -1,50 +1,47 @@
-# Contributing to OpenClaw
+# Contributing to Shardsclaw
 
-Welcome to the lobster tank! 🦞
+Welcome to the Shardsclaw project.
 
 ## Quick Links
 
-- **GitHub:** https://github.com/openclaw/openclaw
+- **GitHub:** https://github.com/Shards-inc/shardsclaw
 - **Vision:** [`VISION.md`](VISION.md)
-- **Support:** https://community.openclaw.ai/
-- **Discord:** https://discord.gg/clawd
-- **X/Twitter:** [@openclaw](https://x.com/openclaw)
+- **Issues and pull requests:** https://github.com/Shards-inc/shardsclaw/issues
+- **Upstream OpenClaw community:** https://community.openclaw.ai/ (external; not operated by Shardsclaw)
 
 ## Maintainers
 
-The current OpenClaw Foundation team and Core Maintainers are listed on the
-OpenClaw people page: https://www.openclaw.org/people
+Shardsclaw is an independently maintained fork of OpenClaw. The OpenClaw Foundation team and Core Maintainers are listed on the
+[upstream people page](https://www.openclaw.org/people); they are not Shardsclaw maintainers.
 
 ## How to Contribute
 
 1. **Bugs & small fixes** → Open a PR!
-2. **New features / architecture** → Start a [GitHub Issue](https://github.com/openclaw/openclaw/issues/new/choose) or ask in Discord first. Most features are not accepted and should be third party plugins instead using our plugin SDK.
-3. **Refactor-only PRs** → Don't open a PR. We are not accepting refactor-only changes unless a maintainer explicitly asks for them as part of a concrete fix.
-4. **Test/CI-only PRs for known `main` failures** → Don't open a PR. The Maintainer team is already tracking those failures, and PRs that only tweak tests or CI to chase them will be closed unless they are required to validate a new fix.
-5. **Questions and setup help** → [Official OpenClaw support](https://community.openclaw.ai/)
+2. **New features / architecture** → Start a GitHub issue in this repository or discuss the proposal in your pull request. Most features should be third-party plugins using the plugin SDK.
+3. **Refactor-only PRs** → Tie refactoring to a concrete fix or explain the user/maintenance value; isolated refactors may be declined.
+4. **Test/CI-only PRs for known `main` failures** → Avoid a standalone change that only suppresses a known failure. Report it in an issue and include a fix with a concrete behavior change where possible.
+5. **Questions and setup help** → Use the Shardsclaw issue tracker. There is no separate Shardsclaw community channel configured yet; the upstream OpenClaw community is external and does not provide Shardsclaw support.
 
 ## Issue, PR, and Contact Routing
 
 Start from this routing map before creating GitHub items:
 
-| Situation                                                | Use                                                                                                              | Required evidence                                                                                                   |
-| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Product bug, regression, crash, or behavior defect       | [Bug report](https://github.com/openclaw/openclaw/issues/new?template=bug_report.yml)                            | Repro steps, expected vs actual behavior, version, OS, model/provider route when relevant, logs/screenshots, impact |
-| Documentation bug or missing/contradictory docs          | [Docs bug report](https://github.com/openclaw/openclaw/issues/new?template=docs_bug_report.yml)                  | Affected docs path or URL, verification steps, expected docs content, actual docs content, impact, evidence         |
-| New feature, architecture change, or product improvement | [Feature request](https://github.com/openclaw/openclaw/issues/new?template=feature_request.yml) or Discord first | Problem, proposed solution, alternatives, impact, examples or prior art                                             |
-| Onboarding, setup help, or general support question      | [Official OpenClaw support](https://community.openclaw.ai/)                                                      | Do not open a GitHub issue unless there is a concrete product defect or docs gap                                    |
-| Security vulnerability                                   | See [Report a Vulnerability](#report-a-vulnerability) below                                                      | Do not file public issues for private security reports                                                              |
-| PR for an existing or newly filed issue                  | Use the [PR template](.github/pull_request_template.md)                                                          | Visible `Closes #<issue>` or `Related: #<issue>`, problem, shipped solution, user impact, validation evidence       |
+| Situation                                                | Use                                                                                                 | Required evidence                                                                                                   |
+| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Product bug, regression, crash, or behavior defect       | [Bug report](https://github.com/Shards-inc/shardsclaw/issues/new?template=bug_report.yml)           | Repro steps, expected vs actual behavior, version, OS, model/provider route when relevant, logs/screenshots, impact |
+| Documentation bug or missing/contradictory docs          | [Docs bug report](https://github.com/Shards-inc/shardsclaw/issues/new?template=docs_bug_report.yml) | Affected docs path or URL, verification steps, expected docs content, actual docs content, impact, evidence         |
+| New feature, architecture change, or product improvement | [Feature request](https://github.com/Shards-inc/shardsclaw/issues/new?template=feature_request.yml) | Problem, proposed solution, alternatives, impact, examples or prior art                                             |
+| Onboarding, setup help, or general support question      | Use the [Shardsclaw issue tracker](https://github.com/Shards-inc/shardsclaw/issues/new/choose)      | State that the report is a question and include the relevant version/source revision                                |
+| Security vulnerability                                   | See [Report a Vulnerability](#report-a-vulnerability) below                                         | Do not file public issues for private security reports                                                              |
+| PR for an existing or newly filed issue                  | Use the [PR template](.github/pull_request_template.md)                                             | Visible `Closes #<issue>` or `Related: #<issue>`, problem, shipped solution, user impact, validation evidence       |
 
 For agent-authored or otherwise non-trivial work, create or reuse the issue first, then open the PR against it. Bugs and very small fixes may go straight to PR, but still link existing context when it exists and fill out the PR template.
 
-Do not guess who to tag. Let issue forms, labels/automation, and `.github/CODEOWNERS` route the work. Mention a maintainer only when an owned path or documented responsibility is directly relevant and you need a decision; otherwise rely on normal review. For coordinated change sets, ask in **#clawtributors** before opening more than the PR limit.
+Do not guess who to tag. Let issue forms, labels/automation, and `.github/CODEOWNERS` route the work. Mention a maintainer only when an owned path or documented responsibility is directly relevant and you need a decision; otherwise rely on normal review. For coordinated change sets, discuss the plan in the relevant Shardsclaw issue before splitting work into multiple pull requests.
 
-## PR Limits
+## Pull-request scope
 
-We cap at **20 open PRs per author**. If you exceed this, the `r: too-many-prs` label is added and your PR is auto-closed. This is a hard limit.
-
-For coordinated change sets that genuinely need more than 20 PRs, join the **#clawtributors** channel in Discord and talk to maintainers first.
+Shardsclaw has no repository-specific PR-count limit or automatic close policy documented. Keep pull requests focused and discuss large coordinated changes in the relevant Shardsclaw issue first.
 
 ## Source dependencies
 
@@ -83,17 +80,17 @@ must declare their own development dependencies rather than rely on hoisting.
 ## Before You PR
 
 - Use **Node 24.22.1+ LTS** or **Node 26.12.1+** for source checkouts. Older Node releases can truncate SQLite TEXT reads; Node 22, 23, and 25 are unsupported. See [Node install guidance](docs/install/node.md) if your local version is too old.
-- Local tests and `pnpm dev` use the pinned OpenClaw Bun fork. See [local development tools](https://docs.openclaw.ai/reference/test/local#openclaw-bun-fork) for supported platforms, automatic staging, runtime/tool overrides, and fallbacks, and [CI runtime selection](https://docs.openclaw.ai/ci/pipeline#test-runtime-selection) for CI policy.
-- Test locally with your OpenClaw instance
+- Local tests and `pnpm dev` use the pinned Bun fork declared by this repository. See [local development tools](docs/reference/test/local.md) for supported platforms, automatic staging, runtime/tool overrides, and fallbacks, and [CI runtime selection](docs/ci/pipeline.md) for CI policy.
+- Test locally with a Shardsclaw source checkout.
 - An explicit maintainer repair-and-land request covers internal database scheduling, admission, and lifecycle decisions. The implementer owns the design and its verification. Get separate design acceptance when changing public contracts, schemas, durability, retention, or permissions; see the [database schema review checkpoint](docs/reference/database-schemas.md#review-checkpoint-for-material-changes).
 - External PRs must describe the user, product, or operational problem in **What Problem This Solves** and include useful validation in **Evidence**. Focused tests, CI results, screenshots, recordings, terminal output, live observations, redacted logs, and artifact links all count. Reviewers will inspect the code, tests, and CI; use the PR body to explain intent and make validation easy to understand.
 - Follow the [PR template](.github/pull_request_template.md): lead with the plain-language problem and concrete user impact, then a brief explanation and useful evidence. Keep technical inventories in the diff or optional details, not the opening summary. Keep important risks, migrations, required actions, and evidence gaps visible; do not invent a user benefit for internal-only work.
-- When ClawSweeper, Barnacle, or a maintainer asks for more context or evidence, edit the PR description instead of only replying in a new comment. Keep **What Problem This Solves**, **User Impact**, **Why This Change Was Made**, and **Evidence** current; a short comment can point reviewers to the update, but the PR body should remain the durable explanation for maintainers and bots.
+- When a reviewer asks for more context or evidence, edit the PR description instead of only replying in a new comment. Keep **What Problem This Solves**, **User Impact**, **Why This Change Was Made**, and **Evidence** current; a short comment can point reviewers to the update, but the PR body should remain the durable explanation for maintainers and bots.
 - Keep PRs takeover-ready: open them from a branch maintainers can push to. For fork PRs, leave GitHub's **Allow edits by maintainers** option enabled so maintainers can finish urgent fixes or merge prep when needed. If GitHub shows **Allow edits and access to secrets by maintainers**, enable it only when that workflow/secrets access is acceptable and say so in the PR.
 - Do not edit the generated `CHANGELOG.md` index or release-owned `CHANGELOG/**` entries and contribution records in normal PRs or at merge. Initial changelogs are generated at release time from merged PRs and commits; keep release-note context in PR bodies or commit messages until then. Explicit release-docs publication changes follow the [release artifact procedure](.agents/skills/openclaw-changelog-update/SKILL.md#post-release-docs-mirrors).
 - Run focused tests for touched code (`pnpm test <file> --maxWorkers=1`) and targeted typecheck, lint, and format checks. Build when the change affects build output or package boundaries. Open a ready PR once focused proof passes; PR CI runs the full suite.
 - When adding a maintained standalone command or dynamically loaded child, keep Knip's graph aligned with the real execution path. A command invoked by a package script, workflow, Docker scenario, or documentation—or a child executed as a spawned, preloaded, or worker process entrypoint through an exact path—is an exact Knip entry (`repositoryScriptEntries` in `config/knip.config.ts` for root repository scripts). When a child is instead reached as a computed module edge from a parent, use the existing source-derived consumer projection that owns that edge, such as `config/knip-dynamic-consumers.mjs` for root scripts; do not declare the child as an independent root solely to suppress a finding or mask it with an ignore or wildcard. Run `pnpm deadcode:unused-files` on the exact candidate; `pnpm check:changed` and [ordinary PR CI](docs/ci/scope-and-routing/selection.md#pr-vs-hourly-vs-release) do not run this unused-file proof. If unrelated existing findings keep the aggregate scan red, verify and report whether your owned paths appear rather than calling the aggregate a pass.
-- After PR CI fails, run `pnpm test:ci-failed <pr>` and read the failure classification. Fix new failures, use `pnpm test:ci-failed <pr> --run` until those pass locally, then push once. Do not rerun CI just to chase green or run the full local suite. Pre-existing failures follow the [failure-table landing rule](.agents/skills/openclaw-pr-maintainer/references/landing.md#red-main-and-inherited-failures).
+- After PR CI fails, run `pnpm test:ci-failed <pr>` and read the failure classification. Fix new failures, use `pnpm test:ci-failed <pr> --run` until those pass locally, then push once. Do not rerun CI just to chase green or run the full local suite. Pre-existing failures follow the [failure-table landing rule](.agents/skills/shardsclaw-pr-maintainer/references/landing.md#red-main-and-inherited-failures).
 - For iterative local commits after running equivalent targeted validation for the touched surface, `git commit --no-verify` skips commit hooks.
 - For extension/plugin changes, run the fast local lane first:
   - `pnpm test:extension <extension-name>`
@@ -107,9 +104,9 @@ must declare their own development dependencies rather than rely on hoisting.
   - `node --import tsx scripts/check-sdk-package-extension-import-boundary.mts --json` for `src/plugin-sdk/**` and `packages/**`
   - `node --import tsx scripts/check-test-helper-extension-import-boundary.mts --json` for `test/helpers/**`
 - Shared test helpers must use `src/test-utils/bundled-plugin-public-surface.ts` instead of repo-relative `extensions/**` imports. Keep plugin-local deep mocks inside the owning bundled plugin package.
-- Local review is strongly encouraged for contributors: use autoreview or optional local ClawSweeper. Follow the [local review route](https://docs.openclaw.ai/reference/pull-request-review-flow#local-review-before-a-pr) for public setup, maintainer requirements, and review evidence. Address actionable findings before asking for review.
+- Local review is strongly encouraged for contributors: use autoreview or optional local ClawSweeper. Follow the [local review route](docs/reference/pull-request-review-flow.md#local-review-before-a-pr) for public setup, maintainer requirements, and review evidence. Address actionable findings before asking for review.
 - Do not submit refactor-only PRs unless a maintainer explicitly requested that refactor for an active fix or deliverable.
-- Do not submit test or CI-config fixes for failures already red on `main` CI. If a failure is already visible in the [main branch CI runs](https://github.com/openclaw/openclaw/actions), it's a known issue the Maintainer team is tracking, and a PR that only addresses those failures will be closed automatically. If you spot a _new_ regression not yet shown in main CI, report it as an issue first.
+- Do not submit test or CI-config fixes for failures already red on `main` CI. If a failure is already visible in the [Shardsclaw main branch CI runs](https://github.com/Shards-inc/shardsclaw/actions), it's a known issue the maintainers are tracking, and a PR that only addresses those failures may be closed. If you spot a _new_ regression not yet shown in main CI, report it as an issue first.
 - Do not submit test-only PRs that just try to make known `main` CI failures pass. Test changes are acceptable when they are required to validate a new fix or cover new behavior in the same PR.
 - Check that CI checks pass
 - Keep PRs focused (one thing per PR; do not mix unrelated concerns)
@@ -150,19 +147,19 @@ lists sensitive product categories, review guidance, exclusions, and dependency
 paths. Changes to that inventory require SecOps approval.
 
 Security policy, CodeQL, and the security-review enforcement files listed in
-[CODEOWNERS](.github/CODEOWNERS) require an independent
-`@openclaw/openclaw-secops` approval, including on maintainer-authored PRs. A
+[CODEOWNERS](.github/CODEOWNERS) require independent approval from the configured
+security code owner, including on maintainer-authored PRs. A
 maintainer approval of product code does not replace that code-owner requirement.
 Normal project review and release-owner requirements still apply.
 The existing maintainer CI bypass can override a missing command approval, but
 does not bypass the separate code-owner review requirement.
 
-See [security review checks](https://docs.openclaw.ai/ci/pipeline#security-review-checks)
+See [security review checks](docs/ci/pipeline.md#security-review-checks)
 for check behavior and enforcement setup.
 
 ## Local commit hook
 
-`pnpm format` and the formatting hook share the [local development tool selector](https://docs.openclaw.ai/reference/test/local#openclaw-bun-fork).
+`pnpm format` and the formatting hook share the [local development tool selector](docs/reference/test/local.md).
 Use `OPENCLAW_FORMAT_TOOL=oxfmt pnpm format` to force oxfmt. The linked reference
 covers the pinned fork, supported platforms, overrides, fallbacks, and CI parity.
 Dedicated artifact formatters are listed in the [formatter caller inventory](scripts/README.md#formatting-and-lint-selection).
@@ -202,7 +199,7 @@ enforcement: bypassing or disabling hooks also bypasses this check.
 
 ## Review Conversations Are Author-Owned
 
-After your PR receives Barnacle, ClawSweeper, or maintainer feedback, read the [pull request review flow](https://docs.openclaw.ai/reference/pull-request-review-flow) for how to interpret rank-up moves, proof guidance, re-review requests, and review conversation follow-up.
+After your PR receives reviewer feedback, read the [pull request review flow](docs/reference/pull-request-review-flow.md) for proof guidance, re-review requests, and review conversation follow-up.
 
 ## Control UI
 
@@ -219,56 +216,25 @@ Please include in your PR:
 
 - [ ] Include a concise **Evidence** section with the most useful validation. Reviewers will inspect the code, tests, and CI rather than relying on the PR body alone.
 - [ ] Confirm you understand what the code does
-- [ ] Follow the [local review route](https://docs.openclaw.ai/reference/pull-request-review-flow#local-review-before-a-pr), address actionable findings, and record the outcome or unavailable-tool gap
-- [ ] Follow the [pull request review flow](https://docs.openclaw.ai/reference/pull-request-review-flow) after Barnacle, ClawSweeper, or maintainer feedback
+- [ ] Follow the [local review route](docs/reference/pull-request-review-flow.md#local-review-before-a-pr), address actionable findings, and record the outcome or unavailable-tool gap
+- [ ] Follow the [pull request review flow](docs/reference/pull-request-review-flow.md) after reviewer feedback
 
 AI PRs are first-class citizens here and follow the same quality and review standards as any other PR.
 
-## Current Focus & Roadmap 🗺
+## Roadmap and issue selection
 
-We are currently prioritizing:
-
-- **Stability**: Fixing edge cases in channel connections (WhatsApp/Telegram).
-- **UX**: Improving the onboarding wizard and error messages.
-- **Skills**: For skill contributions, head to [ClawHub](https://clawhub.ai/) — the community hub for OpenClaw skills.
-- **Performance**: Optimizing token usage and compaction logic.
-
-Check the [GitHub Issues](https://github.com/openclaw/openclaw/issues) for
-["good first issue"](https://github.com/openclaw/openclaw/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
-labels. If none are open, pick a small docs or bug issue and leave a quick comment saying
-you'd like to work on it.
+Shardsclaw has no separate public roadmap yet. Check the [Shardsclaw issue tracker](https://github.com/Shards-inc/shardsclaw/issues) for current proposals and issues labeled `good first issue`. The upstream OpenClaw roadmap and ClawHub are external and are not Shardsclaw planning or support channels.
 
 ## Maintainers
 
-We're selectively expanding the maintainer team.
-If you're an experienced contributor who wants to help shape OpenClaw's direction — whether through code, docs, or community — we'd like to hear from you.
-
-Being a maintainer is a responsibility, not an honorary title. We expect active, consistent involvement — triaging issues, reviewing PRs, and helping move the project forward.
-
-Still interested? Email contributing@openclaw.ai with:
-
-- Links to your PRs on OpenClaw (if you don't have any, start there first)
-- Links to open source projects you maintain or actively contribute to
-- Your GitHub, Discord, and X/Twitter handles
-- A brief intro: background, experience, and areas of interest
-- Languages you speak and where you're based
-- How much time you can realistically commit
-
-We welcome people across all skill sets — engineering, documentation, community management, and more.
-We review every human-only-written application carefully and add maintainers slowly and deliberately.
-Please allow a few weeks for a response.
+Shardsclaw does not publish a maintainer application email or a guaranteed review-response time. The existing `CODEOWNERS` file still contains inherited OpenClaw upstream teams; it does not identify Shardsclaw maintainers. Use the repository's public issue and pull-request process, and do not send private information to upstream OpenClaw contacts.
 
 ## Report a Vulnerability
 
-We take security reports seriously. Report vulnerabilities directly to the repository where the issue lives:
+We take security reports seriously. For this fork, use [GitHub Security Advisories](https://github.com/Shards-inc/shardsclaw/security/advisories/new) when private vulnerability reporting is enabled. Do not publish an unpatched vulnerability in a public issue or pull request; if the private route is unavailable, contact a Shardsclaw repository administrator through GitHub and request a private channel without including sensitive details. Reports concerning upstream OpenClaw or ClawHub should go to their respective operators.
 
-- **Core CLI and gateway** — [openclaw/openclaw](https://github.com/openclaw/openclaw)
-- **macOS desktop app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/macos)
-- **iOS app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/ios)
-- **Android app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/android)
-- **ClawHub** — [openclaw/clawhub](https://github.com/openclaw/clawhub)
-
-For issues that don't fit a specific repo, or if you're unsure, email **security@openclaw.ai** and we'll route it.
+- **Shardsclaw core CLI, gateway, and companion apps** — [Shards-inc/shardsclaw](https://github.com/Shards-inc/shardsclaw)
+- **OpenClaw upstream or ClawHub** — contact the respective upstream project through its official reporting channel; those channels are not operated by Shardsclaw.
 
 ### Required in Reports
 

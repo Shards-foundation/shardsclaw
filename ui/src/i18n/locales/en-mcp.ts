@@ -46,7 +46,7 @@ const enMcp = {
     workingNamed: "Working… {name}",
   },
   mcpPage: {
-    intro: "Connect and manage MCP servers that provide tools to OpenClaw.",
+    intro: "Connect and manage MCP servers that provide tools to Shardsclaw.",
     servers: "Servers",
     oauth: "OAuth",
     filtered: "Filtered",

@@ -4,7 +4,7 @@ import WebKit
 @MainActor
 final class DashboardAppLinkMessageHandler: NSObject, WKScriptMessageHandler {
     static let name = "openclawAppLink"
-    static let world = WKContentWorld.world(name: "OpenClaw App Links")
+    static let world = WKContentWorld.world(name: "Shardsclaw App Links")
     weak var owner: DashboardWindowController?
 
     func userContentController(_: WKUserContentController, didReceive message: WKScriptMessage) {

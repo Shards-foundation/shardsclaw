@@ -80,7 +80,7 @@ enum NativeExecPolicyOwner {
         let detail: String
         var errorDescription: String? {
             "Exec policy unavailable: \(self.detail). " +
-                "Update OpenClaw or inspect the local Gateway and selected database."
+                "Update Shardsclaw or inspect the local Gateway and selected database."
         }
     }
 

@@ -234,7 +234,7 @@ enum CommandResolver {
                 desktopSharingEnabled: desktopSharingEnabled),
             currentDirectoryURL: root)
         #else
-        throw MacNodeHostWorker.WorkerError.unavailable(reason: "The node worker requires a packaged OpenClaw.app")
+        throw MacNodeHostWorker.WorkerError.unavailable(reason: "The node worker requires the packaged Shardsclaw app.")
         #endif
     }
 
@@ -286,7 +286,7 @@ enum CommandResolver {
             if let openclawPath = openclawExecutable(searchPaths: searchPaths) {
                 return .executable([openclawPath])
             }
-            return .unavailable("OpenClaw's bundled runtime is not prepared. Retry setup in OpenClaw.app.")
+            return .unavailable("Shardsclaw's bundled runtime is not prepared. Retry setup in the Shardsclaw app.")
         }
         let root = projectRoot ?? self.projectRoot()
         if let openclawPath = projectOpenClawExecutable(projectRoot: root) {
@@ -305,7 +305,8 @@ enum CommandResolver {
         switch runtimeResult {
         case .success:
             return .unavailable(
-                "openclaw CLI not found. Install the CLI, or run pnpm build in an OpenClaw source checkout.")
+                "Shardsclaw CLI not found. Install the `shardsclaw` command (the `openclaw` compatibility alias also works), " +
+                    "or run `pnpm build` in a Shardsclaw source checkout.")
         case let .failure(error):
             return .unavailable(RuntimeLocator.describeFailure(error))
         }

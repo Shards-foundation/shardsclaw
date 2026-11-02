@@ -7,7 +7,7 @@ extension OnboardingView {
         self.updatingGatewayHosting = true
         self.gatewayHostingError = nil
         OnboardingController.shared.setWindowCloseEnabled(false)
-        OnboardingController.shared.busyReason = "OpenClaw is updating how the Gateway runs."
+        OnboardingController.shared.busyReason = "Shardsclaw is updating how the Gateway runs."
         Task { @MainActor in
             defer {
                 self.updatingGatewayHosting = false
@@ -81,8 +81,8 @@ extension OnboardingView {
         installingCLI = true
         cliInstallPhase = .startingService
         OnboardingController.shared.setWindowCloseEnabled(false)
-        OnboardingController.shared.busyReason = "OpenClaw is starting the Gateway."
-        cliStatus = "Starting OpenClaw Gateway…"
+        OnboardingController.shared.busyReason = "Shardsclaw is starting the Gateway."
+        cliStatus = "Starting Shardsclaw Gateway…"
         Task { @MainActor in await self.finishExistingCLIActivation() }
     }
 
@@ -163,12 +163,12 @@ extension OnboardingView {
     {
         switch result {
         case .ready:
-            (true, "OpenClaw Gateway is ready.")
+            (true, "Shardsclaw Gateway is ready.")
         case .deferred:
-            (false, "OpenClaw is paused. Resume it, then retry setup to start the Gateway.")
+            (false, "Shardsclaw is paused. Resume it, then retry setup to start the Gateway.")
         case let .failed(reason):
             (false, Self.gatewayStartFailureMessage(
-                prefix: "OpenClaw \(afterFreshInstall ? "was" : "is") installed, " +
+                prefix: "Shardsclaw \(afterFreshInstall ? "was" : "is") installed, " +
                     "but the Gateway did not start. Retry setup.",
                 reason: reason))
         }
@@ -212,7 +212,7 @@ extension OnboardingView {
         self.cliInstallPhase = .installing
         OnboardingController.shared.setWindowCloseEnabled(false)
         // Cmd-W bypasses the disabled close button; the delegate asks first.
-        OnboardingController.shared.busyReason = "OpenClaw is installing the Gateway service."
+        OnboardingController.shared.busyReason = "Shardsclaw is installing the Gateway service."
         let installed = await CLIInstaller.install(target: target) { message in
             self.cliStatus = message
         }
@@ -220,7 +220,7 @@ extension OnboardingView {
         cliExecutableReady = true
         cliInstallLocation = CLIInstaller.managedExecutableLocation()
         guard self.requiresLocalCLI else { return }
-        cliStatus = "Starting OpenClaw Gateway…"
+        cliStatus = "Starting Shardsclaw Gateway…"
         // The step checklist shows one spinner at a time: install first,
         // then the service start.
         self.cliInstallPhase = .startingService
@@ -238,17 +238,17 @@ extension OnboardingView {
 
     private func prepareBundledGateway(afterFreshInstall: Bool = true) async {
         self.cliInstallPhase = .installing
-        self.cliStatus = "Preparing OpenClaw…"
+        self.cliStatus = "Preparing Shardsclaw…"
         self.cliStatusKnown = true
         OnboardingController.shared.setWindowCloseEnabled(false)
-        OnboardingController.shared.busyReason = "OpenClaw is preparing the Gateway."
+        OnboardingController.shared.busyReason = "Shardsclaw is preparing the Gateway."
         do {
             let location = try await CLIInstaller.prepareBundledGateway { self.cliStatus = $0 }
             guard self.requiresLocalCLI, GatewayProcessManager.shared.installation == .managed else { return }
             self.cliExecutableReady = true
             self.cliInstallLocation = location
             self.cliInstallPhase = .startingService
-            self.cliStatus = "Starting OpenClaw Gateway…"
+            self.cliStatus = "Starting Shardsclaw Gateway…"
             let activation = await CLIInstaller.activateLocalGateway()
             CLIInstaller.completeBundledSetup(after: activation)
             (self.cliInstalled, self.cliStatus) = Self.localGatewayActivationOutcome(

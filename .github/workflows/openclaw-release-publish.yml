@@ -1166,7 +1166,7 @@ jobs:
   publish_android:
     name: Approve and dispatch qualified Android
     needs: [resolve_release_target, publish, qualify_android_native]
-    if: ${{ always() && !cancelled() && !inputs.publish_docker_only && inputs.publish_openclaw_npm && inputs.npm_dist_tag != 'extended-stable' && !contains(inputs.tag, '-beta.') && needs.resolve_release_target.outputs.android_pin_matches == 'true' && needs.resolve_release_target.result == 'success' && needs.publish.result == 'success' && (needs.resolve_release_target.outputs.coverage_policy != 'npm-stable-v1' || needs.qualify_android_native.outputs.qualified == 'true') }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (always() && !cancelled() && !inputs.publish_docker_only && inputs.publish_openclaw_npm && inputs.npm_dist_tag != 'extended-stable' && !contains(inputs.tag, '-beta.') && needs.resolve_release_target.outputs.android_pin_matches == 'true' && needs.resolve_release_target.result == 'success' && needs.publish.result == 'success' && (needs.resolve_release_target.outputs.coverage_policy != 'npm-stable-v1' || needs.qualify_android_native.outputs.qualified == 'true')) }}
     continue-on-error: true
     permissions:
       actions: write
@@ -1282,7 +1282,7 @@ jobs:
       clawhub_run_id: ${{ steps.children.outputs.plugin_clawhub_run_id }}
       clawhub_bootstrap_run_id: ${{ steps.children.outputs.plugin_clawhub_bootstrap_run_id }}
       clawhub_receipt: ${{ steps.clawhub_receipt.outcome }}
-    if: ${{ !inputs.publish_docker_only }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (!inputs.publish_docker_only) }}
     env:
       # Artifact bytes may belong to an FRV child; the input run still authorizes npm dispatch.
       PREFLIGHT_ARTIFACT_RUN_ID: ${{ needs.resolve_release_target.outputs.preflight_artifact_run_id }}
@@ -2243,7 +2243,7 @@ jobs:
         verify_core_npm_registry,
         finalize_github_release_before_docker,
       ]
-    if: ${{ always() && (!inputs.finalize_release_before_docker || needs.finalize_github_release_before_docker.result == 'success') && ((inputs.publish_openclaw_npm && needs.publish.result == 'success') || (inputs.publish_docker_only && needs.verify_core_npm_registry.result == 'success')) }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (always() && (!inputs.finalize_release_before_docker || needs.finalize_github_release_before_docker.result == 'success') && ((inputs.publish_openclaw_npm && needs.publish.result == 'success') || (inputs.publish_docker_only && needs.verify_core_npm_registry.result == 'success'))) }}
     uses: ./.github/workflows/docker-release.yml
     with:
       runner_group: ${{ vars.OPENCLAW_RELEASE_RUNNER_GROUP }}
@@ -2271,7 +2271,7 @@ jobs:
   publish_vcr:
     name: Mirror Docker images to Vercel Container Registry
     needs: [publish_docker]
-    if: ${{ always() && needs.publish_docker.result == 'success' }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (always() && needs.publish_docker.result == 'success') }}
     uses: ./.github/workflows/vercel-container-registry-publish.yml
     with:
       runner_group: ${{ vars.OPENCLAW_RELEASE_RUNNER_GROUP }}
@@ -2306,7 +2306,7 @@ jobs:
     needs: [publish, publish_docker, approve_github_release, finalize_github_release_before_docker]
     # Prepared releases become visible in the outer button workflow only after
     # this parent reaches an allowed terminal state and ClawHub is verified.
-    if: ${{ always() && inputs.prepared_plugins == '' && inputs.publish_openclaw_npm && needs.publish.result == 'success' && needs.publish_docker.result == 'success' && (needs.approve_github_release.result == 'success' || (inputs.finalize_release_before_docker && needs.finalize_github_release_before_docker.result == 'success')) }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (always() && inputs.prepared_plugins == '' && inputs.publish_openclaw_npm && needs.publish.result == 'success' && needs.publish_docker.result == 'success' && (needs.approve_github_release.result == 'success' || (inputs.finalize_release_before_docker && needs.finalize_github_release_before_docker.result == 'success'))) }}
     runs-on: ${{ vars.OPENCLAW_RELEASE_RUNNER_GROUP != '' && fromJSON(format('{{"group":{0},"labels":{1}}}', toJSON(vars.OPENCLAW_RELEASE_RUNNER_GROUP), toJSON('ubuntu-latest'))) || ('ubuntu-latest') }}
     concurrency:
       group: linux-app-release-publish
@@ -2415,7 +2415,7 @@ jobs:
   finalize_github_release_before_docker:
     name: Activate GitHub release before Docker
     needs: [publish, approve_github_release_before_docker]
-    if: ${{ inputs.finalize_release_before_docker && needs.publish.result == 'success' && needs.approve_github_release_before_docker.result == 'success' }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (inputs.finalize_release_before_docker && needs.publish.result == 'success' && needs.approve_github_release_before_docker.result == 'success') }}
     runs-on: ${{ vars.OPENCLAW_RELEASE_RUNNER_GROUP != '' && fromJSON(format('{{"group":{0},"labels":{1}}}', toJSON(vars.OPENCLAW_RELEASE_RUNNER_GROUP), toJSON('ubuntu-latest'))) || ('ubuntu-latest') }}
     concurrency:
       group: linux-app-release-publish
@@ -2429,7 +2429,7 @@ jobs:
   dispatch_linux_mirror:
     name: Dispatch legacy Linux mirror after publication
     needs: [resolve_release_target, finalize_github_release]
-    if: ${{ !cancelled() && needs.finalize_github_release.result == 'success' && inputs.npm_dist_tag == 'latest' && !contains(inputs.tag, '-beta.') }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (!cancelled() && needs.finalize_github_release.result == 'success' && inputs.npm_dist_tag == 'latest' && !contains(inputs.tag, '-beta.')) }}
     # Dispatch only; the child owns the shared metadata queue and its outcome.
     continue-on-error: true
     runs-on: ${{ vars.OPENCLAW_RELEASE_RUNNER_GROUP != '' && fromJSON(format('{{"group":{0},"labels":{1}}}', toJSON(vars.OPENCLAW_RELEASE_RUNNER_GROUP), toJSON('ubuntu-latest'))) || ('ubuntu-latest') }}
@@ -2480,7 +2480,7 @@ jobs:
   publish_linux:
     name: Request Linux assets after publication
     needs: [resolve_release_target, finalize_github_release]
-    if: ${{ !cancelled() && needs.finalize_github_release.result == 'success' && inputs.npm_dist_tag != 'extended-stable' && !contains(inputs.tag, '-beta.') }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (!cancelled() && needs.finalize_github_release.result == 'success' && inputs.npm_dist_tag != 'extended-stable' && !contains(inputs.tag, '-beta.')) }}
     continue-on-error: true
     # App-token minting stays on GitHub-hosted runners.
     runs-on: ubuntu-latest
@@ -2543,7 +2543,7 @@ jobs:
   publish_windows:
     name: Dispatch Windows assets after publication
     needs: [resolve_release_target, finalize_github_release]
-    if: ${{ !cancelled() && needs.finalize_github_release.result == 'success' && inputs.npm_dist_tag != 'extended-stable' && (inputs.windows_node_tag != '' || inputs.windows_node_installer_digests != '') && !contains(inputs.tag, '-beta.') }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (!cancelled() && needs.finalize_github_release.result == 'success' && inputs.npm_dist_tag != 'extended-stable' && (inputs.windows_node_tag != '' || inputs.windows_node_installer_digests != '') && !contains(inputs.tag, '-beta.')) }}
     # App failures are reported by their own workflow; neither npm nor the
     # published GitHub release depends on native asset availability.
     continue-on-error: true

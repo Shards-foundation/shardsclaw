@@ -147,12 +147,12 @@ describe("portable theme definition", () => {
   });
 });
 
-it("resolves omitted branding to the claw without critters or a hat and retains authored branding", () => {
+it("resolves omitted branding to the Shardsclaw mark without critters or a hat", () => {
   const defaults = {
-    mascot: "claw",
-    brandName: "OpenClaw",
-    brandIcon: "claw",
-    workingIndicator: "claw",
+    mascot: "none",
+    brandName: "Shardsclaw",
+    brandIcon: "mark",
+    workingIndicator: "brand",
     lobsterdex: true,
     communityLinks: true,
     workingPhrases: undefined,

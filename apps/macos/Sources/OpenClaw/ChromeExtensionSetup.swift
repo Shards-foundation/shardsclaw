@@ -100,7 +100,7 @@ final class ChromeExtensionSetup {
 
         var errorDescription: String? {
             switch self {
-            case .missingCLI: "Install the OpenClaw CLI on this Mac, then try setup again."
+            case .missingCLI: "Install the Shardsclaw CLI on this Mac, then try setup again."
             case .unavailable:
                 "Chrome setup could not finish. Run openclaw browser extension setup on this Mac for details."
             case .retired: "The device settings document is no longer available."

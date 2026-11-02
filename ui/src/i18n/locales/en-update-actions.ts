@@ -53,15 +53,15 @@ const enUpdateActions = {
       },
       stepWarning: "Warning: {step}",
       prepareUpdaterDetails:
-        "Keeping a copy of the current updater so it can finish safely while OpenClaw is replaced.",
+        "Keeping a copy of the current updater so it can finish safely while Shardsclaw is replaced.",
       stepLabel: {
         snapshotSpace: "Checking space for the recovery backup",
         prepareUpdater: "Preparing the updater",
         snapshot: "Saving the recovery backup",
         fetch: "Downloading update revisions",
         install: "Installing dependencies",
-        update: "Installing OpenClaw",
-        build: "Building OpenClaw",
+        update: "Installing Shardsclaw",
+        build: "Building Shardsclaw",
         buildUi: "Building the Control UI",
         doctor: "Checking configuration and data",
       },
@@ -72,7 +72,7 @@ const enUpdateActions = {
       noKnownUpdateMessage:
         "Runs the Gateway updater and restarts it. The current version may be reinstalled.",
       macMessage:
-        "Hands this update to the OpenClaw Mac app, which installs it and restarts the Gateway it manages.",
+        "Hands this update to the Shardsclaw Mac app, which installs it and restarts the Gateway it manages.",
       impact:
         "Running sessions are interrupted and this Control UI disconnects until the Gateway is back.",
       versions: "Installed {installed} · Available {available}",
@@ -100,9 +100,9 @@ const enUpdateActions = {
     },
     dialog: {
       disconnected:
-        "The Gateway disconnected during the update. This page reconnects on its own. If it stays disconnected, run `openclaw triage` on the Gateway host to open a local coding agent for diagnosis and repair.",
+        "The Gateway disconnected during the update. This page reconnects on its own. If it stays disconnected, run `shardsclaw triage` on the Gateway host to open a local coding agent for diagnosis and repair.",
       restarting:
-        "The Gateway is restarting. This page disconnects and reconnects on its own. If it stays disconnected, run `openclaw triage` on the Gateway host to open a local coding agent for diagnosis and repair.",
+        "The Gateway is restarting. This page disconnects and reconnects on its own. If it stays disconnected, run `shardsclaw triage` on the Gateway host to open a local coding agent for diagnosis and repair.",
       checkStatus: "Check status",
       checkingStatus: "Checking status…",
       statusRefreshed: "Status refreshed.",
@@ -111,7 +111,7 @@ const enUpdateActions = {
       retryUpdate: "Retry update",
       installing: "Installing the update on the Gateway. It restarts once the install finishes.",
       notStarted:
-        "The update request went unanswered. Run `openclaw triage` on the Gateway host and inspect the result before retrying.",
+        "The update request went unanswered. Run `shardsclaw triage` on the Gateway host and inspect the result before retrying.",
     },
     channel: en.updates.channel,
     installKind: en.updates.installKind,
@@ -136,7 +136,7 @@ const enUpdateActions = {
     report: {
       title: "Report update failure",
       message:
-        "Review the sanitized report below. Named administrators receive a prefilled issue to review and submit with their own GitHub account in their browser. Gateway owners authorize submission with the host's GitHub CLI account when available; otherwise OpenClaw offers a browser handoff or saves the sanitized report locally.",
+        "Review the sanitized report below. Named administrators receive a prefilled issue to review and submit with their own GitHub account in their browser. Gateway owners authorize submission with the host's GitHub CLI account when available; otherwise Shardsclaw offers a browser handoff or saves the sanitized report locally.",
       submit: "Continue",
       cancel: "Cancel",
     },

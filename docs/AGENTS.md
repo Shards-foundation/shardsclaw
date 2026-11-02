@@ -1,20 +1,20 @@
-# Docs Guide
+# Shardsclaw Docs Guide
 
 Own docs authoring, published links, docs i18n policy.
 
 ## Source Ownership
 
-- Author `/clawhub/**` in [openclaw/clawhub](https://github.com/openclaw/clawhub/tree/main/docs), never here. `scripts/docs-sync-publish.mjs` replaces publish `docs/clawhub/` tree. Link audits accept routes declared in `docs/docs.json` without checkout; undeclared routes fail.
-- OpenClaw-specific skill/plugin installation, update, verification, removal, release-trust guidance stays here (`docs/cli/skills.md`, `docs/cli/plugins.md`). Standalone ClawHub CLI/publishing reference → upstream.
+- Author `/clawhub/**` in the external upstream [openclaw/clawhub](https://github.com/openclaw/clawhub/tree/main/docs) project, never here. `scripts/docs-sync-publish.mjs` replaces the published `docs/clawhub/` tree; its workflow is guarded for the upstream repository and must not publish from Shardsclaw. Link audits accept routes declared in `docs/docs.json` without checkout; undeclared routes fail.
+- Shardsclaw-specific skill/plugin installation, update, verification, removal, and release-trust guidance stays here (`docs/cli/skills.md`, `docs/cli/plugins.md`). Standalone ClawHub CLI/publishing reference belongs upstream.
 - Plain `pnpm docs:check-links` skips ClawHub fragments. Use `pnpm docs:check-links:anchors` + `OPENCLAW_DOCS_SYNC_CLAWHUB_REPO` set to source checkout; otherwise declared-route fragments unverified.
-- Release-doc/changelog edits: follow the `openclaw-changelog-update` skill.
+- The inherited `openclaw-changelog-update` skill describes upstream release artifacts; it is not a Shardsclaw release process. This source checkout has no confirmed Shardsclaw release publishing configuration.
 
 ## Local Preview
 
 - Uncommitted English content in current website UI: `pnpm docs:dev -- --page <route>`; repeat `--page` for more pages. Re-run after edits.
-- Clone `openclaw/docs` as `../openclaw-docs` beside main checkout; run `npm ci` there. Override: `--site-repo <path>` or `OPENCLAW_DOCS_SITE_REPO`.
+- Clone upstream `openclaw/docs` as `../openclaw-docs` beside the checkout to preview source content in the upstream renderer; this is not a Shardsclaw docs site. Run `npm ci` there. Override: `--site-repo <path>` or `OPENCLAW_DOCS_SITE_REPO`.
 - Preview writes only ignored `.cache/docs-preview/`; no sync/translate/publish. Build-only/port options: `pnpm docs:dev --help`.
-- `openclaw/docs` publishes `https://docs.openclaw.ai` and owns styling/renderer; content, navigation, redirects, shared publishing parser → here.
+- Upstream `openclaw/docs` publishes `https://docs.openclaw.ai` and owns styling/renderer. That domain is upstream OpenClaw only, not a Shardsclaw documentation site. This repository owns the source content, navigation, redirects, and shared publishing parser.
 
 ## Published Link Rules
 

@@ -565,7 +565,7 @@ extension GatewayProcessManager {
         try self.loadRetainedServiceForResume()
         guard self.usesSeededGateway else {
             throw GatewayHostingError(
-                message: "This Gateway is no longer hosted by OpenClaw.app. Update it with its installation owner.")
+                message: "This Gateway is no longer hosted by the Shardsclaw desktop app. Update it with its installation owner.")
         }
         let hosting = self.gatewayHosting
         let port = GatewayEnvironment.gatewayPort()

@@ -381,8 +381,9 @@ fn load_existing_identity(
     match decode_identity(&bytes) {
         Ok(identity) => Ok(identity),
         Err(DecodeIdentityError::VersionMismatch { found }) => Err(format!(
-            "Gateway device identity was written by a different version of OpenClaw \
-             (identity version {found}; this build supports {IDENTITY_VERSION}); \
+            "Gateway device identity was written by a different version of Shardsclaw \
+             (or the compatible OpenClaw upstream; \
+             identity version {found}; this build supports {IDENTITY_VERSION}); \
              this build will not replace it."
         )),
         Err(DecodeIdentityError::Malformed(error)) => quarantine_and_regenerate(path, error),
@@ -529,7 +530,8 @@ mod tests {
             .err()
             .expect("version mismatch should fail");
 
-        assert!(error.contains("written by a different version of OpenClaw"));
+        assert!(error.contains("written by a different version of Shardsclaw"));
+        assert!(error.contains("compatible OpenClaw upstream"));
         assert!(error.contains("this build will not replace it"));
         assert_eq!(
             fs::read(&path).expect("reread version-mismatched identity"),

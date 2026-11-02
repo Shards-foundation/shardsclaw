@@ -7,6 +7,10 @@ read_when:
 title: "Windows"
 ---
 
+This platform guide is inherited from upstream OpenClaw and includes upstream
+apps, installers, downloads, and hosted services. Those links are not Shardsclaw
+distribution; this source fork has no confirmed Windows app or installer release.
+
 The native **Windows Hub** is the recommended Windows desktop app. It includes
 setup, tray status, chat, Command Center diagnostics, and Windows node
 capabilities, with an app-owned WSL Gateway for local setup. The cross-platform

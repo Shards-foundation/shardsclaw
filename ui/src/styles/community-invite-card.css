@@ -52,18 +52,19 @@
     left: var(--community-invite-copy-inset);
     display: flex;
     align-items: center;
-    gap: 5px;
-    /* Brand marks remain white over either photograph. */
-    color: rgb(255 255 255);
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 94%);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
     pointer-events: none;
   }
 
-  .invite__marks svg {
-    width: 19px;
-    height: 19px;
-    fill: currentcolor;
-    stroke: none;
-    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 87%)) drop-shadow(0 0 3px rgb(0 0 0 / 47%));
+  .invite__marks img {
+    display: block;
+    width: 20px;
+    height: 20px;
   }
 
   .invite__close {

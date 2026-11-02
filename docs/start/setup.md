@@ -9,6 +9,11 @@ title: "Setup"
 <Note>
 If you are setting up for the first time, start with [Getting Started](/start/getting-started).
 For onboarding details, see [Onboarding (CLI)](/start/wizard).
+This inherited advanced guide also documents upstream OpenClaw workflows.
+**OpenClaw.app and published/global installs are upstream-only**, not
+Shardsclaw downloads or services. Shardsclaw source setup starts from the
+repository checkout; the `openclaw` CLI and `.openclaw` paths remain compatible
+names for existing users.
 </Note>
 
 ## TL;DR

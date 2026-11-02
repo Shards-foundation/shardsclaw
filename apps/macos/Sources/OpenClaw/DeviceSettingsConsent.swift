@@ -83,7 +83,7 @@ enum DeviceSettingsConsent: Equatable {
         case .voiceWake:
             String(localized: "Enable continuous microphone listening?")
         case .locationWhileUsing:
-            String(localized: "Allow location access while using OpenClaw?")
+            String(localized: "Allow location access while using Shardsclaw?")
         case .locationAlways:
             String(localized: "Allow location access at any time?")
         case .preciseLocation:
@@ -96,7 +96,7 @@ enum DeviceSettingsConsent: Equatable {
         case .unattendedDesktop:
             String(
                 localized: """
-                While connected and hosting sessions, OpenClaw keeps the unlocked desktop awake between jobs. \
+                While connected and hosting sessions, Shardsclaw keeps the unlocked desktop awake between jobs. \
                 Manual lock and logout still stop Computer work. Disabling this setting restores normal idle behavior.
                 """)
         case .cookieSync:
@@ -138,7 +138,7 @@ enum DeviceSettingsConsent: Equatable {
             String(
                 localized: """
                 Local automation clients can use the Peekaboo bridge to capture your screen and control apps \
-                on this Mac using OpenClaw's macOS permissions.
+                on this Mac using Shardsclaw's macOS permissions.
                 """)
         case .camera:
             String(
@@ -150,14 +150,14 @@ enum DeviceSettingsConsent: Equatable {
         case .activityReporting:
             String(
                 localized: """
-                OpenClaw activity already identifies this Mac without extra permissions. \
+                Shardsclaw activity already identifies this Mac without extra permissions. \
                 This also shares idle duration from activity in other apps and requires Accessibility. \
                 It never sends keys, pointer positions, app names, or window titles.
                 """)
         case .locationWhileUsing:
-            String(localized: "The Gateway can request this Mac's location while OpenClaw is in use.")
+            String(localized: "The Gateway can request this Mac's location while Shardsclaw is in use.")
         case .locationAlways:
-            String(localized: "The Gateway can request this Mac's location even when OpenClaw is not in use.")
+            String(localized: "The Gateway can request this Mac's location even when Shardsclaw is not in use.")
         case .preciseLocation:
             String(localized: "The Gateway can request this Mac's precise location when location access is enabled.")
         }

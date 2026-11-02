@@ -989,18 +989,7 @@ jobs:
 
   publish:
     name: Publish companion bundles and updater manifest
-    if: >-
-      ${{
-        always() &&
-        (needs.validate_release.outputs.already_published == 'true' ||
-          (needs.build_linux.result == 'success' &&
-            needs.sign_linux.result == 'success')) &&
-        (needs.validate_release.outputs.desktop_test_bundles != 'true' ||
-          needs.build_macos.result == 'success') &&
-        (needs.validate_release.outputs.already_published == 'true' ||
-          needs.validate_release.outputs.windows_build != 'true' ||
-          (needs.build_windows.result == 'success' && needs.sign_desktop.result == 'success'))
-      }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (always() && (needs.validate_release.outputs.already_published == 'true' || (needs.build_linux.result == 'success' && needs.sign_linux.result == 'success')) && (needs.validate_release.outputs.desktop_test_bundles != 'true' || needs.build_macos.result == 'success') && (needs.validate_release.outputs.already_published == 'true' || needs.validate_release.outputs.windows_build != 'true' || (needs.build_windows.result == 'success' && needs.sign_desktop.result == 'success'))) }}
     needs:
       - validate_release
       - build_linux

@@ -253,8 +253,8 @@ it("preserves prompt image ownership across steered and follow-up messages", asy
 });
 const cloudflare = { "User-Agent": "openclaw" };
 const openrouter = {
-  "HTTP-Referer": "https://openclaw.ai",
-  "X-OpenRouter-Title": "OpenClaw",
+  "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
+  "X-OpenRouter-Title": "Shardsclaw",
   "X-OpenRouter-Categories": "personal-agent,cli-agent",
 };
 it.each([

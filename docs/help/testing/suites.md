@@ -29,7 +29,7 @@ the pre-existing/new/unknown classification. Fix new failures and investigate
 unknown ones, then use `pnpm test:ci-failed <pr> --run` until the selected tests
 pass locally and push once. Do not run the full local suite or use
 `gh run rerun` to chase green. Pre-existing failures follow the
-[failure-table landing rule](https://github.com/openclaw/openclaw/blob/main/.agents/skills/openclaw-pr-maintainer/references/landing.md#red-main-and-inherited-failures).
+[failure-table landing rule](https://github.com/Shards-inc/shardsclaw/blob/main/.agents/skills/shardsclaw-pr-maintainer/references/landing.md#red-main-and-inherited-failures).
 See [failed CI test selection](/reference/scripts/pr-tooling#rerun-failed-ci-tests)
 for targets, classification, and command options.
 

@@ -346,6 +346,10 @@ the Gateway; remote Gateway routes are left untouched. If logind or the system
 bus is unavailable, the sleep hook disables itself and the app continues
 normally.
 
+The following release, download, signing, and updater details are inherited from
+upstream OpenClaw and are not Shardsclaw distribution. This source fork has no
+confirmed Linux app release or updater endpoint.
+
 Stable releases built from `main` or their matching `release/YYYY.M.PATCH` branch
 ship `.deb` and AppImage bundles as assets on the
 [GitHub release](https://github.com/openclaw/openclaw/releases) for the tag,

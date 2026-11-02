@@ -13,6 +13,13 @@ doc-schema-version: 1
 The Control UI covers discovery, installation, schema-backed configuration,
 effective access, enablement, reload, and removal. The CLI adds update,
 advanced maintenance, and explicit install-source controls.
+
+This reference is inherited from upstream OpenClaw. `@openclaw/*` package names,
+“official” catalog labels, and upstream ClawHub/npm examples describe upstream
+distribution; Shardsclaw does not claim to publish or support those registries.
+For this source fork, use integrations present in the checkout or packages
+whose source and publisher you have independently verified.
+
 For its full command contract, flags, source-selection rules, and edge cases, see
 [`openclaw plugins`](/cli/plugins).
 

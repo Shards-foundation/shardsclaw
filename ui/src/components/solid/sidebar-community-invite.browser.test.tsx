@@ -28,13 +28,16 @@ afterEach(() => {
 it("offers safe community links and dismisses permanently with the keyboard", async () => {
   const dismissed = vi.fn();
   const view = render(() => <SidebarCommunityInvite onDismiss={dismissed} mode="light" />);
-  expect(view.container.querySelector(".invite__title")?.textContent).toBe("Pull up a chair.");
+  expect(view.container.querySelector(".invite__title")?.textContent).toBe("Build with us.");
   const close = page.getByRole("button", { name: "Dismiss and don't show again" });
   const links = [...view.container.querySelectorAll<HTMLAnchorElement>(".invite__cta")];
   expect(links.map((link) => [link.getAttribute("aria-label"), link.href])).toEqual([
-    ["Join the OpenClaw community on Reddit", "https://www.reddit.com/r/openclaw/"],
-    ["Join the OpenClaw community on Discord", "https://discord.gg/clawd"],
-    ["Follow OpenClaw on X", "https://x.com/openclaw"],
+    ["Explore the Shardsclaw repository", "https://github.com/Shards-inc/shardsclaw"],
+    [
+      "Read the Shardsclaw documentation",
+      "https://github.com/Shards-inc/shardsclaw/tree/main/docs",
+    ],
+    ["Open a Shardsclaw issue", "https://github.com/Shards-inc/shardsclaw/issues"],
   ]);
   for (const link of links) {
     expect(link.target).toBe("_blank");

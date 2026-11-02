@@ -161,11 +161,11 @@ enum CLIInstaller {
         var message: String {
             switch self {
             case let .ready(_, version):
-                "OpenClaw Gateway \(version) is ready."
+                "Shardsclaw Gateway \(version) is ready."
             case .missing:
-                "OpenClaw Gateway is not installed yet."
+                "Shardsclaw Gateway is not installed yet."
             case .unusable:
-                "The OpenClaw Gateway could not be verified. Setup will repair it."
+                "The Shardsclaw Gateway could not be verified. Setup will repair it."
             case let .incompatible(_, found, required):
                 "Gateway \(found) does not match app \(required). Setup will update it."
             }
@@ -372,11 +372,11 @@ enum CLIInstaller {
         statusHandler: @escaping @MainActor @Sendable (String) async -> Void) async -> Bool
     {
         if BundledRuntime.isBundledApp {
-            await statusHandler("Preparing OpenClaw…")
+            await statusHandler("Preparing Shardsclaw…")
             do {
                 _ = try await self.prepareBundledGateway(statusHandler: statusHandler)
                 NotificationCenter.default.post(name: .openclawCLIInstalled, object: nil)
-                await statusHandler("OpenClaw is ready.")
+                await statusHandler("Shardsclaw is ready.")
                 return true
             } catch {
                 await statusHandler("Preparation failed: \(error.localizedDescription)")
@@ -384,9 +384,9 @@ enum CLIInstaller {
             }
         }
         let prefix = Self.installPrefix()
-        await statusHandler("Installing OpenClaw CLI (\(target.selector))…")
+        await statusHandler("Installing Shardsclaw CLI (\(target.selector))…")
         guard let installerURL = Bundle.main.url(forResource: "install-cli", withExtension: "sh") else {
-            await statusHandler("Install failed: installer resource is missing. Reinstall OpenClaw.")
+            await statusHandler("Install failed: installer resource is missing. Reinstall Shardsclaw.")
             return false
         }
         let appVersion = GatewayEnvironment.appVersionString()
@@ -590,12 +590,12 @@ enum CLIInstaller {
                     details: error.localizedDescription)
             }
             await statusHandler(String(
-                format: String(localized: "OpenClaw Gateway %@ is installed."), installedVersion))
+                format: String(localized: "Shardsclaw Gateway %@ is installed."), installedVersion))
             return .success(fromVersion: installedVersion, toVersion: installedVersion)
         }
         await statusHandler(repair
-            ? String(localized: "Repairing the OpenClaw Gateway update…")
-            : String(format: String(localized: "Updating the OpenClaw Gateway to %@…"), targetVersion))
+            ? String(localized: "Repairing the Shardsclaw Gateway update…")
+            : String(format: String(localized: "Updating the Shardsclaw Gateway to %@…"), targetVersion))
         var command = self.managedUpdateCommand(
             executable: executable,
             targetVersion: targetVersion,
@@ -657,7 +657,7 @@ enum CLIInstaller {
                         message: String(localized: "Gateway update failed."), details: error.localizedDescription)
                 }
                 await statusHandler(String(
-                    format: String(localized: "OpenClaw Gateway %@ is installed."), installedVersion))
+                    format: String(localized: "Shardsclaw Gateway %@ is installed."), installedVersion))
                 return .success(fromVersion: summary?.before?.version, toVersion: installedVersion)
             }
             let failedStep = summary?.steps?.last(where: { ($0.exitCode ?? 0) != 0 })
@@ -692,7 +692,7 @@ enum CLIInstaller {
         self.rememberInstallPolicy(.exact(targetVersion))
         NotificationCenter.default.post(name: .openclawCLIInstalled, object: nil)
         await statusHandler(String(
-            format: String(localized: "OpenClaw Gateway %@ is installed."), installedVersion))
+            format: String(localized: "Shardsclaw Gateway %@ is installed."), installedVersion))
         return .success(
             fromVersion: summary?.before?.version,
             toVersion: installedVersion)
@@ -767,14 +767,14 @@ enum CLIInstaller {
         case ("disk-space", "start"): "Checking available disk space…"
         case ("node", "start"): "Installing Node.js runtime…"
         case ("git-tools", "start"): "Preparing Git and pnpm…"
-        case ("git-clone", "start"): "Downloading OpenClaw source…"
-        case ("git-update", "start"): "Updating OpenClaw source…"
+        case ("git-clone", "start"): "Downloading Shardsclaw source…"
+        case ("git-update", "start"): "Updating Shardsclaw source…"
         case ("dependencies", "start"): "Installing dependencies…"
         case ("control-ui", "start"): "Building interface…"
-        case ("cli-build", "start"): "Building OpenClaw CLI…"
-        case ("openclaw", "retry"): "Retrying OpenClaw CLI install…"
+        case ("cli-build", "start"): "Building Shardsclaw CLI…"
+        case ("openclaw", "retry"): "Retrying Shardsclaw CLI install…"
         case ("disk-space", "warn"): "Couldn’t verify free disk space; continuing…"
-        case ("git-update", "warn"): "Using the existing modified OpenClaw source…"
+        case ("git-update", "warn"): "Using the existing modified Shardsclaw source…"
         case ("control-ui", "warn"): "Interface build did not finish; continuing…"
         default: nil
         }

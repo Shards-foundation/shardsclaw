@@ -6,7 +6,7 @@ description: "Run scoped OpenClaw issue/PR repair campaigns: coordinate workers,
 # OpenClaw Repair Sweep
 
 Use for a multi-item repair campaign. Root `AGENTS.md` owns repair and safety
-policy; `$openclaw-pr-maintainer` owns item review, GitHub writes, and landing.
+policy; `$shardsclaw-pr-maintainer` owns item review, GitHub writes, and landing.
 The lead remains hands-on and delegates independent work where useful.
 
 ## Scope and authority

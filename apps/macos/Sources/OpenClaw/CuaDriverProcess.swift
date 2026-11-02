@@ -58,7 +58,7 @@ final class CuaDriverStderrRelay: @unchecked Sendable {
     static let managedModeNotice =
         """
         CUA embedded driver running in managed unrestricted mode; \
-        OpenClaw command arming and pairing are the authorization boundary.
+        Shardsclaw command arming and pairing are the authorization boundary.
         """
 
     private static let dangerBannerPrefix = "DANGER: Cua Driver is running in unrestricted mode"

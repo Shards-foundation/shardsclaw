@@ -182,7 +182,7 @@ enum ExecApprovalsPromptPresenter {
         panel.sharingType = .none
         panel.level = .modalPanel
         panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
-        panel.title = String(localized: "OpenClaw Command Approval")
+        panel.title = String(localized: "Shardsclaw Command Approval")
         panel.titleVisibility = .hidden
         panel.titlebarAppearsTransparent = true
         panel.isReleasedWhenClosed = false

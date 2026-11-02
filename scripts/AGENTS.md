@@ -31,7 +31,7 @@ Own local tooling, script wrappers, generated-artifact helper rules.
 
 ## PR Safety
 
-- PR operations: follow [maintainer workflow](../.agents/skills/openclaw-pr-maintainer/SKILL.md). Gate modes: [landing](../.agents/skills/openclaw-pr-maintainer/references/landing.md). Default handoff: `merge-run --auto-merge`. Pending admission ≠ successful proof/merge completion.
+- PR operations: follow [maintainer workflow](../.agents/skills/shardsclaw-pr-maintainer/SKILL.md). Gate modes: [landing](../.agents/skills/shardsclaw-pr-maintainer/references/landing.md). Default handoff: `merge-run --auto-merge`. Pending admission ≠ successful proof/merge completion.
 - Landing subcommands require canonical/origin-main wrapper code. Never bypass wrapper trust, operation locks, exact-head review/gate bindings, live authority checks, or Octopool string rewrite protection; never select raw `gh` to get landing through.
 - Before returning: join all PR-state-mutating children. Drained self-exited failures auto-release their operation lock; interrupted/uncertain locks stay held — verify no child tools remain before reported exact-OID `scripts/pr lock-recover` command. Never delete lock refs manually.
 - Preserve transition journals, preparation evidence, outcome refs, captures. Never clear/push `refs/openclaw/pr-merge-outcomes/<PR>`, hand-edit receipts, or infer non-execution from failed command, elapsed time, absent process, or open PR.

@@ -401,7 +401,7 @@ extension OnboardingView {
         case self.aiPageIndex: self.aiSetup.configuredGatewayAuthIssue == nil
             ? "Connect your AI" : "Authenticate with your Gateway"
         case self.readyPageIndex: "You’re all set!"
-        default: "Welcome to OpenClaw"
+        default: "Welcome to Shardsclaw"
         }
     }
 

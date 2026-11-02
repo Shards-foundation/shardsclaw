@@ -5,11 +5,43 @@ import { registerEnglishCatalog, t } from "../../lib/reactive/i18n.ts";
 import { registerBoardDocumentEnglish } from "../locales/en-board-document.ts";
 import { registerBoardWebsiteEnglish } from "../locales/en-board-website.ts";
 import { registerBoardEnglish } from "../locales/en-board.ts";
+import { registerBrowserEnglish } from "../locales/en-browser.ts";
 import { registerChatSessionEnglish } from "../locales/en-chat-session.ts";
 import { en } from "../locales/en.ts";
 import { loadLazyLocaleTranslation } from "./registry.ts";
 import { captureI18nStateForTesting } from "./translate.test-support.ts";
 import { i18n } from "./translate.ts";
+
+const englishLocaleModules = import.meta.glob("../locales/en-*.ts", { eager: true }) as Record<
+  string,
+  Record<string, unknown>
+>;
+
+function collectMessageStrings(value: unknown, seen = new WeakSet<object>()): string[] {
+  if (typeof value === "string") {
+    return [value];
+  }
+  if (Array.isArray(value)) {
+    return value.flatMap((entry) => collectMessageStrings(entry, seen));
+  }
+  if (!value || typeof value !== "object" || seen.has(value)) {
+    return [];
+  }
+  seen.add(value);
+  return Object.values(value).flatMap((entry) => collectMessageStrings(entry, seen));
+}
+
+const englishMessageStrings = [
+  ...collectMessageStrings(en),
+  ...Object.values(englishLocaleModules).flatMap((module) =>
+    Object.values(module).flatMap((exported) => {
+      if (typeof exported !== "function" || !("catalog" in exported)) {
+        return [];
+      }
+      return collectMessageStrings((exported as { catalog: unknown }).catalog);
+    }),
+  ),
+];
 
 vi.hoisted(() => vi.resetModules());
 
@@ -45,6 +77,11 @@ it("registers shared session copy before optional copy while preserving namespac
   } finally {
     await restoreI18n();
   }
+});
+
+it("keeps the browser translation key stable while branding its visible label", () => {
+  const browserCatalog = registerBrowserEnglish.catalog as { browser: Record<string, string> };
+  expect(browserCatalog.browser.openWithinOpenClaw).toBe("Open in Shardsclaw");
 });
 
 it.each([
@@ -111,3 +148,36 @@ it.each([
     }
   },
 );
+
+function isKnownExternalOpenClawReference(message: string): boolean {
+  return (
+    /\b(upstream|compatible)\b/iu.test(message) ||
+    /\bOpenClaw Foundation\b/iu.test(message) ||
+    /\bOpenClaw upstream project\b/iu.test(message) ||
+    /\b(?:Official )?OpenClaw mobile (?:app|apps|pairing)\b/iu.test(message) ||
+    /\bOpenClaw release track\b/iu.test(message) ||
+    /\bOpenClaw APIs?\b/iu.test(message) ||
+    /\bOpenClaw app and CLI\b/iu.test(message) ||
+    /\bOpenClaw (?:extension|CLI)\b/iu.test(message) ||
+    /\b(?:Chrome|Chrome Web Store)[^.!?]*\bOpenClaw\b/iu.test(message) ||
+    /\bOpenClaw\b[^.!?]*\b(?:Chrome|Chrome Web Store)\b/iu.test(message) ||
+    /\bexternal OpenClaw CLI\b/iu.test(message) ||
+    /\bremote OpenClaw browser profile\b/iu.test(message)
+  );
+}
+
+it("keeps Shardsclaw as the English Control UI identity while preserving upstream references", () => {
+  const unqualifiedUpstreamBrand = englishMessageStrings.filter(
+    (message) => /\bOpenClaw\b/u.test(message) && !isKnownExternalOpenClawReference(message),
+  );
+  const unqualifiedUpstreamCliExamples = englishMessageStrings.filter(
+    (message) =>
+      /\bopenclaw\s+(?:triage|devices|config|node|agents|gateway|doctor|dashboard|status|users|crabbox|browser|plugins|update)\b/iu.test(
+        message,
+      ) && !isKnownExternalOpenClawReference(message),
+  );
+
+  expect(unqualifiedUpstreamBrand.length).toBe(0);
+  expect(unqualifiedUpstreamCliExamples.length).toBe(0);
+  expect(englishMessageStrings).toContain("Connect to Shardsclaw");
+});

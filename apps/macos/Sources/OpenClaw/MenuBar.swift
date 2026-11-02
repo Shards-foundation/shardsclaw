@@ -13,7 +13,7 @@ enum OpenClawProcessMain {
         if let status = OpenClawProcessEntrypoint.run(arguments: CommandLine.arguments, launchApplication: {
             guard GatewayKeychainAccess.configure(launchPlan: .current) == 0 else {
                 fputs(
-                    "OpenClaw could not disable Keychain interaction for --no-activate. Relaunch without the flag.\n",
+                    "Shardsclaw could not disable Keychain interaction for --no-activate. Relaunch without the flag.\n",
                     stderr)
                 Darwin.exit(2)
             }
@@ -52,17 +52,17 @@ struct OpenClawApp: App {
         let launchPlan = AppLaunchRuntimePlan.current
         if let error = AppProfile.current.validationError {
             if launchPlan.isElevationHost {
-                fputs("OpenClaw elevation host profile is invalid: \(error.localizedDescription)\n", stderr)
+                fputs("Shardsclaw elevation host profile is invalid: \(error.localizedDescription)\n", stderr)
                 Darwin.exit(2)
             }
             let alert = NSAlert()
             alert.alertStyle = .critical
-            alert.messageText = "OpenClaw profile is invalid"
+            alert.messageText = "Shardsclaw profile is invalid"
             alert.informativeText = error.localizedDescription
             if launchPlan.allowsActivation {
                 AppActivation.shared.presentAlert(alert)
             } else {
-                Self.logger.error("OpenClaw profile is invalid: \(error.localizedDescription, privacy: .public)")
+                Self.logger.error("Shardsclaw profile is invalid: \(error.localizedDescription, privacy: .public)")
             }
             Darwin.exit(2)
         }
@@ -120,7 +120,7 @@ struct OpenClawApp: App {
                 }
             }
             CommandGroup(replacing: .appInfo) {
-                Button("About OpenClaw") {
+                Button("About Shardsclaw") {
                     AppNavigationActions.openAbout()
                 }
             }
@@ -217,14 +217,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let isReplacementHandoff = hasReplacementMetadata &&
             ApplicationRelocator.acceptReplacementHandoff(environment: environment)
         if hasReplacementMetadata, !isReplacementHandoff {
-            fputs("OpenClaw replacement handoff authentication failed.\n", stderr)
+            fputs("Shardsclaw replacement handoff authentication failed.\n", stderr)
             Darwin.exit(2)
         }
         let ownership = AppInstanceLock.acquire(
             url: AppProfile.current.instanceLockURL(),
             waitMilliseconds: isReplacementHandoff ? 5000 : 0)
         if let exitCode = Self.processExitCode(for: ownership) {
-            fputs("OpenClaw profile is already running.\n", stderr)
+            fputs("Shardsclaw profile is already running.\n", stderr)
             Darwin.exit(exitCode)
         }
         let (profileInstanceLock, instanceOwnershipFailure): (AppInstanceLock?, String?) = switch ownership {
@@ -243,18 +243,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let instanceOwnershipFailure {
             if AppLaunchRuntimePlan.current.isElevationHost {
                 fputs(
-                    "OpenClaw elevation host could not claim its instance lock: \(instanceOwnershipFailure)\n",
+                    "Shardsclaw elevation host could not claim its instance lock: \(instanceOwnershipFailure)\n",
                     stderr)
                 Darwin.exit(2)
             }
             let alert = NSAlert()
             alert.alertStyle = .critical
-            alert.messageText = "OpenClaw could not claim its instance lock"
+            alert.messageText = "Shardsclaw could not claim its instance lock"
             alert.informativeText = instanceOwnershipFailure
             if AppLaunchRuntimePlan.current.allowsActivation {
                 AppActivation.shared.presentAlert(alert)
             } else {
-                fputs("OpenClaw could not claim its instance lock: \(instanceOwnershipFailure)\n", stderr)
+                fputs("Shardsclaw could not claim its instance lock: \(instanceOwnershipFailure)\n", stderr)
             }
             Darwin.exit(2)
         }
@@ -385,18 +385,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func showCredentialStartupFailure() {
-        let message = "Quit OpenClaw, run openclaw doctor --fix with the matching CLI, then reopen OpenClaw. " +
+        let message = "Quit Shardsclaw, run openclaw doctor --fix with the matching CLI, then reopen Shardsclaw. " +
             "If you restored a backup, restore its matching client credentials too."
         self.credentialLogger
             .error("Client credentials unavailable. Run openclaw doctor --fix before reopening the app.")
         if AppLaunchRuntimePlan.current.allowsActivation {
             let alert = NSAlert()
             alert.alertStyle = .critical
-            alert.messageText = "OpenClaw client credentials need recovery"
+            alert.messageText = "Shardsclaw client credentials need recovery"
             alert.informativeText = message
             AppActivation.shared.presentAlert(alert)
         } else {
-            fputs("OpenClaw client credentials need recovery. \(message)\n", stderr)
+            fputs("Shardsclaw client credentials need recovery. \(message)\n", stderr)
         }
         NSApplication.shared.terminate(nil)
     }

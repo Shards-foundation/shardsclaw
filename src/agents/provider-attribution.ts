@@ -132,7 +132,9 @@ function readCompatBoolean(
   return asBoolean((compat as Record<string, unknown>)[key]);
 }
 
-const OPENCLAW_ATTRIBUTION_PRODUCT = "OpenClaw";
+const SHARDSCLAW_ATTRIBUTION_PRODUCT = "Shardsclaw";
+const SHARDSCLAW_ATTRIBUTION_ORIGINATOR = "shardsclaw";
+// The vendor-hidden OpenAI/xAI request originator is an existing upstream API contract.
 const OPENCLAW_ATTRIBUTION_ORIGINATOR = "openclaw";
 // OpenRouter honors at most two recognized categories per request and silently drops the rest.
 const OPENROUTER_ATTRIBUTION_CATEGORIES = "personal-agent,cli-agent";
@@ -264,13 +266,13 @@ function resolveProviderAttributionPolicy(
 ): ProviderAttributionPolicy | undefined {
   const normalized = normalizeProviderId(provider ?? "");
   const version = resolveRuntimeServiceVersion(env);
-  const userAgent = `${OPENCLAW_ATTRIBUTION_ORIGINATOR}/${version}`;
+  const userAgent = `${SHARDSCLAW_ATTRIBUTION_ORIGINATOR}/${version}`;
   const policy = {
     provider: normalized,
     enabledByDefault: true,
     verification: "vendor-documented",
     hook: "request-headers",
-    product: OPENCLAW_ATTRIBUTION_PRODUCT,
+    product: SHARDSCLAW_ATTRIBUTION_PRODUCT,
     version,
   } satisfies ProviderAttributionPolicy;
   switch (normalized) {
@@ -281,7 +283,7 @@ function resolveProviderAttributionPolicy(
         reviewNote:
           "Documented app attribution headers. Applied on OpenRouter endpoints regardless of configured provider id.",
         headers: {
-          "HTTP-Referer": "https://openclaw.ai",
+          "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
           "X-OpenRouter-Title": policy.product,
           "X-OpenRouter-Categories": OPENROUTER_ATTRIBUTION_CATEGORIES,
         },
@@ -308,7 +310,7 @@ function resolveProviderAttributionPolicy(
         reviewNote:
           'Vercel documents: "AI Gateway reads two request headers when present: http-referer … x-title". Applied on ai-gateway.vercel.sh regardless of configured provider id.',
         headers: {
-          "HTTP-Referer": "https://openclaw.ai",
+          "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
           "X-Title": policy.product,
         },
       };
@@ -332,7 +334,7 @@ function resolveProviderAttributionPolicy(
         headers: {
           originator: OPENCLAW_ATTRIBUTION_ORIGINATOR,
           version,
-          "User-Agent": userAgent,
+          "User-Agent": `${OPENCLAW_ATTRIBUTION_ORIGINATOR}/${version}`,
         },
       };
     case "opencode":
@@ -340,7 +342,7 @@ function resolveProviderAttributionPolicy(
         ...policy,
         verification: "internal-runtime",
         reviewNote:
-          "Identify OpenClaw on native OpenCode Zen requests without impersonating OpenCode.",
+          "Identify Shardsclaw on native OpenCode Zen requests without impersonating OpenCode.",
         headers: { "User-Agent": userAgent },
       };
     case "opencode-go":
@@ -407,7 +409,7 @@ export function resolveProviderRequestPolicy(
     ((provider === "opencode-go" && endpointClass === "opencode-go-native") ||
       (provider === "opencode" && endpointClass === "opencode-native"))
   ) {
-    // Native OpenCode routes identify OpenClaw; custom proxies do not inherit attribution.
+    // Native OpenCode routes identify Shardsclaw; custom proxies do not inherit attribution.
     attributionProvider = provider;
   }
   if (!attributionProvider) {

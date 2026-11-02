@@ -16,7 +16,7 @@ Fastest path to unstuck, by symptom:
 
 ## Support
 
-For official OpenClaw support, visit [community.openclaw.ai](https://community.openclaw.ai/). Start with the self-service guides above, or see [Get support](/help/support) for what to include and where to report bugs or security issues.
+For external upstream OpenClaw community resources, visit [community.openclaw.ai](https://community.openclaw.ai/); that site is not operated by Shardsclaw. For Shardsclaw-specific defect reports, use the [Shardsclaw issue tracker](https://github.com/Shards-inc/shardsclaw/issues). Start with the self-service guides above, or see [Get support](/help/support) for safe diagnostics and reporting guidance.
 
 ## FAQ
 

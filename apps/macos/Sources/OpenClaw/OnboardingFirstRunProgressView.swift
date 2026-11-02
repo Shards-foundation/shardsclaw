@@ -21,7 +21,7 @@ struct OnboardingFirstRunProgressView: View {
                 .font(.system(size: 64, weight: .light))
                 .foregroundStyle(Color.accentColor)
                 .accessibilityHidden(true)
-            Text("Setting up OpenClaw on this Mac")
+            Text("Setting up Shardsclaw on this Mac")
                 .font(.title.weight(.semibold))
                 .multilineTextAlignment(.center)
             HStack(spacing: 10) {

@@ -50,7 +50,7 @@ const enSessionOrganizationShared = {
   },
   worktrees: {
     title: "Managed Worktrees",
-    subtitle: "Isolated repository checkouts owned by OpenClaw.",
+    subtitle: "Isolated repository checkouts owned by Shardsclaw.",
   },
 } satisfies TranslationMap;
 

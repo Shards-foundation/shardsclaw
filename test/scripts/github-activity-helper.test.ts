@@ -7,7 +7,7 @@ import { createScriptTestHarness } from "./test-helpers.ts";
 const repoRoot = path.resolve(import.meta.dirname, "../..");
 const helperPath = path.join(
   repoRoot,
-  ".agents/skills/openclaw-pr-maintainer/scripts/github-activity.sh",
+  ".agents/skills/shardsclaw-pr-maintainer/scripts/github-activity.sh",
 );
 const { createTempDir } = createScriptTestHarness();
 
@@ -94,7 +94,7 @@ printf '%s\\n' "$body" | jq -cr "\${2:-.}"
   return { status: result.status, stdout: readFileSync(outputPath, "utf8"), requests };
 }
 
-describe("openclaw-pr-maintainer github activity helper", () => {
+describe("shardsclaw-pr-maintainer github activity helper", () => {
   it("prints canonical identity before the first activity request returns a timeout", () => {
     const { requests } = runHelper(["alias"], { timeoutActivity: true });
     expect(requests[0]?.args[1]).toBe("users/alias");

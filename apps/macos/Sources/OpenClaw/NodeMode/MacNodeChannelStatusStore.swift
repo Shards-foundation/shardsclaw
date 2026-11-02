@@ -38,7 +38,7 @@ enum MacNodeChannelState: Equatable, Sendable {
         let status = isDegraded ? "degraded" : "unavailable"
         let compatibility = Self.workerSchemaMismatch(in: reason + "\n" + (diagnostic ?? ""))
         let label = compatibility.map {
-            "Mac node \(status) — update the OpenClaw app: its worker supports schema \($0.supported), " +
+            "Mac node \(status) — update the Shardsclaw app: its worker supports schema \($0.supported), " +
                 "but shared state requires schema \($0.required)"
         } ?? "Mac node \(status) — \(Self.condense(reason))"
         return (label, Self.excerpt(diagnostic), isDegraded, compatibility == nil ? nil : .checkForUpdates)

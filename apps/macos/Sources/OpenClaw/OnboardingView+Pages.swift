@@ -39,7 +39,7 @@ extension OnboardingView {
         onboardingPage {
             VStack(spacing: 18) {
                 VStack(spacing: 8) {
-                    Text("Welcome to OpenClaw")
+                    Text("Welcome to Shardsclaw")
                         .font(.largeTitle.weight(.semibold))
                     Text("Your personal AI assistant, living on your own Mac.")
                         .font(.title3)
@@ -72,7 +72,7 @@ extension OnboardingView {
 
                 Label {
                     Text(
-                        "OpenClaw can take actions using the permissions and services you enable. " +
+                        "Shardsclaw can take actions using the permissions and services you enable. " +
                             "Review prompts and only connect tools you trust.")
                 } icon: {
                     Image(systemName: "info.circle")
@@ -90,7 +90,7 @@ extension OnboardingView {
             Text("Where should your assistant live?")
                 .font(.largeTitle.weight(.semibold))
             Text(
-                "Most people pick this Mac — OpenClaw installs everything and keeps it " +
+                "Most people pick this Mac — Shardsclaw installs everything and keeps it " +
                     "running in the background. You can change this anytime in Settings.")
                 .font(.body)
                 .foregroundStyle(.secondary)
@@ -157,7 +157,7 @@ extension OnboardingView {
                 Spacer(minLength: 0)
             }
             if self.selectedConnectionMode == .unconfigured {
-                Text("OK — OpenClaw won’t start anything yet. Pick Local or Remote later in the Connection window.")
+                Text("OK — Shardsclaw won’t start anything yet. Pick Local or Remote later in the Connection window.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity)
@@ -295,7 +295,7 @@ extension OnboardingView {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Remote connection")
                         .font(.callout.weight(.semibold))
-                    Text("Verify OpenClaw can reach this gateway.")
+                    Text("Verify Shardsclaw can reach this gateway.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -593,11 +593,11 @@ extension OnboardingView {
     func cliPage() -> some View {
         let bundled = BundledRuntime.isBundledApp
         let detail = bundled
-            ? "Everything needed to run the Gateway is included in OpenClaw. " +
+            ? "Everything needed to run the Gateway is included in Shardsclaw. " +
             "The app prepares a private copy in your user folder and starts it on this Mac."
-            : "OpenClaw is setting up its Gateway background service on this Mac. " +
+            : "Shardsclaw is setting up its Gateway background service on this Mac. " +
             "Published Stable and Beta installs are usually quick. " +
-            "Dev (Git main) downloads and builds OpenClaw from source, so allow several minutes " +
+            "Dev (Git main) downloads and builds Shardsclaw from source, so allow several minutes " +
             "and several gigabytes of free space. No administrator password is required."
         return onboardingPage {
             Text("Getting things ready")
@@ -611,7 +611,7 @@ extension OnboardingView {
 
             self.onboardingCard(spacing: 14, padding: 16) {
                 self.installStepRow(
-                    title: bundled ? "Prepare OpenClaw" : "Install OpenClaw",
+                    title: bundled ? "Prepare Shardsclaw" : "Install Shardsclaw",
                     detail: self.cliExecutableReady
                         ? (self.cliInstallLocation ?? "Installed")
                         : "A private copy inside your user folder.",
@@ -621,8 +621,8 @@ extension OnboardingView {
                     title: bundled ? "Start the Gateway" : "Start the background service",
                     detail: bundled
                         ? (GatewayProcessManager.shared.gatewayHosting == .service
-                            ? "Keeps running after you quit OpenClaw."
-                            : "Runs while OpenClaw is open.")
+                            ? "Keeps running after you quit Shardsclaw."
+                            : "Runs while Shardsclaw is open.")
                         : "Runs quietly and starts again after a restart.",
                     state: self.installStepStates.service)
                 self.installStepRow(
@@ -633,14 +633,14 @@ extension OnboardingView {
                 if bundled {
                     Divider()
                     VStack(alignment: .leading, spacing: 6) {
-                        Toggle("Keep OpenClaw running when the app is closed", isOn: Binding(
+                        Toggle("Keep Shardsclaw running when the app is closed", isOn: Binding(
                             get: { GatewayProcessManager.shared.gatewayHosting == .service },
                             set: { self.setKeepGatewayRunning($0) }))
                             .disabled(self.installingCLI || self.updatingGatewayHosting ||
                                 !GatewayProcessManager.shared.keepGatewayRunningAvailable)
                         Text(
                             "Runs the Gateway as a background service so channels and automations " +
-                                "keep working after you quit OpenClaw.")
+                                "keep working after you quit Shardsclaw.")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -665,8 +665,8 @@ extension OnboardingView {
                     OnboardingErrorCard(
                         title: self.cliExecutableReady
                             ? "The Gateway didn’t start"
-                            : (bundled ? "OpenClaw preparation failed" : "OpenClaw installation failed"),
-                        message: self.cliStatus ?? "OpenClaw setup did not finish.",
+                            : (bundled ? "Shardsclaw preparation failed" : "Shardsclaw installation failed"),
+                        message: self.cliStatus ?? "Shardsclaw setup did not finish.",
                         docsSlug: "platforms/mac/bundled-gateway",
                         retryTitle: "Try again")
                     {
@@ -797,7 +797,7 @@ extension OnboardingView {
                     .padding(.vertical, 6)
                 self.featureRow(
                     title: "Open the menu bar panel",
-                    subtitle: "Click the OpenClaw menu bar icon for the compact chat panel and status.",
+                    subtitle: "Click the Shardsclaw menu bar icon for the compact chat panel and status.",
                     systemImage: "bubble.left.and.bubble.right")
                 self.featureRow(
                     title: "Connect Discord, Slack, Telegram, WhatsApp, …",

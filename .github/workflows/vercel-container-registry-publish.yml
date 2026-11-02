@@ -54,7 +54,7 @@ concurrency:
 
 jobs:
   validate_recovery:
-    if: ${{ !inputs.advisory }}
+    if: ${{ github.repository == 'openclaw/openclaw' && !inputs.advisory }}
     runs-on: ${{ inputs.runner_group != '' && fromJSON(format('{{"group":{0},"labels":{1}}}', toJSON(inputs.runner_group), toJSON('ubuntu-24.04'))) || ('ubuntu-24.04') }}
     permissions: {}
     steps:
@@ -70,7 +70,7 @@ jobs:
 
   approve_recovery:
     needs: validate_recovery
-    if: ${{ !inputs.advisory }}
+    if: ${{ github.repository == 'openclaw/openclaw' && !inputs.advisory }}
     runs-on: ubuntu-24.04
     environment: docker-release
     permissions: {}
@@ -82,7 +82,7 @@ jobs:
 
   publish:
     needs: [validate_recovery, approve_recovery]
-    if: ${{ always() && (inputs.advisory || (needs.validate_recovery.result == 'success' && needs.approve_recovery.result == 'success')) }}
+    if: ${{ always() && github.repository == 'openclaw/openclaw' && (inputs.advisory || (needs.validate_recovery.result == 'success' && needs.approve_recovery.result == 'success')) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     # Release mirroring is advisory; approved recovery must fail visibly.

@@ -845,7 +845,7 @@ If `pnpm docs:list` tries to reconcile dependencies in a linked Codex worktree,
 stop and use `node scripts/docs-list.js`.
 
 Follow the [shared review setup](../autoreview/SKILL.md) and the
-[maintainer landing workflow](../openclaw-pr-maintainer/references/landing.md)
+[maintainer landing workflow](../shardsclaw-pr-maintainer/references/landing.md)
 for review, proof, and authorized landing. Bind any CI watcher to the PR's full
 40-character head SHA:
 

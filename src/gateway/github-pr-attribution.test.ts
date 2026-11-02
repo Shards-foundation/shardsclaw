@@ -37,6 +37,11 @@ describe("managed PR attribution", () => {
     sandbox: "required",
     realWorktree: true,
   });
+  it("uses the Shardsclaw repository identity in the generated footer", () => {
+    expect(PR_ATTRIBUTION_FOOTER).toBe(
+      "🦞 Made with [Shardsclaw](https://github.com/Shards-inc/shardsclaw)",
+    );
+  });
   it("omits optional branding when its preference cannot be read", async () => {
     using _ = vi
       .spyOn(userPreferences, "getUserPreferenceValues")

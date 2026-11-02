@@ -575,14 +575,16 @@ const startupEnglish = {
     stylesFailed: "Styles failed to load, so the page may look broken.",
   },
   communityInvite: {
-    title: "Pull up a chair.",
-    body: "There’s a place for you in the AI future. Join the Community on Reddit, Discord, and X.",
-    join: "Join",
-    follow: "Follow",
+    title: "Build with us.",
+    body: "Explore the code, read the docs, or help improve Shardsclaw.",
+    repository: "Repo",
+    docs: "Docs",
+    issues: "Issues",
+    repositoryLabel: "Explore the Shardsclaw repository",
+    docsLabel: "Read the Shardsclaw documentation",
+    issuesLabel: "Open a Shardsclaw issue",
     dismissForever: "Dismiss and don't show again",
     dismissFailed: "Invitation dismissed, but your preference couldn't be saved.",
-    joinPlatform: "Join the OpenClaw community on {platform}",
-    followPlatform: "Follow OpenClaw on {platform}",
   },
   updates: {
     campaign: {
@@ -614,23 +616,23 @@ const startupEnglish = {
     checkError: "Could not check for updates: {error}",
     status: "Update {status}: {reason}. {guidance}",
     verificationFailedWithIdentity:
-      "Update finished, but the running install does not match the expected revision. Expected {expected}, running {actual}. Run `openclaw triage` on the Gateway host before retrying.",
+      "Update finished, but the running install does not match the expected revision. Expected {expected}, running {actual}. Run `shardsclaw triage` on the Gateway host before retrying.",
     handoffTimeout:
-      "Update completion was not confirmed. Run `openclaw triage` on the Gateway host and inspect the result before retrying.",
+      "Update completion was not confirmed. Run `shardsclaw triage` on the Gateway host and inspect the result before retrying.",
     outcomeUnknown:
-      "The update outcome is unknown. Run `openclaw triage` on the Gateway host and inspect the result before retrying.",
+      "The update outcome is unknown. Run `shardsclaw triage` on the Gateway host and inspect the result before retrying.",
     triage: {
       hostHint:
-        "If Ask OpenClaw is unavailable, run `openclaw triage` on the Gateway host to open a local coding agent for diagnosis and repair. Diagnose the cause before retrying.",
+        "If Ask Shardsclaw is unavailable, run `shardsclaw triage` on the Gateway host to open a local coding agent for diagnosis and repair. Diagnose the cause before retrying.",
     },
     report: {},
     failureReasons: {
       dirty: "Commit or stash changes, then retry.",
       noUpstream: "Set an upstream branch, then retry.",
       notGitInstall:
-        "Not a git checkout. Run `openclaw update` from the CLI for a global reinstall.",
+        "Not a git checkout. Run `shardsclaw update` from the CLI for a global reinstall.",
       notOpenclawRoot:
-        "Run the update from an OpenClaw checkout or use the CLI global reinstall path.",
+        "Run the update from a Shardsclaw checkout or use the CLI global reinstall path.",
       depsInstallFailed: "Dependency install failed. Fix the install error and retry.",
       buildFailed: "Build failed. Fix the build error and retry.",
       buildDirty:
@@ -643,7 +645,7 @@ const startupEnglish = {
       restartUnavailable:
         "This global install cannot be safely replaced while restarts are disabled and no supervisor is present.",
       externalSupervisorUpdateRequired:
-        "This Gateway is managed by an external supervisor. Use your server or deployment's update workflow to update OpenClaw and restart the Gateway. The Control UI and `openclaw update` cannot update this installation. No package changes or Gateway restart were attempted.",
+        "This Gateway is managed by an external supervisor. Use your server or deployment's update workflow to update Shardsclaw and restart the Gateway. The Control UI and `shardsclaw update` cannot update this installation. No package changes or Gateway restart were attempted.",
       restartUnhealthy:
         "The replacement process never became healthy. The previous process stayed up so you can recover.",
       restartRevisionMismatch:
@@ -654,14 +656,14 @@ const startupEnglish = {
       managedServiceHandoffAlreadyRunning:
         "Another managed update is already running. Wait for it to complete, then refresh update status.",
       managedServiceHandoffUnavailable:
-        "Stop the foreground Gateway, run `openclaw update`, then launch it again. For automatic updates, install a managed Gateway service.",
-      doctorFailed: "Doctor repair failed. Run `openclaw doctor --non-interactive` and retry.",
+        "Stop the foreground Gateway, run `shardsclaw update`, then launch it again. For automatic updates, install a managed Gateway service.",
+      doctorFailed: "Doctor repair failed. Run `shardsclaw doctor --non-interactive` and retry.",
       managedServiceHandoffFailed:
-        "The update helper stopped before finishing. Run `openclaw update` in the terminal to see why.",
+        "The update helper stopped before finishing. Run `shardsclaw update` in the terminal to see why.",
       managedServiceHandoffSpawnFailed:
-        "The Gateway could not start the update helper. Run `openclaw update` in the terminal instead.",
+        "The Gateway could not start the update helper. Run `shardsclaw update` in the terminal instead.",
       managedServiceHandoffParentTimeout:
-        "The Gateway stayed up too long for the update helper. Start the update again, or run `openclaw update`.",
+        "The Gateway stayed up too long for the update helper. Start the update again, or run `shardsclaw update`.",
       default: "See the gateway logs for the exact failure and retry once the cause is fixed.",
     },
     failedAtStep: "The update failed at {step}: {cause}.",
@@ -932,7 +934,7 @@ const startupEnglish = {
     back: "Back",
     forward: "Forward",
     settings: "Settings",
-    askOpenClaw: "Ask OpenClaw",
+    askShardsclaw: "Ask Shardsclaw",
     askBrand: "Ask {brand}",
     settingsGroupDevice: "This Mac",
     settingsGroupThisComputer: "This computer",
@@ -979,7 +981,7 @@ const startupEnglish = {
     moreActions: "More actions",
     copyUrl: "Copy URL",
     openNewTab: "Open in new tab",
-    openWithinOpenClaw: "Open in OpenClaw",
+    openWithinOpenClaw: "Open in Shardsclaw",
     toggle: "Toggle browser panel",
     close: {},
     resize: {},
@@ -1051,7 +1053,7 @@ const startupEnglish = {
     cloudWorkers: "Cloud environments",
     chat: "Chat",
     dashboards: "Dashboards",
-    custodian: "OpenClaw",
+    custodian: "Shardsclaw",
     profile: "Profile",
     communications: "Communications",
     appearance: "Appearance",
@@ -1556,7 +1558,7 @@ const startupEnglish = {
       continuePrompt:
         "Continue from where you stopped. Check which actions already completed before retrying anything.",
     },
-    errorBusySummary: "OpenClaw is busy. Check status before trying again.",
+    errorBusySummary: "Shardsclaw is busy. Check status before trying again.",
     errorSignInSummary: "Couldn't sign in to the AI service. Sign in again under Models.",
     errorStartSummary: "Couldn't start this conversation. Open Settings → Logs for details.",
     checkStatus: "Check status",

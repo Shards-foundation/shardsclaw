@@ -154,7 +154,7 @@ private struct OnboardingSecurityNotice: View {
                         .font(OpenClawType.subheadSemiBold)
                         .foregroundStyle(.primary)
                     (
-                        Text("The connected OpenClaw agent can use device capabilities you enable.")
+                        Text("The connected Shardsclaw agent can use device capabilities you enable.")
                             + Text(verbatim: " ")
                             + Text(
                                 "Camera, microphone, photos, contacts, calendar, and location may be available.")
@@ -233,7 +233,7 @@ struct OnboardingIntroStep: View {
         OnboardingActivationCanvas {
             VStack(alignment: .leading, spacing: 0) {
                 OnboardingHeroHeader(
-                    title: "OpenClaw",
+                    title: "Shardsclaw",
                     subtitle: isPad
                         ? "Your agent, in your pocket. Pair this iPad with your gateway to get started."
                         : "Your agent, in your pocket. Pair this iPhone with your gateway to get started.")

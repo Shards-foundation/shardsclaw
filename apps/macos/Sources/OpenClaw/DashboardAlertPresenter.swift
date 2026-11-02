@@ -99,7 +99,7 @@ final class DashboardAlertPresenter {
             styleMask: [.titled, .closable],
             backing: .buffered,
             defer: false)
-        panel.title = "OpenClaw"
+        panel.title = "Shardsclaw"
         panel.sharingType = .none
         panel.isReleasedWhenClosed = false
         panel.isRestorable = false

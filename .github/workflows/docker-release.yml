@@ -206,7 +206,7 @@ jobs:
   publish:
     name: Publish prepared Docker images
     needs: [validate_release_identity, prepare, approve]
-    if: ${{ !cancelled() && needs.validate_release_identity.result == 'success' && (needs.prepare.result == 'success' || needs.prepare.result == 'skipped') && needs.approve.result == 'success' }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (!cancelled() && needs.validate_release_identity.result == 'success' && (needs.prepare.result == 'success' || needs.prepare.result == 'skipped') && needs.approve.result == 'success') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     # The global lock covers every registry mutation and the alias read/write

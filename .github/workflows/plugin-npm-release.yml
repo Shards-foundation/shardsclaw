@@ -1582,7 +1582,7 @@ jobs:
         validate_release_publish_approval,
         approve_plugins_npm_release,
       ]
-    if: ${{ always() && !cancelled() && github.event_name == 'workflow_dispatch' && !inputs.preflight_only && needs.preview_plugins_npm.result == 'success' && needs.validate_release_publish_approval.result == 'success' && (needs.approve_plugins_npm_release.result == 'success' || (needs.approve_plugins_npm_release.result == 'skipped' && needs.validate_release_publish_approval.outputs.parent_approval == 'receipt')) && needs.preview_plugins_npm.outputs.has_candidates == 'true' && (inputs.prepared_artifact != '' || (needs.preview_plugin_pack.result == 'success' && needs.verify_plugin_npm_preflight.result == 'success')) }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (always() && !cancelled() && github.event_name == 'workflow_dispatch' && !inputs.preflight_only && needs.preview_plugins_npm.result == 'success' && needs.validate_release_publish_approval.result == 'success' && (needs.approve_plugins_npm_release.result == 'success' || (needs.approve_plugins_npm_release.result == 'skipped' && needs.validate_release_publish_approval.outputs.parent_approval == 'receipt')) && needs.preview_plugins_npm.outputs.has_candidates == 'true' && (inputs.prepared_artifact != '' || (needs.preview_plugin_pack.result == 'success' && needs.verify_plugin_npm_preflight.result == 'success'))) }}
     runs-on: *linux_runner_ubuntu_latest
     environment: npm-publish
     permissions:

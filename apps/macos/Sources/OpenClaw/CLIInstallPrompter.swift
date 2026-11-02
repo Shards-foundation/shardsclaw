@@ -32,7 +32,7 @@ final class CLIInstallPrompter {
         guard GatewayProcessManager.shared.installation == .managed else { return }
         if BundledRuntime.isBundledApp {
             guard userInitiated else { return }
-            self.installStatus = String(localized: "Preparing OpenClaw…")
+            self.installStatus = String(localized: "Preparing Shardsclaw…")
             do {
                 _ = try await CLIInstaller.prepareBundledGateway { self.installStatus = $0 }
                 let activation = await CLIInstaller.activateLocalGateway()
@@ -58,7 +58,7 @@ final class CLIInstallPrompter {
             installPolicy: CLIInstallPolicy.storedPolicy(),
             launchAgentWriteDisabled: GatewayLaunchAgentManager.isLaunchAgentWriteDisabled())
         if await self.completePendingManagedRestartIfNeeded(managedStatus: managedStatus) {
-            self.installStatus = String(localized: "OpenClaw Gateway is ready.")
+            self.installStatus = String(localized: "Shardsclaw Gateway is ready.")
             return
         }
         if shouldRepairManaged, !userInitiated {
@@ -81,7 +81,7 @@ final class CLIInstallPrompter {
         }
         if status.isReady {
             if userInitiated {
-                self.installStatus = String(localized: "Starting OpenClaw Gateway…")
+                self.installStatus = String(localized: "Starting Shardsclaw Gateway…")
                 self.installStatus = await Self.activationMessage(CLIInstaller.activateLocalGateway())
             }
             return
@@ -119,7 +119,7 @@ final class CLIInstallPrompter {
         {
             guard confirmStable else { return target }
             let alert = NSAlert()
-            alert.messageText = "Install OpenClaw CLI?"
+            alert.messageText = "Install Shardsclaw CLI?"
             alert.informativeText = "The app-managed local Gateway needs an external CLI runtime."
             alert.addButton(withTitle: "Install CLI")
             alert.addButton(withTitle: "Not Now")
@@ -149,9 +149,9 @@ final class CLIInstallPrompter {
     {
         let channels = [suggested] + CLIInstaller.Channel.allCases.filter { $0 != suggested }
         let alert = NSAlert()
-        alert.messageText = "Choose OpenClaw CLI channel"
+        alert.messageText = "Choose Shardsclaw CLI channel"
         alert.informativeText =
-            "This is an unreleased OpenClaw build. " +
+            "This is an unreleased Shardsclaw build. " +
             "Stable and Beta use published builds and are usually quick. " +
             "Dev (Git main) downloads and builds from source, so it can take several minutes " +
             "and needs several gigabytes free."
@@ -192,7 +192,7 @@ final class CLIInstallPrompter {
                   GatewayEnvironment.gatewayPort() == port,
                   GatewayProcessManager.shared.installation == .managed
             else {
-                self.installStatus = "OpenClaw is installed. Gateway selection changed; reconnect to continue setup."
+                self.installStatus = "Shardsclaw is installed. Gateway selection changed; reconnect to continue setup."
                 return false
             }
             if restartManagedGateway {
@@ -206,7 +206,7 @@ final class CLIInstallPrompter {
                     return false
                 }
             }
-            report("Starting OpenClaw Gateway…")
+            report("Starting Shardsclaw Gateway…")
             let activation = await CLIInstaller.activateLocalGateway()
             if BundledRuntime.isBundledApp { CLIInstaller.completeBundledSetup(after: activation) }
             if case .failed = activation { activated = false } else { activated = true }
@@ -234,12 +234,12 @@ final class CLIInstallPrompter {
     private static func activationMessage(_ activation: CLIInstaller.LocalGatewayActivation) -> String {
         switch activation {
         case .ready:
-            "OpenClaw Gateway is ready."
+            "Shardsclaw Gateway is ready."
         case .deferred:
-            "OpenClaw is installed. The Gateway will start when This Mac is active and resumed."
+            "Shardsclaw is installed. The Gateway will start when This Mac is active and resumed."
         case let .failed(reason):
             OnboardingView.gatewayStartFailureMessage(
-                prefix: "OpenClaw was installed, but the Gateway did not start. Open Settings to retry.",
+                prefix: "Shardsclaw was installed, but the Gateway did not start. Open Settings to retry.",
                 reason: reason)
         }
     }

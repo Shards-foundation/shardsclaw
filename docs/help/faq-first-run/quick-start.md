@@ -12,10 +12,21 @@ Install, onboarding, and early-failure Q&A. For provider auth, hardware, and
 where to run the Gateway see
 [FAQ: providers, hardware, and hosting](/help/faq-first-run/providers-and-hosting).
 
+<Warning>
+This inherited FAQ documents upstream OpenClaw installers, packages, apps, and
+support routes. Those instructions are **upstream-only**, not Shardsclaw
+installation or support instructions. Shardsclaw does not publish an installer
+or npm package from this source repository; use [Getting started](/start/getting-started)
+to build the fork from source. The `openclaw` CLI and `.openclaw` paths shown
+below are retained compatibility names.
+</Warning>
+
+<a id="recommended-way-to-install-and-set-up-openclaw" />
+
 ## Quick start and first-run setup
 
 <AccordionGroup>
-  <Accordion title="Recommended way to install and set up OpenClaw">
+  <Accordion title="Upstream OpenClaw installation reference (not Shardsclaw)">
     ```bash
     curl -fsSL --proto '=https' --tlsv1.2 https://openclaw.ai/install.sh | bash
     ```

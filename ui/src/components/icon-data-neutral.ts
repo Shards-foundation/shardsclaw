@@ -25,10 +25,7 @@ export const neutralMarkData: IconData = {
       "path",
       {
         d: MARK.glyph,
-        style: "fill: none; stroke: var(--primary-foreground)",
-        "stroke-width": MARK.strokeWidth,
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
+        style: "fill: var(--primary-foreground); stroke: none",
       },
     ],
   ],

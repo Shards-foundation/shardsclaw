@@ -355,7 +355,7 @@ final class QuickChatModel {
         switch self.connectionGate {
         case .available: nil
         case .unconfigured: "Not configured"
-        case .paused: "OpenClaw is paused"
+        case .paused: "Shardsclaw is paused"
         case .disconnected: "Gateway disconnected"
         }
     }

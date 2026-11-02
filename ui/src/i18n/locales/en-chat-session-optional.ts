@@ -100,7 +100,7 @@ const catalog = {
         "You’ve reached your workspace's limit for using your ChatGPT plan in other apps. Copy a message below to ask your workspace admin for increased usage limits.",
       consumerBody: "Review your usage settings in ChatGPT.",
       request:
-        "I’ve reached the limit for using my ChatGPT plan in OpenClaw. Could you increase our workspace’s usage limits so I can continue?\n\nGo to admin.openai.com → Workspace → Usage limits. Thank you!",
+        "I’ve reached the limit for using my ChatGPT plan in Shardsclaw. Could you increase our workspace’s usage limits so I can continue?\n\nGo to admin.openai.com → Workspace → Usage limits. Thank you!",
       copy: "Copy request for admin",
       copied: "Request copied. Send it to your workspace admin.",
       copyFailed:

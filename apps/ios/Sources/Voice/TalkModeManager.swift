@@ -3627,12 +3627,12 @@ extension TalkModeManager {
             (String(localized: "Thinking"), .thinking, .phase)
         case "Thinking…":
             (String(localized: "Thinking…"), .thinking, .phase)
-        case "Asking OpenClaw":
-            (String(localized: "Asking OpenClaw"), .thinking, .phase)
-        case "Still asking OpenClaw":
-            (String(localized: "Still asking OpenClaw"), .thinking, .phase)
-        case "Updating OpenClaw":
-            (String(localized: "Updating OpenClaw"), .thinking, .phase)
+        case "Asking Shardsclaw":
+            (String(localized: "Asking Shardsclaw"), .thinking, .phase)
+        case "Still asking Shardsclaw":
+            (String(localized: "Still asking Shardsclaw"), .thinking, .phase)
+        case "Updating Shardsclaw":
+            (String(localized: "Updating Shardsclaw"), .thinking, .phase)
         case "Speaking":
             (String(localized: "Speaking"), .speaking, .phase)
         case "Speaking…":
@@ -3656,8 +3656,8 @@ extension TalkModeManager {
                 .localized("Realtime failed before connecting"))
         case "Realtime disconnected":
             (String(localized: "Realtime disconnected"), .idle, .localized("Realtime disconnected"))
-        case "OpenClaw unavailable":
-            (String(localized: "OpenClaw unavailable"), .idle, .localized("OpenClaw unavailable"))
+        case "Shardsclaw unavailable":
+            (String(localized: "Shardsclaw unavailable"), .idle, .localized("Shardsclaw unavailable"))
         case "Confirmation needed":
             (String(localized: "Confirmation needed"), .idle, .localized("Confirmation needed"))
         default:

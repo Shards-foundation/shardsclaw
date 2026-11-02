@@ -8,6 +8,16 @@ read_when:
 title: "Why OpenClaw"
 ---
 
+<Note>
+This is an upstream OpenClaw-authored comparison preserved as a historical
+reference. Its claims about the OpenClaw Foundation, governance, funding,
+releases, telemetry, security advisories, and first-person operations apply to
+upstream OpenClaw only; they are **not a description or promise of Shardsclaw**.
+Shardsclaw is an independently maintained fork and does not claim those
+affiliations, services, or release guarantees. For this fork, see
+[Getting Started](/start/getting-started) and the repository's security policy.
+</Note>
+
 OpenClaw is an extensible, proactive, open-source AI agent that works everywhere you work. It exists because software is inverting: for decades you went to the computer, opened the app, clicked through its screens, and did the work yourself. An agent acts on your behalf instead, on your machine, in your messages, against your accounts.
 
 That inversion is why agents feel like the beginning of something rather than another product cycle, and why they deserve more scrutiny than anything you have installed before: an assistant that acts for you holds credentials, reads mail, and runs commands on real computers. The architecture decides what it _can_ do long before any policy decides what it _may_.
@@ -120,4 +130,4 @@ Each enterprise configuration item links to its reference:
 
 Then operate it as replaceable infrastructure: pin a channel, let [doctor](/cli/doctor) own migrations, restore [backups](/cli/backup) by verification, and redeploy instead of repairing deployments in place.
 
-Corrections to any claim on this page, about OpenClaw or about others, are welcome as issues or pull requests.
+For corrections to this inherited reference, use the [Shardsclaw issue tracker](https://github.com/Shards-inc/shardsclaw/issues) and identify the upstream claim or source you are addressing.

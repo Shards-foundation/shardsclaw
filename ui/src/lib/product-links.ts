@@ -1,5 +1,4 @@
-// Official support is separate from Discord social and community links.
-export const OFFICIAL_SUPPORT_URL = "https://community.openclaw.ai/";
-
-// Canonical Discord URL for the invite and existing community links.
-export const COMMUNITY_DISCORD_URL = "https://discord.gg/clawd";
+export const SHARDSCLAW_REPOSITORY_URL = "https://github.com/Shards-inc/shardsclaw";
+export const SHARDSCLAW_DOCUMENTATION_URL = `${SHARDSCLAW_REPOSITORY_URL}/tree/main/docs`;
+export const SHARDSCLAW_ISSUES_URL = `${SHARDSCLAW_REPOSITORY_URL}/issues`;
+export const SHARDSCLAW_RELEASES_URL = `${SHARDSCLAW_REPOSITORY_URL}/releases`;

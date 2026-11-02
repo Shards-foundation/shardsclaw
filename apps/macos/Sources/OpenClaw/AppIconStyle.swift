@@ -15,7 +15,7 @@ enum AppIconStyle: String, CaseIterable {
         case .clawmark: String(localized: "Clawmark")
         case .origami: String(localized: "Origami")
         case .pincer: String(localized: "Pincer")
-        case .openC: String(localized: "Open C")
+        case .openC: String(localized: "Shardmark")
         }
     }
 

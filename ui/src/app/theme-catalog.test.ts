@@ -103,8 +103,8 @@ afterEach(() => {
 });
 
 it.each([
-  ["knot", "dark", "claw", "claw", "claw", true],
-  ["knot", "light", "claw", "claw", "claw", true],
+  ["knot", "dark", "none", "mark", "brand", true],
+  ["knot", "light", "none", "mark", "brand", true],
   ["crt", "dark", "none", "mark", "dots", false],
   ["crt", "light", "none", "mark", "dots", false],
   ["phosphor", "dark", "none", "mark", "dots", false],
@@ -119,7 +119,7 @@ it.each([
     try {
       expect(theme.branding).toEqual({
         mascot,
-        brandName: "OpenClaw",
+        brandName: "Shardsclaw",
         brandIcon,
         workingIndicator,
         lobsterdex,
@@ -164,7 +164,9 @@ it("notifies leaf branding consumers when a newly selected built-in palette load
     flush();
     expect(theme.settings.theme).toBe("knot");
     expect(renderMark).toHaveBeenCalledTimes(1);
-    expect(container.querySelector("img")?.getAttribute("src")).toBe("/favicon.svg");
+    expect(container.querySelector(".identity-avatar--neutral svg path")?.getAttribute("d")).toBe(
+      "M60 18L96 64L94 72L86 71L91 89L76 80L72 101L60 84L47 100L43 79L28 89L33 69L22 74Z",
+    );
     const palette = document.getElementById("openclaw-theme-palette-knot")!;
     expect(document.documentElement.dataset.themeId).toBe(descriptor.id);
     palette.dispatchEvent(new Event("load"));
@@ -172,7 +174,9 @@ it("notifies leaf branding consumers when a newly selected built-in palette load
     expect(renderMark).toHaveBeenCalledTimes(2);
     expect(document.documentElement.dataset.themeId).toBe("knot");
     expect(document.documentElement.dataset.themeAvatarHat).toBeUndefined();
-    expect(container.querySelector("img")?.getAttribute("src")).toBe("/favicon.svg");
+    expect(container.querySelector(".identity-avatar--neutral svg path")?.getAttribute("d")).toBe(
+      "M60 18L96 64L94 72L86 71L91 89L76 80L72 101L60 84L47 100L43 79L28 89L33 69L22 74Z",
+    );
   } finally {
     unsubscribe();
     theme.dispose();
@@ -216,7 +220,7 @@ it("applies routed profile updates and plugin hot reloads, restoring an unavaila
       "--bg: #111122;",
     );
     expect(applicationTheme.catalog?.themes).toContainEqual(descriptor);
-    expect(applicationTheme.branding.mascot).toBe("claw");
+    expect(applicationTheme.branding.mascot).toBe("none");
 
     response = catalog({
       ...definition,
@@ -304,11 +308,15 @@ it("applies routed profile updates and plugin hot reloads, restoring an unavaila
     await vi.waitFor(() => expect(document.documentElement.dataset.themeId).toBe("claw"));
     expect(applicationTheme.settings.theme).toBe(descriptor.id);
     expect(applicationTheme.catalog?.unavailableId).toBe(descriptor.id);
-    expect(applicationTheme.branding.mascot).toBe("claw");
-    expect(document.documentElement.dataset.themeMascot).toBe("claw");
+    expect(applicationTheme.branding.mascot).toBe("none");
+    expect(document.documentElement.dataset.themeMascot).toBe("none");
     expect(document.documentElement.dataset.themeAvatarHat).toBeUndefined();
     await vi.dynamicImportSettled();
-    expect(favicon.getAttribute("href")).toBe("/favicon.svg");
+    const href = favicon.getAttribute("href") ?? "";
+    expect(href.startsWith("data:image/svg+xml,")).toBe(true);
+    expect(decodeURIComponent(href.slice("data:image/svg+xml,".length))).toContain(
+      'd="M60 18L96 64L94 72L86 71L91 89L76 80L72 101L60 84L47 100L43 79L28 89L33 69L22 74Z"',
+    );
 
     response = catalog();
     current().testOptions.onEvent?.(createGatewayEvent("plugins.changed", { generation: 3 }));

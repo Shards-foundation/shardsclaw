@@ -51,6 +51,15 @@ function expectPromptCase(
 }
 
 describe("buildAgentSystemPrompt", () => {
+  it("uses Shardsclaw identity in the visible runtime instructions", () => {
+    const prompt = renderPrompt();
+    expect(prompt).toContain("You are a personal assistant running inside Shardsclaw.");
+    expect(prompt).toContain("Shardsclaw may attach a separate runtime-context message");
+    expect(prompt).toContain("User-editable; Shardsclaw loads below as Project Context.");
+    expect(prompt).toContain("## Shardsclaw Control");
+    expect(prompt).not.toContain("You are a personal assistant running inside OpenClaw.");
+  });
+
   it("resolves helper session keys to scoped prompt surfaces", () => {
     expect(resolveAgentPromptSurfaceForSessionKey("agent:main:subagent:child")).toBe("subagent");
     expect(resolveAgentPromptSurfaceForSessionKey("agent:codex:acp:child")).toBe("acp_backend");
@@ -144,7 +153,7 @@ describe("buildAgentSystemPrompt", () => {
       "points can't-do claims at session capabilities and the docs index",
       { toolNames: ["read", "session_status", "web_fetch"] },
       [
-        "Can't-do claims: a missing tool or failed call shows this session's limits, not OpenClaw's; check `session_status` with `capabilities=true`, then the docs index https://docs.openclaw.ai/llms.txt before saying OpenClaw can't.",
+        "Can't-do claims: a missing tool or failed call shows this session's limits, not Shardsclaw's; check `session_status` with `capabilities=true`, then the Shardsclaw source docs index https://raw.githubusercontent.com/Shards-inc/shardsclaw/main/docs/index.md before saying Shardsclaw can't.",
       ],
     ],
     [
@@ -155,7 +164,7 @@ describe("buildAgentSystemPrompt", () => {
         sandboxInfo: { enabled: true },
       },
       [
-        "check `session_status` with `capabilities=true`, then the local docs before saying OpenClaw can't.",
+        "check `session_status` with `capabilities=true`, then the local docs before saying Shardsclaw can't.",
       ],
       ["llms.txt"],
     ],
@@ -163,14 +172,14 @@ describe("buildAgentSystemPrompt", () => {
       "acknowledges unavailable capability and docs routes in a sandbox without web tools",
       { toolNames: ["read"], sandboxInfo: { enabled: true } },
       [
-        "Can't-do claims: a missing tool or failed call shows this session's limits, not OpenClaw's; say what you could not check.",
-        "Docs: https://docs.openclaw.ai",
+        "Can't-do claims: a missing tool or failed call shows this session's limits, not Shardsclaw's; say what you could not check.",
+        "Docs: https://raw.githubusercontent.com/Shards-inc/shardsclaw/main/docs/index.md",
         "docs could not be checked; mark recalled behavior as unverified",
       ],
       [
         "capabilities=true",
-        "llms.txt",
-        "docs mirror first when web exists",
+        "docs.openclaw.ai",
+        "Shardsclaw behavior questions: source docs first when web exists",
         "inspect GitHub source",
       ],
     ],
@@ -181,7 +190,10 @@ describe("buildAgentSystemPrompt", () => {
         capabilityToolNames: ["web_fetch"],
         sandboxInfo: { enabled: true },
       },
-      ["Docs: https://docs.openclaw.ai", "docs mirror first when web exists"],
+      [
+        "Docs: https://raw.githubusercontent.com/Shards-inc/shardsclaw/main/docs/index.md",
+        "Shardsclaw behavior questions: source docs first when web exists",
+      ],
       ["mark recalled behavior as unverified"],
     ],
     [

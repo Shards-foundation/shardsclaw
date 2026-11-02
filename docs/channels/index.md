@@ -9,6 +9,12 @@ title: "Chat channels"
 OpenClaw can talk to you on any chat app you already use. Each channel connects via the Gateway.
 Text is supported everywhere; media and reactions vary by channel.
 
+This catalog is inherited from upstream OpenClaw. Here, “official plugin” and
+`@openclaw/*` install examples refer to upstream OpenClaw packages; Shardsclaw
+does not publish that package namespace. Check this checkout's `extensions/`
+and package manifests for integrations actually included in a Shardsclaw source
+build. Third-party plugins remain independently maintained.
+
 Entries marked "bundled plugin" or "included in core" ship with the core
 install. Channels marked "official plugin" install with one command
 (`openclaw plugins install @openclaw/<id>`) or on demand during

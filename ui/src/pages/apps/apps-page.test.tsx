@@ -207,6 +207,8 @@ describe("AppsPage", () => {
     const page = getQueriesForElement(container);
     expect(page.getByRole("heading", { level: 1, name: "Apps" })).toBeTruthy();
     expect(container.querySelectorAll("h1")).toHaveLength(1);
-    expect(page.getByRole("heading", { level: 2, name: "Take OpenClaw everywhere" })).toBeTruthy();
+    expect(
+      page.getByRole("heading", { level: 2, name: "Build Shardsclaw for your devices" }),
+    ).toBeTruthy();
   });
 });

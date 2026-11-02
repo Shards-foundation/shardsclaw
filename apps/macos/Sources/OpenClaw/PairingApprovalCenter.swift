@@ -296,7 +296,7 @@ final class PairingApprovalPanelController {
             styleMask: [.titled, .fullSizeContentView],
             backing: .buffered,
             defer: false)
-        panel.title = String(localized: "OpenClaw Pairing Approval")
+        panel.title = String(localized: "Shardsclaw Pairing Approval")
         panel.sharingType = .none
         panel.titleVisibility = .hidden
         panel.titlebarAppearsTransparent = true

@@ -53,7 +53,7 @@ mod platform {
                         let cookie: u32 = proxy
                             .call(
                                 "Inhibit",
-                                &("OpenClaw", 0_u32, "OpenClaw: Keep computer awake", 8_u32),
+                                &("Shardsclaw", 0_u32, "Shardsclaw: Keep computer awake", 8_u32),
                             )
                             .await
                             .map_err(|error| error.to_string())?;

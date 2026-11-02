@@ -85,7 +85,7 @@ const enSessionOrganization = {
       "owner-mismatch": "owned elsewhere",
       busy: "live run or cleanup active",
       "foreign-lock": "foreign Git lock",
-      "snapshot-failed": "OpenClaw could not create a safety snapshot",
+      "snapshot-failed": "Shardsclaw could not create a safety snapshot",
       "cleanup-failed": "cleanup failed",
     },
     draftCleanupFailed: en.sessionsView.draftCleanupFailed,
@@ -374,7 +374,7 @@ const enSessionOrganization = {
     moveSessionTitle: sharedSessions.moveSessionTitle,
     moveSessionDescription: 'Choose where "{session}" should continue.',
     moveSessionNoReplayWarning:
-      "OpenClaw safely reconciles the current workspace before moving. Active work is never replayed.",
+      "Shardsclaw safely reconciles the current workspace before moving. Active work is never replayed.",
     moveSessionActiveRunWarning:
       "The active turn will be interrupted. Partial output is not replayed; send the next turn again after the move.",
     moveSessionAction: "Move session",

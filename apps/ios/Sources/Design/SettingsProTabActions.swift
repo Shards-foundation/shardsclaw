@@ -683,9 +683,9 @@ extension SettingsProTab {
         do {
             let result = try await self.appModel.sendDirectWatchSetup()
             self.watchDirectSetupStatusText = result.deliveredImmediately
-                ? String(localized: "Setup sent. Open OpenClaw on the watch to connect.")
+                ? String(localized: "Setup sent. Open Shardsclaw on the watch to connect.")
                 : String(
-                    localized: "Setup queued for the watch. Open OpenClaw before the code expires.")
+                    localized: "Setup queued for the watch. Open Shardsclaw before the code expires.")
         } catch {
             self.watchDirectSetupStatusText = error.localizedDescription
         }
@@ -754,7 +754,7 @@ extension SettingsProTab {
         let lower = raw.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         if lower.contains("pairing required") {
             return String(
-                localized: "Pairing required. Run /pair approve in your OpenClaw chat, then connect again.")
+                localized: "Pairing required. Run /pair approve in your Shardsclaw chat, then connect again.")
         }
         if lower.contains("device nonce required") || lower.contains("device nonce mismatch") {
             return String(localized: "Secure handshake failed. Connect again.")
@@ -852,7 +852,7 @@ extension SettingsProTab {
         }
         if self.notificationPresentation.needsAttention {
             return String(
-                localized: "Foreground approvals still appear while OpenClaw is connected.")
+                localized: "Foreground approvals still appear while Shardsclaw is connected.")
         }
         return self.gatewayConnected
             ? String(localized: "Gateway requests will appear here.")
@@ -875,7 +875,7 @@ extension SettingsProTab {
     }
 
     var gatewayServer: String {
-        self.appModel.gatewayServerName ?? "OpenClaw Gateway"
+        self.appModel.gatewayServerName ?? "Shardsclaw Gateway"
     }
 
     var approvalWaitingText: String {

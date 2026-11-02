@@ -14,30 +14,24 @@ struct AboutSettings: View {
                 .accessibilityHidden(true)
 
             VStack(spacing: 5) {
-                Text("OpenClaw")
+                Text("Shardsclaw")
                     .font(.system(size: 24, weight: .bold))
                 Text(String(format: String(localized: "Version %@"), self.build.versionDisplay))
                     .foregroundStyle(.secondary)
                     .textSelection(.enabled)
-                Text("The AI that really does things.")
+                Text("A self-hosted assistant for your devices and channels.")
                     .padding(.top, 5)
             }
 
             HStack(spacing: 20) {
-                Link(destination: URL(string: "https://community.openclaw.ai/")!) {
+                Link(destination: URL(string: "https://github.com/Shards-inc/shardsclaw/issues")!) {
                     Label("Support", systemImage: "questionmark.circle")
                 }
-                Link(destination: URL(string: "https://openclaw.ai")!) {
-                    Label("Website", systemImage: "globe")
-                }
-                Link(destination: URL(string: "https://docs.openclaw.ai")!) {
+                Link(destination: URL(string: "https://github.com/Shards-inc/shardsclaw/tree/main/docs")!) {
                     Label("Docs", systemImage: "book")
                 }
-                Link(destination: URL(string: "https://github.com/openclaw/openclaw")!) {
+                Link(destination: URL(string: "https://github.com/Shards-inc/shardsclaw")!) {
                     Label("GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
-                }
-                Link(destination: URL(string: "https://discord.gg/clawd")!) {
-                    Label("Discord", systemImage: "bubble.left.and.bubble.right")
                 }
             }
             .padding(.vertical, 5)

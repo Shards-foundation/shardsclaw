@@ -8,6 +8,16 @@ read_when:
 title: "Installer internals"
 ---
 
+<Warning>
+This is a technical reference to **upstream OpenClaw installer scripts** and
+their current implementation. They are **not a Shardsclaw installer** and
+their `openclaw.ai` download URLs, package names, and support destinations are
+not Shardsclaw services. Do not run these commands to install Shardsclaw; use
+the [source-build guide](/start/getting-started) instead. The `openclaw` CLI,
+`OPENCLAW_*` variables, and `.openclaw` paths shown below remain compatibility
+identifiers.
+</Warning>
+
 OpenClaw ships three installer scripts, served from `openclaw.ai`.
 
 Node remains the default runtime. `install.sh --runtime bun` is an explicit

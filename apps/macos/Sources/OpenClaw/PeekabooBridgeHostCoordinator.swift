@@ -178,7 +178,7 @@ final class PeekabooBridgeHostCoordinator {
     private func logSocketServedElsewhere(_ path: String) {
         self.logger.info(
             "PeekabooBridge host not started: \(path, privacy: .public) is already served by another host; " +
-                "this per-user socket is shared by all OpenClaw profiles")
+                "this per-user socket is shared by Shardsclaw and OpenClaw-compatible profiles")
     }
 
     private func ensureStopped() async {

@@ -91,7 +91,7 @@ const enUsage = {
       identity: "Identity",
       unattributed: "Not recorded",
       unattributedHint:
-        "These sessions have no creator on record, usually because they started before OpenClaw recorded who starts each session.",
+        "These sessions have no creator on record, usually because they started before Shardsclaw recorded who starts each session.",
       channelUser: "{channel} user {id}",
       channelGroup: "{channel} group",
       channelTopic: "{channel} group · topic {topic}",

@@ -45,7 +45,7 @@ import { copyOxlintConfigFixture } from "./test-helpers.js";
 const tempDirs = useAutoCleanupTempDirTracker(afterEach);
 const repoRoot = process.cwd();
 const testNodeExecPath = resolveTestNodeExecPath();
-const githubActivityHelper = ".agents/skills/openclaw-pr-maintainer/scripts/github-activity.sh";
+const githubActivityHelper = ".agents/skills/shardsclaw-pr-maintainer/scripts/github-activity.sh";
 const tsxImport = pathToFileURL(createRequire(import.meta.url).resolve("tsx")).href;
 
 const git = (cwd: string, args: string[]) =>

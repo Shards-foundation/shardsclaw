@@ -43,24 +43,20 @@ function render(overrides: Partial<AboutProps> = {}, build: Partial<AboutProps["
 
 beforeEach(() => i18n.setLocale("en"));
 
-it("renders the hero, links, license, and Clawd's active wave", () => {
-  const { query, props, update } = render({ clawdWaving: true });
-  expect(query(".about-hero .about-hero__name")?.textContent).toBe("OpenClaw");
+it("renders the Shardsclaw identity, project links, and license", () => {
+  const { query } = render();
+  expect(query(".about-hero .about-hero__name")?.textContent).toBe("Shardsclaw");
   expect(query(".about-hero .about-hero__version")?.textContent).toBe("v2026.7.10");
-  expect(query(".about-hero .about-hero__clawd svg")).not.toBeNull();
-
-  const clawd = query<HTMLButtonElement>(".about-hero .about-hero__clawd");
-  expect(clawd?.getAttribute("aria-label")).toBe("Wave hello to Clawd");
-  clawd?.click();
-  expect(props.onPokeClawd).toHaveBeenCalledOnce();
-  expect(query(".about-hero__clawd--wave")).not.toBeNull();
-  update({ ...props, clawdWaving: false });
-  expect(query(".about-hero__clawd--wave")).toBeNull();
+  expect(query(".about-hero__mark--neutral svg")).not.toBeNull();
+  expect(query(".about-hero .about-hero__clawd")).toBeNull();
 
   const links = Array.from(query(".about-hero")?.querySelectorAll<HTMLAnchorElement>("a") ?? []);
-  expect(links.find((link) => link.textContent?.trim() === "Support")?.href).toBe(
-    "https://community.openclaw.ai/",
-  );
+  expect(links.map((link) => link.href)).toEqual([
+    "https://github.com/Shards-inc/shardsclaw/issues",
+    "https://github.com/Shards-inc/shardsclaw/tree/main/docs",
+    "https://github.com/Shards-inc/shardsclaw",
+    "https://github.com/Shards-inc/shardsclaw/releases",
+  ]);
   for (const link of links) {
     expect(link.getAttribute("target")).toBe("_blank");
     expect(link.getAttribute("rel")).toContain("noopener");

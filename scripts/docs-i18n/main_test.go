@@ -40,7 +40,7 @@ func (invalidFrontmatterTranslator) TranslateRaw(_ context.Context, text, _, _ s
 type transcriptFrontmatterTranslator struct{}
 
 func (transcriptFrontmatterTranslator) Translate(_ context.Context, text, _, _ string) (string, error) {
-	return text + ` analysis to=functions.read {"path":"/home/runner/work/docs/docs/source/.agents/skills/openclaw-pr-maintainer/SKILL.md"} code`, nil
+	return text + ` analysis to=functions.read {"path":"/home/runner/work/docs/docs/source/.agents/skills/shardsclaw-pr-maintainer/SKILL.md"} code`, nil
 }
 
 func (transcriptFrontmatterTranslator) TranslateRaw(_ context.Context, text, _, _ string) (string, error) {

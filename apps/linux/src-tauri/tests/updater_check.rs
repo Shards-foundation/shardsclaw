@@ -31,7 +31,7 @@ fn main() {
             let body = serde_json::json!({
                 "version": version,
                 "notes": "Synthetic correction release",
-                "url": "https://example.invalid/OpenClaw.app.tar.gz",
+                "url": "https://example.invalid/Shardsclaw.app.tar.gz",
                 "signature": "fixture",
             })
             .to_string();

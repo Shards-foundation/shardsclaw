@@ -235,7 +235,7 @@ const catalog = {
     },
     permissions: {},
     voice: {
-      asking: "Asking OpenClaw...",
+      asking: "Asking Shardsclaw...",
       replyFailed: "The voice reply was interrupted. Start Talk again to retry.",
       replyTimedOut:
         "Talk stopped waiting. The agent's answer will appear in chat when it finishes.",

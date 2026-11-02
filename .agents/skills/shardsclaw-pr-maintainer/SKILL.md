@@ -1,9 +1,9 @@
 ---
-name: openclaw-pr-maintainer
-description: "Review, triage, repair, or land OpenClaw issues and pull requests with current-source evidence and the native maintainer workflow."
+name: shardsclaw-pr-maintainer
+description: "Review, triage, repair, or land Shardsclaw issues and pull requests with current-source evidence and the repository's maintainer workflow."
 ---
 
-# OpenClaw PR Maintainer
+# Shardsclaw PR Maintainer
 
 - Requested issue/PR operation only. Root `AGENTS.md`: repair, product, source-trust, approval policy. This skill: GitHub workflow and maintainer authority.
 - Pasted ref ≠ publication permission or scope expansion.
@@ -30,11 +30,13 @@ description: "Review, triage, repair, or land OpenClaw issues and pull requests 
 - Start `git status -sb`; preserve unrelated work. Local `gitcrawl` → PATH `ghx`, narrow live JSON. Stale/missing archive → `ghx`, no broad sync. PR source: `ghx pr view/diff` + checkout, not web search.
 
 ```bash
-ghx pr view <pr> --repo openclaw/openclaw \
+ghx pr view <pr> \
   --json number,title,state,body,author,assignees,baseRefName,headRefName,headRefOid,files,comments,reviews
-ghx issue view <issue> --repo openclaw/openclaw \
+ghx issue view <issue> \
   --json number,title,state,body,author,assignees,comments
 ```
+
+For explicit OpenClaw-upstream work only, pass `--repo openclaw/openclaw`; never use that destination as the default for Shardsclaw issues or pull requests.
 
 - Assignment: [triage](references/triage.md#assignment), before deep work. Mention other assignees; preserve ownership. Account/activity research conditional.
 

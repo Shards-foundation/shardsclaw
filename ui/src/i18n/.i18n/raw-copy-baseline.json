@@ -209,14 +209,21 @@
       "kind": "object-property",
       "name": "label",
       "path": "ui/src/components/solid/sidebar-community-invite.tsx",
-      "text": "follow"
+      "text": "docs"
     },
     {
-      "count": 2,
+      "count": 1,
       "kind": "object-property",
       "name": "label",
       "path": "ui/src/components/solid/sidebar-community-invite.tsx",
-      "text": "join"
+      "text": "issues"
+    },
+    {
+      "count": 1,
+      "kind": "object-property",
+      "name": "label",
+      "path": "ui/src/components/solid/sidebar-community-invite.tsx",
+      "text": "repository"
     },
     {
       "count": 1,

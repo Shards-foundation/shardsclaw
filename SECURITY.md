@@ -1,12 +1,14 @@
-# Security Policy
+# Shardsclaw Security Policy
 
-If you believe you've found a security issue in OpenClaw, report it privately first.
+Shardsclaw is an independently maintained fork of [OpenClaw](https://github.com/openclaw/openclaw). This policy adapts the inherited upstream security guidance to the Shardsclaw codebase; upstream contacts and services do not operate Shardsclaw.
 
-This policy does two things: it gives researchers a clear disclosure path, and it spells out the trust model maintainers use when triaging reports. OpenClaw is local-first agent infrastructure for trusted operators; it is not designed as a shared multi-tenant boundary between adversarial users on one gateway.
+If you believe you've found a security issue in Shardsclaw, report it privately first.
+
+This policy does two things: it gives researchers a clear disclosure path, and it spells out the trust model maintainers use when triaging reports. Shardsclaw is local-first agent infrastructure for trusted operators; it is not designed as a shared multi-tenant boundary between adversarial users on one gateway.
 
 The fastest useful reports show a current, reproducible boundary bypass with demonstrated impact. Scanner output, prompt-injection-only chains, or reports that rely on hostile users sharing one trusted gateway are usually not security vulnerabilities under this model.
 
-Security work is shared across a number of OpenClaw maintainers, including engineers and security researchers from organizations such as NVIDIA and Tencent. See the [maintainer list](CONTRIBUTING.md#maintainers).
+The Shardsclaw repository does not claim the OpenClaw upstream security team or its organizational partners as maintainers. See [contribution guidance](CONTRIBUTING.md#maintainers) for the current ownership caveat.
 
 ## Shared Agents
 
@@ -14,24 +16,15 @@ Anyone who can operate an agent can make it do anything that agent can do. Sessi
 
 ## Report a Security Issue
 
-Report vulnerabilities directly to the repository where the issue lives:
+For Shardsclaw core, submit through [GitHub Security Advisories](https://github.com/Shards-inc/shardsclaw/security/advisories/new) when private vulnerability reporting is enabled for the repository. Repository administrators must enable this feature before publication. If the private-reporting flow is unavailable, do not disclose details in a public issue or pull request; contact a Shardsclaw repository administrator through GitHub and request a private reporting channel without including exploit details.
 
-- **Core CLI and gateway** — [openclaw/openclaw](https://github.com/openclaw/openclaw)
-- **macOS desktop app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/macos)
-- **iOS app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/ios)
-- **Android app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/android)
-- **ClawHub** — [openclaw/clawhub](https://github.com/openclaw/clawhub)
-
-For issues that don't fit a specific repo, or if you're unsure, email **[security@openclaw.ai](mailto:security@openclaw.ai)** and we'll route it.
-
-For OpenClaw core issues, submit through a private [GitHub Security Advisory](https://github.com/openclaw/openclaw/security/advisories/new). Do not open a public issue or PR that discloses an unpatched vulnerability, exploit path, secret, or security-sensitive proof of concept.
+For OpenClaw upstream or ClawHub reports, use the respective project's own security reporting channel. Those repositories, addresses, and services are not operated by Shardsclaw.
 
 Maintainers may close, hide, delete, or otherwise take down public issues and PRs that disclose vulnerabilities or active security issues. We will redirect those reports through the private disclosure process so the issue can be triaged and fixed without giving attackers a public playbook.
 
-For full reporting instructions see our [Trust page](https://trust.openclaw.ai).
 For maintainer response workflow, see the [incident response plan](docs/security/incident-response.md).
 
-OpenClaw does not currently run a paid bug bounty program. Please still disclose responsibly so we can fix real issues quickly. The best way to help the project right now is to send high-signal reports and, when practical, focused PRs.
+Shardsclaw does not advertise a paid bug bounty program. Please disclose responsibly and, when practical, provide focused remediation suggestions without publishing exploit details.
 
 ### What We Need
 
@@ -40,10 +33,10 @@ Make the report easy to reproduce and easy to route:
 - What you found and why you believe it is security-relevant.
 - The affected component, version, and commit SHA when possible.
 - Reproduction steps or a proof of concept against latest `main` or the latest released version.
-- The actual impact, including which OpenClaw trust boundary is crossed.
+- The actual impact, including which Shardsclaw trust boundary is crossed.
 - Any remediation advice or focused patch you can provide.
 
-Reports without reproduction steps, demonstrated impact, and remediation advice are deprioritized. We receive a high volume of AI-generated scanner findings, so we prioritize vetted reports from researchers who can show how the issue crosses an OpenClaw security boundary.
+Reports without reproduction steps, demonstrated impact, and remediation advice are deprioritized. We receive a high volume of AI-generated scanner findings, so we prioritize vetted reports from researchers who can show how the issue crosses an Shardsclaw security boundary.
 
 ### What Usually Is Not a Security Bug
 
@@ -51,10 +44,10 @@ These patterns are usually not vulnerabilities by themselves:
 
 - Prompt injection without a policy, auth, approval, sandbox, or tool-boundary bypass.
 - A trusted operator using an intentional local feature, such as local shell access or browser/script execution.
-- A report whose only primitive is changing the process or child-process environment before running OpenClaw or an executable OpenClaw invokes.
+- A report whose only primitive is changing the process or child-process environment before running Shardsclaw or an executable Shardsclaw invokes.
 - A malicious plugin after a trusted operator installs or enables it.
 - Multiple adversarial users sharing one Gateway host/config and expecting per-user isolation.
-- Scanner-only, dependency-only, or stale-path reports without a working repro and demonstrated OpenClaw impact.
+- Scanner-only, dependency-only, or stale-path reports without a working repro and demonstrated Shardsclaw impact.
 - Public internet exposure or risky deployment choices that the docs already recommend against.
 
 If you are unsure, report privately. We would rather route a careful report than miss a real boundary issue.
@@ -74,12 +67,12 @@ The sections below are the normative posture maintainers use for report triage. 
 For fastest triage, include all of the following:
 
 - Exact vulnerable path (`file`, function, and line range) on a current revision.
-- Tested version details (OpenClaw version and/or commit SHA).
+- Tested version details (Shardsclaw version and/or commit SHA).
 - Reproducible PoC against latest `main` or latest released version.
 - If the claim targets a released version, evidence from the shipped tag and published artifact/package for that exact version (not only `main`).
-- For dependency CVE reports, evidence that the shipped dependency version is actually affected, plus a PoC that reproduces impact through OpenClaw. Showing that OpenClaw can reach a native parser is not enough by itself.
-- Demonstrated impact tied to OpenClaw's documented trust boundaries.
-- For exposed-secret reports: proof the credential is OpenClaw-owned (or grants access to OpenClaw-operated infrastructure/services).
+- For dependency CVE reports, evidence that the shipped dependency version is actually affected, plus a PoC that reproduces impact through Shardsclaw. Showing that Shardsclaw can reach a native parser is not enough by itself.
+- Demonstrated impact tied to Shardsclaw's documented trust boundaries.
+- For exposed-secret reports: proof the credential is Shardsclaw-owned (or grants access to Shardsclaw-operated infrastructure/services).
 - Explicit statement that the report does not rely on adversarial operators sharing one gateway host/config.
 - Scope check explaining why the report is **not** covered by the Out of Scope section below.
 - For command-risk/parity reports (for example obfuscation detection differences), a concrete boundary-bypass path is required (auth/approval/allowlist/sandbox). Parity-only findings are treated as hardening, not vulnerabilities.
@@ -103,12 +96,12 @@ These are frequently reported but are typically closed with no code change:
 - Reports that treat `POST /tools/invoke` under shared-secret bearer auth (`gateway.auth.mode="token"` or `"password"`) as a narrower per-request/per-scope authorization surface. That endpoint is designed as the same trusted-operator HTTP boundary: shared-secret bearer auth is full operator access there, narrower `x-openclaw-scopes` values do not reduce that path, and owner-only tool policy follows the shared-secret operator contract.
 - Reports that only show differences in heuristic detection/parity (for example obfuscation-pattern detection on one exec path but not another, such as `node.invoke -> system.run` parity gaps) without demonstrating bypass of auth, approvals, allowlist enforcement, sandboxing, or other documented trust boundaries.
 - Reports that only show an ACP tool can indirectly execute, mutate, orchestrate sessions, or reach another tool/runtime without demonstrating bypass of ACP prompt/approval, allowlist enforcement, sandboxing, or another documented trust boundary. ACP silent approval is intentionally limited to narrow readonly classes; parity-only indirect-command findings are hardening, not vulnerabilities.
-- Reports that only show untrusted media bytes reaching a maintained native decoder dependency (for example image codec libraries such as libheif) without proving the shipped dependency version is vulnerable and demonstrating crash, memory corruption, data exposure, or a boundary bypass through OpenClaw. JavaScript header sniffing and image dimension fast-paths are preflight/UX checks, not the security boundary for native decoder correctness.
-- Reports whose only impact is transient extra memory, CPU, or allocation work from decoding, base64 expansion, media transcoding, serialization, or other format conversion after the input was already accepted under OpenClaw's configured size/trust limits, including base64 decode-before-size-estimate findings. These are performance issues, not vulnerabilities, unless the report demonstrates unauthenticated amplification, bypass of configured limits, crash/process termination, persistent resource exhaustion, data exposure, or another documented boundary bypass.
+- Reports that only show untrusted media bytes reaching a maintained native decoder dependency (for example image codec libraries such as libheif) without proving the shipped dependency version is vulnerable and demonstrating crash, memory corruption, data exposure, or a boundary bypass through Shardsclaw. JavaScript header sniffing and image dimension fast-paths are preflight/UX checks, not the security boundary for native decoder correctness.
+- Reports whose only impact is transient extra memory, CPU, or allocation work from decoding, base64 expansion, media transcoding, serialization, or other format conversion after the input was already accepted under Shardsclaw's configured size/trust limits, including base64 decode-before-size-estimate findings. These are performance issues, not vulnerabilities, unless the report demonstrates unauthenticated amplification, bypass of configured limits, crash/process termination, persistent resource exhaustion, data exposure, or another documented boundary bypass.
 - ReDoS/DoS claims that require trusted operator configuration input (for example catastrophic regex in `sessionFilter` or `logging.redactPatterns`) without a trust-boundary bypass.
 - Archive/install extraction claims that require pre-existing local filesystem priming in trusted state (for example planting symlink/hardlink aliases under destination directories such as skills/tools paths) without showing an untrusted path that can create/control that primitive.
 - Reports that depend on replacing or rewriting an already-approved executable path on a trusted host (same-path inode/content swap) without showing an untrusted path to perform that write.
-- Reports that depend on attacker-controlled environment variables changing executable behavior, including variables that redirect lookup paths, preload code, select wrappers/interpreters, alter package-manager or runtime hooks, or make one executable call another executable. Control of the process or child-process environment is trusted host/operator control in OpenClaw's model; these reports need a separate OpenClaw boundary bypass that lets untrusted input set or mutate that environment.
+- Reports that depend on attacker-controlled environment variables changing executable behavior, including variables that redirect lookup paths, preload code, select wrappers/interpreters, alter package-manager or runtime hooks, or make one executable call another executable. Control of the process or child-process environment is trusted host/operator control in Shardsclaw's model; these reports need a separate Shardsclaw boundary bypass that lets untrusted input set or mutate that environment.
 - Reports that depend on pre-existing symlinked skill/workspace filesystem state (for example symlink chains involving `skills/*/SKILL.md`) without showing an untrusted path that can create/control that state.
 - Missing HSTS findings on default local/loopback deployments.
 - Reports against test-only harnesses, QA Lab, QE Lab, E2E fixtures, benchmark rigs, or maintainer-only debugging tools when the vulnerable code is not shipped as a supported production surface.
@@ -117,7 +110,7 @@ These are frequently reported but are typically closed with no code change:
 - Claims that Microsoft Teams `fileConsent/invoke` `uploadInfo.uploadUrl` is attacker-controlled without demonstrating one of: auth boundary bypass, a real authenticated Teams/Bot Framework event carrying attacker-chosen URL, or compromise of the Microsoft/Bot trust path.
 - Scanner-only claims against stale/nonexistent paths, or claims without a working repro.
 - Reports that restate an already-fixed issue against later released versions without showing the vulnerable path still exists in the shipped tag or published artifact for that later version.
-- SSRF reports against the operator-managed HTTP/WebSocket proxy-routing feature whose only claim is that ordinary process-local HTTP clients (`fetch`, `node:http`, `node:https`, WebSocket clients, axios/got/node-fetch-style clients) can reach an internal, metadata, private, or otherwise sensitive destination when proxy routing is disabled, missing, or the operator-managed proxy policy allows it. For this feature, OpenClaw provides fail-closed proxy routing when enabled; the external proxy's destination policy is operator infrastructure, not an OpenClaw-controlled security boundary. See [Network proxy](https://docs.openclaw.ai/security/network-proxy).
+- SSRF reports against the operator-managed HTTP/WebSocket proxy-routing feature whose only claim is that ordinary process-local HTTP clients (`fetch`, `node:http`, `node:https`, WebSocket clients, axios/got/node-fetch-style clients) can reach an internal, metadata, private, or otherwise sensitive destination when proxy routing is disabled, missing, or the operator-managed proxy policy allows it. For this feature, Shardsclaw provides fail-closed proxy routing when enabled; the external proxy's destination policy is operator infrastructure, not an Shardsclaw-controlled security boundary. See [Network proxy](docs/security/network-proxy.md).
 
 ### Maintainer GHSA Updates via CLI
 
@@ -125,7 +118,7 @@ When patching a GHSA via `gh api`, include `X-GitHub-Api-Version: 2022-11-28` (o
 
 ### Operator Trust Model
 
-OpenClaw does **not** model one gateway as a multi-tenant, adversarial user boundary.
+Shardsclaw does **not** model one gateway as a multi-tenant, adversarial user boundary.
 
 - Authenticated Gateway callers are treated as trusted operators for that gateway instance.
 - Direct localhost/loopback Control UI and Gateway WebSocket sessions authenticated with the shared gateway secret (`token` / `password`) are in that same trusted-operator bucket. Local auto-paired device sessions on that path are expected to retain full localhost operator capability; they do not create a separate `operator.write` vs `operator.admin` security boundary.
@@ -139,18 +132,18 @@ OpenClaw does **not** model one gateway as a multi-tenant, adversarial user boun
   - only identity-bearing HTTP modes (for example trusted proxy auth or `gateway.auth.mode="none"` on private ingress) honor declared per-request operator scopes
 - Session identifiers (`sessionKey`, session IDs, labels) are routing controls, not per-user authorization boundaries.
 - If one operator can view data from another operator on the same gateway, that is expected in this trust model.
-- OpenClaw can technically run multiple gateway instances on one machine, but recommended operations are clean separation by trust boundary.
+- Shardsclaw can technically run multiple gateway instances on one machine, but recommended operations are clean separation by trust boundary.
 - Recommended mode: one user per machine/host (or VPS), one gateway for that user, and one or more agents inside that gateway.
-- If multiple users need OpenClaw, use one VPS (or host/OS user boundary) per user.
+- If multiple users need Shardsclaw, use one VPS (or host/OS user boundary) per user.
 - For advanced setups, multiple gateways on one machine are possible, but only with strict isolation and are not the recommended default.
 - Exec behavior is host-first by default: `agents.defaults.sandbox.mode` defaults to `off`.
 - `tools.exec.host` defaults to `auto`: sandbox when sandbox runtime is active for the session, otherwise gateway.
 - Implicit exec calls (no explicit host in the tool call) follow the same behavior.
-- This is expected in OpenClaw's one-user trusted-operator model. If you need isolation, enable sandbox mode (`non-main`/`all`) and keep strict tool policy.
+- This is expected in Shardsclaw's one-user trusted-operator model. If you need isolation, enable sandbox mode (`non-main`/`all`) and keep strict tool policy.
 
 ### Trusted Plugins
 
-Plugins/extensions are part of OpenClaw's trusted computing base for a gateway.
+Plugins/extensions are part of Shardsclaw's trusted computing base for a gateway.
 
 - Installing or enabling a plugin grants it the same trust level as local code running on that gateway host.
 - Plugin behavior such as reading env/files or running host commands is expected inside this trust boundary.
@@ -158,28 +151,28 @@ Plugins/extensions are part of OpenClaw's trusted computing base for a gateway.
 
 ### Code Mode Executors
 
-When global `tools.codeMode` is absent, OpenClaw uses automatic per-model activation. Explicit `false` disables it, and an authored object without `enabled` remains off. When engaged, its default `node` executor runs JavaScript with Node.js `node:vm` in a worker thread. **`node:vm` is not a security boundary.** The worker keeps guest computation off the Gateway event loop, but it runs with the Gateway process's OS privileges. Node Code Mode is a trusted-host execution choice.
+When global `tools.codeMode` is absent, Shardsclaw uses automatic per-model activation. Explicit `false` disables it, and an authored object without `enabled` remains off. When engaged, its default `node` executor runs JavaScript with Node.js `node:vm` in a worker thread. **`node:vm` is not a security boundary.** The worker keeps guest computation off the Gateway event loop, but it runs with the Gateway process's OS privileges. Node Code Mode is a trusted-host execution choice.
 
 The intended guest API omits filesystem, network, subprocess, environment, and module-loading APIs. Its limited globals and module guards are programming constraints, not containment against hostile JavaScript. Tool policy, approvals, hooks, and session ownership still apply to calls made through the shared tool bridge; they cannot contain code that escapes the Node VM context. Agent sandbox settings for nested tools do not turn this Gateway worker into an OS sandbox.
 
-Select `tools.codeMode.executor: "quickjs"` for the bundled hardened executor. It runs QuickJS-WASI in a separate WASM guest, exposes only the controlled bridge, and applies guest memory and execution limits. Its tool capabilities still come from the effective OpenClaw tool policy. For stronger host isolation, use a separate OS user, container, or host with appropriate credentials and tool grants.
+Select `tools.codeMode.executor: "quickjs"` for the bundled hardened executor. It runs QuickJS-WASI in a separate WASM guest, exposes only the controlled bridge, and applies guest memory and execution limits. Its tool capabilities still come from the effective Shardsclaw tool policy. For stronger host isolation, use a separate OS user, container, or host with appropriate credentials and tool grants.
 
 Executor selection stays fixed throughout a cell's `exec`/`wait` lifecycle. If the selected executor is unavailable, execution fails rather than falling back to Node. Node's live worker context and QuickJS's serialized snapshots are transient state and are released on completion, cancellation, expiry, or Gateway shutdown.
 
-Reports must identify the selected executor and the boundary crossed. Node VM escape alone is not a sandbox bypass under this documented trusted-execution mode; authentication, tool-bridge authorization, QuickJS isolation, and separately configured OS sandbox boundaries remain in scope. See [Code Mode executors](https://docs.openclaw.ai/tools/code-mode/executors).
+Reports must identify the selected executor and the boundary crossed. Node VM escape alone is not a sandbox bypass under this documented trusted-execution mode; authentication, tool-bridge authorization, QuickJS isolation, and separately configured OS sandbox boundaries remain in scope. See [Code Mode executors](docs/tools/code-mode/executors.md).
 
 ### Out of Scope
 
 - Public Internet Exposure
-- Using OpenClaw in ways that the docs recommend not to
-- Test-only code and maintainer harnesses, including QA Lab, QE Lab, E2E fixtures, benchmark rigs, smoke-test containers, and local debugging proxies, unless the report demonstrates that the same vulnerable behavior is reachable from shipped OpenClaw production code or a published package artifact intended for users.
+- Using Shardsclaw in ways that the docs recommend not to
+- Test-only code and maintainer harnesses, including QA Lab, QE Lab, E2E fixtures, benchmark rigs, smoke-test containers, and local debugging proxies, unless the report demonstrates that the same vulnerable behavior is reachable from shipped Shardsclaw production code or a published package artifact intended for users.
 - Deployments where mutually untrusted/adversarial operators share one gateway host and config (for example, reports expecting per-operator isolation for `sessions.list`, `sessions.preview`, `chat.history`, or similar control-plane reads)
 - Prompt-injection-only attacks (without a policy/auth/sandbox boundary bypass)
 - Reports that require write access to trusted local state (`~/.openclaw`, workspace files like `MEMORY.md` / `memory/*.md`)
 - Reports where exploitability depends on attacker-controlled pre-existing symlink/hardlink filesystem state in trusted local paths (for example extraction/install target trees) unless a separate untrusted boundary bypass is shown that creates that state.
 - Reports whose only claim is sandbox/workspace read expansion through trusted local skill/workspace symlink state (for example `skills/*/SKILL.md` symlink chains) unless a separate untrusted boundary bypass is shown that creates/controls that state.
 - Reports whose only claim is post-approval executable identity drift on a trusted host via same-path file replacement/rewrite unless a separate untrusted boundary bypass is shown for that host write primitive.
-- Reports whose only claim is environment-variable-driven executable behavior change, including path lookup changes, preload hooks, wrapper/interpreter selection, package-manager/runtime hooks, or variables that make an executable invoke another executable, unless a separate OpenClaw boundary bypass lets untrusted input set or mutate that environment.
+- Reports whose only claim is environment-variable-driven executable behavior change, including path lookup changes, preload hooks, wrapper/interpreter selection, package-manager/runtime hooks, or variables that make an executable invoke another executable, unless a separate Shardsclaw boundary bypass lets untrusted input set or mutate that environment.
 - Reports where the only demonstrated impact is an already-authorized sender intentionally invoking a local-action command (for example `/export-session` writing to an absolute host path) without bypassing auth, sandbox, or another documented boundary
 - Reports whose only claim is use of an explicit trusted-operator control surface (for example browser evaluate/script execution or direct `node.invoke` execution) without demonstrating an auth, policy, allowlist, approval, or sandbox bypass.
 - Reports where the only claim is that a trusted-installed/enabled plugin can execute with gateway/host privileges (documented trust model behavior).
@@ -190,17 +183,17 @@ Reports must identify the selected executor and the boundary crossed. Node VM es
 - Reports whose only claim is that exec approvals do not semantically model every interpreter/runtime loader form, subcommand, flag combination, package script, or transitive module/config import. Exec approvals bind exact request context and best-effort direct local file operands; they are not a complete semantic model of everything a runtime may load.
 - Reports whose only claim is parser reachability in an up-to-date maintained dependency without showing that the exact shipped dependency build is vulnerable. We keep native media dependencies current; dependency exposure alone is not a vulnerability.
 - Reports whose only claim is resource overhead from decode/encode, base64 expansion, media transcoding, serialization, or format-conversion order after input has already passed the applicable configured acceptance limits, including base64 decode-before-size-estimate findings. These are performance-only and should be ignored for GHSA triage unless the report demonstrates unauthenticated amplification, limit bypass, crash/process termination, persistent exhaustion, data exposure, or another documented boundary bypass.
-- Exposed secrets that are third-party/user-controlled credentials (not OpenClaw-owned and not granting access to OpenClaw-operated infrastructure/services) without demonstrated OpenClaw impact
+- Exposed secrets that are third-party/user-controlled credentials (not Shardsclaw-owned and not granting access to Shardsclaw-operated infrastructure/services) without demonstrated Shardsclaw impact
 - Reports whose only claim is host-side exec when sandbox runtime is disabled/unavailable (documented default behavior in the trusted-operator model), without a boundary bypass.
 - Reports whose only claim is that a platform-provided upload destination URL is untrusted (for example Microsoft Teams `fileConsent/invoke` `uploadInfo.uploadUrl`) without proving attacker control in an authenticated production flow.
-- SSRF reports limited to the operator-managed HTTP/WebSocket proxy-routing feature where the demonstrated mitigation is to enable/configure `proxy.enabled` with a filtering `proxy.proxyUrl`/`OPENCLAW_PROXY_URL`, or where impact depends on a permissive/misconfigured operator proxy. This only covers normal process-local HTTP(S)/WebSocket egress (`fetch`, Node HTTP(S), and similar JavaScript clients); non-HTTP egress and other features are assessed separately. See [Network proxy](https://docs.openclaw.ai/security/network-proxy).
+- SSRF reports limited to the operator-managed HTTP/WebSocket proxy-routing feature where the demonstrated mitigation is to enable/configure `proxy.enabled` with a filtering `proxy.proxyUrl`/`OPENCLAW_PROXY_URL`, or where impact depends on a permissive/misconfigured operator proxy. This only covers normal process-local HTTP(S)/WebSocket egress (`fetch`, Node HTTP(S), and similar JavaScript clients); non-HTTP egress and other features are assessed separately. See [Network proxy](docs/security/network-proxy.md).
 
 ### Deployment Assumptions
 
-OpenClaw security guidance assumes:
+Shardsclaw security guidance assumes:
 
-- The host where OpenClaw runs is within a trusted OS/admin boundary.
-- Anyone who can set or mutate the OpenClaw process environment, launcher environment, or child-process environment is inside that trusted host/operator boundary.
+- The host where Shardsclaw runs is within a trusted OS/admin boundary.
+- Anyone who can set or mutate the Shardsclaw process environment, launcher environment, or child-process environment is inside that trusted host/operator boundary.
 - Anyone who can modify `~/.openclaw` state/config (including `openclaw.json`) is effectively a trusted operator.
 - A single Gateway shared by mutually untrusted people is **not a recommended setup**. Use separate gateways (or at minimum separate OS users/hosts) per trust boundary.
 - Authenticated Gateway callers are treated as trusted operators. Session identifiers (for example `sessionKey`) are routing controls, not per-user authorization boundaries.
@@ -208,7 +201,7 @@ OpenClaw security guidance assumes:
 
 ### One-User Trust Model
 
-OpenClaw's security model is "personal assistant" (one trusted operator, potentially many agents), not "shared multi-tenant bus."
+Shardsclaw's security model is "personal assistant" (one trusted operator, potentially many agents), not "shared multi-tenant bus."
 
 - If multiple people can message the same tool-enabled agent (for example a shared Slack workspace), they can all steer that agent within its granted permissions.
 - Non-owner sender status only affects owner-only tools/commands. If a non-owner can still access a non-owner-only tool on that same agent (for example `canvas`), that is within the granted tool boundary unless the report demonstrates an auth, policy, allowlist, approval, or sandbox bypass.
@@ -220,7 +213,7 @@ OpenClaw's security model is "personal assistant" (one trusted operator, potenti
 
 ### Context Visibility and Allowlists
 
-OpenClaw distinguishes:
+Shardsclaw distinguishes:
 
 - **Trigger authorization**: who can trigger the agent (`dmPolicy`, `groupPolicy`, allowlists, mention gates)
 - **Context visibility**: what supplemental context is provided to the model (reply body, quoted text, thread history, forwarded metadata)
@@ -246,12 +239,12 @@ Hardening roadmap may add explicit visibility modes (for example `all`, `allowli
 
 ### Gateway and Node Trust Concept
 
-OpenClaw separates routing from execution, but both remain inside the same operator trust boundary:
+Shardsclaw separates routing from execution, but both remain inside the same operator trust boundary:
 
 - **Gateway** is the control plane. If a caller passes Gateway auth, they are treated as a trusted operator for that Gateway.
 - **Node** is an execution extension of the Gateway. Pairing a node grants operator-level remote capability on that node.
 - **Exec approvals** (allowlist/ask UI) are operator guardrails to reduce accidental command execution, not a multi-tenant authorization boundary.
-- Exec approvals bind exact command/cwd/env context and, when OpenClaw can identify one concrete local script/file operand, that file snapshot too. This is best-effort integrity hardening, not a complete semantic model of every interpreter/runtime loader path.
+- Exec approvals bind exact command/cwd/env context and, when Shardsclaw can identify one concrete local script/file operand, that file snapshot too. This is best-effort integrity hardening, not a complete semantic model of every interpreter/runtime loader path.
 - Differences in command-risk warning heuristics between exec surfaces (`gateway`, `node`, `sandbox`) do not, by themselves, constitute a security-boundary bypass.
 - For untrusted-user isolation, split by trust boundary: separate gateways and separate OS users/hosts per boundary.
 
@@ -268,22 +261,22 @@ OpenClaw separates routing from execution, but both remain inside the same opera
 
 Plugins/extensions are loaded **in-process** with the Gateway and are treated as trusted code.
 
-- Plugins can execute with the same OS privileges as the OpenClaw process.
+- Plugins can execute with the same OS privileges as the Shardsclaw process.
 - Runtime helpers (for example `runtime.system.runCommandWithTimeout`) are convenience APIs, not a sandbox boundary.
 - Only install plugins you trust, and prefer `plugins.allow` to pin explicit trusted plugin ids.
 
 ### Temp Folder Boundary
 
-OpenClaw uses a dedicated temp root for local media handoff and sandbox-adjacent temp artifacts:
+Shardsclaw uses a dedicated temp root for local media handoff and sandbox-adjacent temp artifacts:
 
 - Preferred temp root: `/tmp/openclaw` (when available and safe on the host).
 - Fallback temp root: `os.tmpdir()/openclaw` (or `openclaw-<uid>` on multi-user hosts).
 
 Security boundary notes:
 
-- Sandbox media validation allows absolute temp paths only under the OpenClaw-managed temp root.
+- Sandbox media validation allows absolute temp paths only under the Shardsclaw-managed temp root.
 - Arbitrary host tmp paths are not treated as trusted media roots.
-- Plugin/extension code should use OpenClaw temp helpers (`resolvePreferredOpenClawTmpDir`, `buildRandomTempFilePath`, `withTempDownloadPath`) rather than raw `os.tmpdir()` defaults when handling media files.
+- Plugin/extension code should use Shardsclaw temp helpers (`resolvePreferredOpenClawTmpDir`, `buildRandomTempFilePath`, `withTempDownloadPath`) rather than raw `os.tmpdir()` defaults when handling media files.
 - Enforcement reference points:
   - temp root resolver: `src/infra/tmp-openclaw-dir.ts`
   - SDK temp helpers: `src/plugin-sdk/temp-path.ts`
@@ -291,9 +284,7 @@ Security boundary notes:
 
 ### Operational Guidance
 
-For threat model + hardening guidance (including `openclaw security audit --deep` and `--fix`), see:
-
-- `https://docs.openclaw.ai/gateway/security`
+For threat model and hardening guidance (including `openclaw security audit --deep` and `--fix`), see the [Gateway security guide](docs/gateway/security/index.md).
 
 #### Tool Filesystem Hardening
 
@@ -311,7 +302,7 @@ For threat model + hardening guidance (including `openclaw security audit --deep
 
 #### Web Interface Safety
 
-OpenClaw's web interface (Gateway Control UI + HTTP endpoints) is intended for **local use only**.
+Shardsclaw's web interface (Gateway Control UI + HTTP endpoints) is intended for **local use only**.
 
 - Recommended: keep the Gateway **loopback-only** (`127.0.0.1` / `::1`).
   - Config: `gateway.bind="loopback"` (default).
@@ -319,7 +310,7 @@ OpenClaw's web interface (Gateway Control UI + HTTP endpoints) is intended for *
 - The retired `gateway.controlUi.dangerouslyDisableDeviceAuth` break-glass key is not a
   current security option. Upgrade migration accepts it only from older config
   versions and requires explicit self-pairing before normal enforcement resumes.
-  - OpenClaw keeps deployment flexibility by design and does not hard-forbid non-local setups.
+  - Shardsclaw keeps deployment flexibility by design and does not hard-forbid non-local setups.
   - Non-local and other risky configurations are surfaced by `openclaw security audit` as dangerous findings.
   - This operator-selected tradeoff is by design and not, by itself, a security vulnerability.
 - Canvas host note: network-visible canvas is **intentional** for trusted node scenarios (LAN/tailnet).
@@ -334,7 +325,7 @@ OpenClaw's web interface (Gateway Control UI + HTTP endpoints) is intended for *
 
 ### Node.js Version
 
-OpenClaw requires **Node.js 24.22.1+ or Node.js 26.12.1+**. Node 26 is recommended; Node 24 is the supported LTS line. These minimum versions include the upstream SQLite WAL-reset corruption fix, preserve embedded NUL characters in SQLite TEXT reads, and reject the keys compromised in the October 2026 eMudhra incident. Node 22, 23, and 25 are unsupported.
+Shardsclaw requires **Node.js 24.22.1+ or Node.js 26.12.1+**. Node 26 is recommended; Node 24 is the supported LTS line. These minimum versions include the upstream SQLite WAL-reset corruption fix, preserve embedded NUL characters in SQLite TEXT reads, and reject the keys compromised in the October 2026 eMudhra incident. Node 22, 23, and 25 are unsupported.
 
 Verify your Node.js version:
 
@@ -344,27 +335,19 @@ node --version  # Should be v24.22.1+ or v26.12.1+
 
 ### Docker Security
 
-When running OpenClaw in Docker:
+When running a self-built Shardsclaw container:
 
-1. The official image runs as a non-root user (`node`) to limit what a compromised process can do
+1. This repository does not publish a Shardsclaw container image; use only an image you have built and reviewed yourself.
 2. Use `--read-only` flag when possible for additional filesystem protection
 3. Limit container capabilities with `--cap-drop=ALL`
 
-Example secure Docker run:
-
-```bash
-docker run --read-only --cap-drop=ALL \
-  -v openclaw-data:/app/data \
-  openclaw/openclaw:latest
-```
-
 ## Security Scanning
 
-OpenClaw uses several security and release-validation layers. No single scanner is treated as the boundary.
+Shardsclaw uses several security and release-validation layers. No single scanner is treated as the boundary.
 
 ### Secret Detection
 
-OpenClaw runs the in-repo `scripts/detect-private-keys.mts` scanner in CI (the same private-key marker set as the pre-commit-hooks `detect-private-key` hook, with no hook-repo fetches, package installs, or third-party hook execution in the scan's path) over every tracked regular file except colocated `*.test.ts` fixtures and the iOS Fastfile; pull requests run the base branch's copy of the scanner and fail if the base branch lacks it. The local `detect-private-key` pre-commit hook runs the same scanner over the text files pre-commit hands it. Secret-resolution behavior stays covered by the dedicated secrets test surface.
+Shardsclaw runs the in-repo `scripts/detect-private-keys.mts` scanner in CI (the same private-key marker set as the pre-commit-hooks `detect-private-key` hook, with no hook-repo fetches, package installs, or third-party hook execution in the scan's path) over every tracked regular file except colocated `*.test.ts` fixtures and the iOS Fastfile; pull requests run the base branch's copy of the scanner and fail if the base branch lacks it. The local `detect-private-key` pre-commit hook runs the same scanner over the text files pre-commit hands it. Secret-resolution behavior stays covered by the dedicated secrets test surface.
 
 Run the key scan locally:
 

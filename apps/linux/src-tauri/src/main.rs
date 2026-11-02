@@ -1879,7 +1879,7 @@ impl DesktopState {
         }
         // Notifications are a doorbell only; approval stays in the dashboard or CLI.
         for request in diff.new {
-            notify::notify(app, "OpenClaw", &request.notification_body());
+            notify::notify(app, "Shardsclaw", &request.notification_body());
         }
     }
 
@@ -3412,7 +3412,7 @@ fn main() {
 
     // AppIndicator uses the GTK application name for the tray menu heading.
     #[cfg(target_os = "linux")]
-    gtk::glib::set_application_name("OpenClaw");
+    gtk::glib::set_application_name("Shardsclaw");
 
     let global_shortcuts_supported = !test_profile::enabled() && tray::global_shortcuts_supported();
     let quickchat_state = quickchat::QuickChatState::new(global_shortcuts_supported);

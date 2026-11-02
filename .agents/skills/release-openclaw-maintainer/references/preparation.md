@@ -15,7 +15,7 @@ The release branch is the active queue. Moving main is a workflow/provenance
 source, not an invitation to add fixes. Touch main before publication only for
 an operator-requested change or a critical blocker owned there that cannot be
 fixed or proven on the release branch. Keep that repair bounded, use
-`$openclaw-pr-maintainer`, then return to the release. Defer ordinary
+`$shardsclaw-pr-maintainer`, then return to the release. Defer ordinary
 forward-ports until after publication.
 
 ## Version and channel

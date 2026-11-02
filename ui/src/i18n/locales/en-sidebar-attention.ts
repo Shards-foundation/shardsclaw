@@ -7,7 +7,7 @@ const enSidebarAttention = {
     scopeUpgrade: {
       limited: "This browser has limited access.",
       guidance:
-        "This browser has limited access. Manage it with openclaw devices on the Gateway or from Devices on an admin browser.",
+        "This browser has limited access. Manage it with shardsclaw devices on the Gateway or from Devices on an admin browser.",
       roleGuidance:
         "Your role limits access. Device approval cannot grant administrator access. If you need more access, ask a Gateway administrator to change your role, then reconnect.",
       roleState: "Access follows your role",

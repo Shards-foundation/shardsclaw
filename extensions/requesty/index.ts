@@ -10,8 +10,8 @@ import { isRequestyAnthropicModel, REQUESTY_PROVIDER_ID } from "./provider-model
 
 // Requesty attributes traffic per client through these headers.
 const REQUESTY_ATTRIBUTION_HEADERS = {
-  "HTTP-Referer": "https://openclaw.ai",
-  "X-Title": "OpenClaw",
+  "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
+  "X-Title": "Shardsclaw",
 } as const;
 
 export default defineSingleProviderPluginEntry({

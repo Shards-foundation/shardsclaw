@@ -717,7 +717,7 @@ await listen("install-progress", ({ payload }) => appendLog(payload.line));
 await listen("updater://not-available", () => {
   renderUpdate({
     message: "No update is available.",
-    title: "OpenClaw is up to date",
+    title: "Shardsclaw is up to date",
   });
 });
 await listen("updater://available", ({ payload }) => {

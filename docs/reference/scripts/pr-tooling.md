@@ -354,5 +354,5 @@ unknown ones, then run `pnpm test:ci-failed <pr> --run` until those pass locally
 and push once. PR CI supplies broad proof for the repaired head. Never run the
 full local suite or use `gh run rerun` to chase green. Pre-existing failures
 follow the
-[failure-table landing rule](https://github.com/openclaw/openclaw/blob/main/.agents/skills/openclaw-pr-maintainer/references/landing.md#red-main-and-inherited-failures);
+[failure-table landing rule](https://github.com/Shards-inc/shardsclaw/blob/main/.agents/skills/shardsclaw-pr-maintainer/references/landing.md#red-main-and-inherited-failures);
 the table supplies evidence, not an automatic gate waiver.

@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Onboarding
+  - name: Shardsclaw issue tracker
+    url: https://github.com/Shards-inc/shardsclaw/issues/new/choose
+    about: "Use the Shardsclaw templates for bug reports, docs issues, and feature requests."
+  - name: OpenClaw upstream support (external)
     url: https://community.openclaw.ai/
-    about: "For official OpenClaw support with onboarding and setup, visit community.openclaw.ai."
-  - name: Support
-    url: https://community.openclaw.ai/
-    about: "For official OpenClaw support, visit community.openclaw.ai."
+    about: "This community is operated upstream and does not provide Shardsclaw support."

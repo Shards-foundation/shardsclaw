@@ -15,7 +15,7 @@ const enModelSetup = {
     },
     heading: "Connect a verified AI model",
     intro:
-      "OpenClaw discovers AI access on this Gateway. Choose a provider to begin; nothing is selected, tested, installed, or saved automatically.",
+      "Shardsclaw discovers AI access on this Gateway. Choose a provider to begin; nothing is selected, tested, installed, or saved automatically.",
     loading: "Checking this Gateway for available AI access…",
     testing: "Testing — asking the selected model for a quick reply…",
     retry: "Retry",
@@ -39,7 +39,7 @@ const enModelSetup = {
     },
     access: {
       adminRequired: "Model setup requires operator.admin access.",
-      gatewayTooOld: "The Gateway is running an older OpenClaw version",
+      gatewayTooOld: "The Gateway is running an older Shardsclaw version",
     },
     candidates: {
       title: "Found on this Gateway",
@@ -52,7 +52,7 @@ const enModelSetup = {
     },
     nativeDiscovery: {
       title: "Discover existing conversations",
-      body: "Show native assistant conversations from this Gateway host in OpenClaw. This is discovery, not an import or copy.",
+      body: "Show native assistant conversations from this Gateway host in Shardsclaw. This is discovery, not an import or copy.",
       enable: "Show existing native conversations",
       decline:
         "Leave unchecked to keep native session catalogs off when you connect your AI provider. Existing installations are not changed.",
@@ -100,12 +100,12 @@ const enModelSetup = {
       accessValueFor: "{provider} API key or token",
       accessValuePlaceholder: "Paste an API key or token",
       connectAndVerify: "Connect & verify",
-      verifyHint: "OpenClaw verifies a real model reply before marking the connection ready.",
+      verifyHint: "Shardsclaw verifies a real model reply before marking the connection ready.",
       required: "Choose a provider and enter an API key or token.",
     },
     success: {
       title: "Connection verified",
-      body: "OpenClaw received a real reply from {modelRef}. You can start chatting now.",
+      body: "Shardsclaw received a real reply from {modelRef}. You can start chatting now.",
       activeModel: "Active model",
       latency: "Verified in {latencyMs} ms",
       openChat: "Start chatting",
@@ -115,13 +115,13 @@ const enModelSetup = {
     },
     utility: {
       role: "Setup & utility",
-      hint: "Helps set up OpenClaw and handles lightweight tasks. Regular chats need a primary model.",
+      hint: "Helps set up Shardsclaw and handles lightweight tasks. Regular chats need a primary model.",
       useSetup: "Use for setup",
       useUtility: "Use as utility",
       ready: "Setup & utility model ready",
       configured: "Setup & utility model",
       verified:
-        "OpenClaw received a real reply from {modelRef}. This model is ready for setup and lightweight tasks.",
+        "Shardsclaw received a real reply from {modelRef}. This model is ready for setup and lightweight tasks.",
       model: "Utility model",
       choosePrimary:
         "Choose a primary model below for regular chats. Your setup assistant remains available.",

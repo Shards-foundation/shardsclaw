@@ -13,7 +13,7 @@ read_when:
 title: "iOS app"
 ---
 
-Availability: The official iPhone app is available on the [App Store](https://apps.apple.com/app/openclaw-ai-that-does-things/id6780396132). Local development builds can also run from source.
+Availability: The linked App Store listing and hosted push-relay instructions in this inherited guide refer to the **upstream OpenClaw iPhone app**, not a Shardsclaw-published app. Shardsclaw app-store and relay distribution are not established by this source repository. Local development builds can run from this source tree; existing bundle and push identifiers remain unchanged for compatibility.
 
 The app requires iOS 26.2 or iPadOS 26.2 or later.
 

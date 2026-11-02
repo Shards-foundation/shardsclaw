@@ -18,7 +18,7 @@ import {
 } from "./pipeline.js";
 
 const githubCommit = "430f975aacee445525c4663aa88ed1590f2f08b1";
-const githubBlob = `https://github.com/openclaw/openclaw/blob/${githubCommit}/.agents/skills/openclaw-pr-maintainer/SKILL.md#review-and-publish`;
+const githubBlob = `https://github.com/openclaw/openclaw/blob/${githubCommit}/.agents/skills/shardsclaw-pr-maintainer/SKILL.md#review-and-publish`;
 
 const now = 1_752_300_000;
 const auditKey = Uint8Array.from({ length: 32 }, (_, index) => index + 1);

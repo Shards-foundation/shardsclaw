@@ -195,7 +195,7 @@ build/package mutations before VM packing so a concurrent build cannot remove
 
 Fix related required failures at their owner and rerun affected evidence. For
 PR preparation/landing or observed hosted-runner stalls, use
-`$openclaw-pr-maintainer` / `$openclaw-ci-limits`; never synthesize prepare
+`$shardsclaw-pr-maintainer` / `$openclaw-ci-limits`; never synthesize prepare
 artifacts or replace canonical `scripts/pr` with PR-controlled scripts. Record
 unrelated main failures instead of adopting them into release scope.
 

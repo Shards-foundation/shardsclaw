@@ -360,7 +360,7 @@ jobs:
     # KEEP THE REAL RELEASE/PUBLISH PATH ON A GITHUB-HOSTED RUNNER.
     # npm trusted publishing + provenance requires this to stay on ubuntu-latest.
     needs: [validate_publish_request, approve_openclaw_npm_release]
-    if: ${{ always() && !cancelled() && !inputs.preflight_only && needs.validate_publish_request.result == 'success' && (needs.approve_openclaw_npm_release.result == 'success' || (needs.approve_openclaw_npm_release.result == 'skipped' && needs.validate_publish_request.outputs.parent_approval == 'receipt')) }}
+    if: ${{ github.repository == 'openclaw/openclaw' && (always() && !cancelled() && !inputs.preflight_only && needs.validate_publish_request.result == 'success' && (needs.approve_openclaw_npm_release.result == 'success' || (needs.approve_openclaw_npm_release.result == 'skipped' && needs.validate_publish_request.outputs.parent_approval == 'receipt'))) }}
     runs-on: ubuntu-latest
     environment: npm-publish
     outputs:

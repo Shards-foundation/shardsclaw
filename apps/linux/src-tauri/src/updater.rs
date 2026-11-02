@@ -16,7 +16,7 @@ pub(crate) const PROGRESS_EVENT: &str = "updater://progress";
 pub(crate) const READY_EVENT: &str = "updater://ready";
 pub(crate) const ERROR_EVENT: &str = "updater://error";
 
-const RELEASE_URL: &str = "https://github.com/openclaw/openclaw/releases/latest";
+const RELEASE_URL: &str = "https://github.com/Shards-inc/shardsclaw/releases/latest";
 const AUTO_CHECK_DELAY: Duration = Duration::from_secs(3);
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -288,7 +288,7 @@ fn activate(app: &AppHandle, relaunch: bool) {
         ClaimedAction::None => {}
         ClaimedAction::OpenDownloadPage => {
             if let Err(error) = open_release_page(app.clone()) {
-                crate::notify::notify(app, "OpenClaw", &error);
+                crate::notify::notify(app, "Shardsclaw", &error);
             }
         }
         ClaimedAction::Restart => app.restart(),
@@ -345,7 +345,7 @@ async fn run_check(app: AppHandle, manual: bool) {
                 TerminalResultKind::NotAvailable,
                 NOT_AVAILABLE_EVENT,
                 (),
-                "OpenClaw is up to date — no update is available",
+                "Shardsclaw is up to date — no update is available",
             );
             return;
         }
@@ -559,7 +559,7 @@ fn deliver_result<S: Serialize + Clone>(
             .is_some_and(|view| matches!(view.window().is_focused(), Ok(false))),
     };
     if notify {
-        crate::notify::notify(app, "OpenClaw", notification_body);
+        crate::notify::notify(app, "Shardsclaw", notification_body);
     }
 }
 

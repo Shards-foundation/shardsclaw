@@ -1,7 +1,11 @@
 import { createSignal, createUniqueId, For, onSettled, Show } from "solid-js";
 import { inferControlUiPublicAssetPath } from "../../app/public-assets.ts";
 import { buildExternalLinkRel, EXTERNAL_LINK_TARGET } from "../../lib/external-link.ts";
-import { COMMUNITY_DISCORD_URL } from "../../lib/product-links.ts";
+import {
+  SHARDSCLAW_DOCUMENTATION_URL,
+  SHARDSCLAW_ISSUES_URL,
+  SHARDSCLAW_REPOSITORY_URL,
+} from "../../lib/product-links.ts";
 import { t } from "../../lib/reactive/i18n.ts";
 import { listen } from "../../lib/reactive/listener.ts";
 import { showToast } from "../../lib/toast.ts";
@@ -10,7 +14,7 @@ import {
   dismissCommunityInvite,
   isCommunityInviteEligible,
 } from "../community-invite-state.ts";
-import { BrandIcon, Icon } from "./icon.tsx";
+import { Icon } from "./icon.tsx";
 import "../../styles/community-invite-card.css";
 
 declare module "@solidjs/web" {
@@ -24,22 +28,22 @@ declare module "@solidjs/web" {
 
 const communityLinks = [
   {
-    platform: "Reddit",
-    label: "join",
-    href: "https://www.reddit.com/r/openclaw/",
-    icon: "reddit",
+    label: "repository",
+    ariaLabel: "repositoryLabel",
+    href: SHARDSCLAW_REPOSITORY_URL,
+    icon: "github",
   },
   {
-    platform: "Discord",
-    label: "join",
-    href: COMMUNITY_DISCORD_URL,
-    icon: "discord",
+    label: "docs",
+    ariaLabel: "docsLabel",
+    href: SHARDSCLAW_DOCUMENTATION_URL,
+    icon: "bookOpenText",
   },
   {
-    platform: "X",
-    label: "follow",
-    href: "https://x.com/openclaw",
-    icon: "x",
+    label: "issues",
+    ariaLabel: "issuesLabel",
+    href: SHARDSCLAW_ISSUES_URL,
+    icon: "circleQuestionMark",
   },
 ] as const;
 
@@ -75,12 +79,17 @@ export function SidebarCommunityInvite(props: { onDismiss: () => void; mode: "li
               nopin="nopin"
               data-pin-nopin="true"
               width="1024"
-              height="512"
+              height="439"
               loading="lazy"
               decoding="async"
             />
-            <div class="invite__marks" dir="ltr" aria-hidden="true">
-              <For each={communityLinks}>{(link) => <BrandIcon name={link.icon} />}</For>
+            <div class="invite__marks" aria-hidden="true">
+              <img
+                src={inferControlUiPublicAssetPath("favicon.svg")}
+                alt=""
+                width="20"
+                height="20"
+              />
             </div>
             <button
               class="invite__close"
@@ -102,14 +111,12 @@ export function SidebarCommunityInvite(props: { onDismiss: () => void; mode: "li
                   <a
                     class="invite__cta"
                     href={link.href}
-                    aria-label={t(`communityInvite.${link.label}Platform`, {
-                      platform: link.platform,
-                    })}
-                    title={t(`communityInvite.${link.label}Platform`, { platform: link.platform })}
+                    aria-label={t(`communityInvite.${link.ariaLabel}`)}
+                    title={t(`communityInvite.${link.ariaLabel}`)}
                     target={EXTERNAL_LINK_TARGET}
                     rel={buildExternalLinkRel()}
                   >
-                    <BrandIcon name={link.icon} />
+                    <Icon name={link.icon} />
                     <span>{t(`communityInvite.${link.label}`)}</span>
                   </a>
                 )}

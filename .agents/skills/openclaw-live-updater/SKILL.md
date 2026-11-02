@@ -49,7 +49,7 @@ Keep one operator-selected canonical live checkout as a read-only-to-the-agent d
 
 4. Load `$openclaw-testing`. Resolve exact current `origin/main`, then inspect only relevant required checks and workflow jobs whose `headSha` equals it. Ignore skipped jobs and routine noise such as Auto response, Labeler, docs agents, performance advisory jobs, and stale/cancelled runs superseded by a newer run for the same SHA.
 
-5. For an attributable failure, leave the mirror untouched. Use the controlling Codex worktree, trace the failed surface, add focused proof, run `$autoreview`, open a focused PR, and land through `$openclaw-pr-maintainer`'s exact `scripts/pr` sequence. Never weaken or bypass the failing gate. After landing, begin again at step 1 so the mirror, Gateway, app classification, and exact-head checks all converge on new `main`.
+5. For an attributable failure, leave the mirror untouched. Use the controlling Codex worktree, trace the failed surface, add focused proof, run `$autoreview`, open a focused PR, and land through `$shardsclaw-pr-maintainer`'s exact `scripts/pr` sequence. Never weaken or bypass the failing gate. After landing, begin again at step 1 so the mirror, Gateway, app classification, and exact-head checks all converge on new `main`.
 
 If no update, build repair, pending Mac retry, or exact-head failure exists, report a terse no-op with the SHA and proof checked.
 

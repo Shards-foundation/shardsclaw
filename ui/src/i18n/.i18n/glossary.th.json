@@ -42,5 +42,13 @@
   {
     "source": "Question dismissed.",
     "target": "ปิดคำถามแล้ว"
+  },
+  {
+    "source": "Shardsclaw",
+    "target": "Shardsclaw"
+  },
+  {
+    "source": "ClawHub",
+    "target": "ClawHub"
   }
 ]

@@ -7,21 +7,23 @@ import { buildMacGatewayLaunchUrl } from "./gateway-launch.ts";
 import { Apps } from "./view.tsx";
 
 const EXPECTED_EXTERNAL_HREFS = [
-  "https://apps.apple.com/app/openclaw-ai-that-does-things/id6780396132",
-  "https://docs.openclaw.ai/platforms/ios",
-  "https://play.google.com/store/apps/details?id=ai.openclaw.app",
-  ...["android", "ios", "android"].map((os) => `https://docs.openclaw.ai/platforms/${os}`),
-  "https://github.com/openclaw/openclaw/releases",
-  "https://docs.openclaw.ai/platforms/macos",
-  "https://github.com/openclaw/openclaw-windows-node/releases/latest",
-  "https://docs.openclaw.ai/platforms/windows",
-  "https://github.com/openclaw/openclaw/releases",
-  "https://docs.openclaw.ai/platforms/linux",
-  "https://chromewebstore.google.com/detail/openclaw/kcdjddhmeafeomebliikmbpblkmkfoig",
-  "https://docs.openclaw.ai/tools/chrome-extension",
-  ...["clawhub.ai", "community.openclaw.ai/", "discord.gg/clawd", "docs.openclaw.ai"].map(
-    (host) => `https://${host}`,
-  ),
+  "https://github.com/Shards-inc/shardsclaw/tree/main/apps/ios",
+  "https://github.com/Shards-inc/shardsclaw/blob/main/docs/platforms/ios.md",
+  "https://github.com/Shards-inc/shardsclaw/tree/main/apps/android",
+  "https://github.com/Shards-inc/shardsclaw/blob/main/docs/platforms/android.md",
+  "https://github.com/Shards-inc/shardsclaw/blob/main/docs/platforms/ios.md",
+  "https://github.com/Shards-inc/shardsclaw/blob/main/docs/platforms/android.md",
+  "https://github.com/Shards-inc/shardsclaw/tree/main/apps/macos",
+  "https://github.com/Shards-inc/shardsclaw/blob/main/docs/platforms/macos.md",
+  "https://github.com/openclaw/openclaw-windows-node",
+  "https://github.com/Shards-inc/shardsclaw/blob/main/docs/platforms/windows.md",
+  "https://github.com/Shards-inc/shardsclaw/tree/main/apps/linux",
+  "https://github.com/Shards-inc/shardsclaw/blob/main/docs/platforms/linux.md",
+  "https://github.com/Shards-inc/shardsclaw/blob/main/docs/tools/chrome-extension.md",
+  "https://clawhub.ai",
+  "https://github.com/Shards-inc/shardsclaw/issues",
+  "https://github.com/Shards-inc/shardsclaw",
+  "https://github.com/Shards-inc/shardsclaw/tree/main/docs",
 ];
 
 beforeEach(() => i18n.setLocale("en"));
@@ -62,8 +64,10 @@ it("opens the connected Gateway in the Mac app without losing the download optio
   expect(launch?.getAttribute("target")).toBeNull();
   const card = launch?.closest(".apps-card");
   expect(card?.querySelector("h3")?.textContent).toBe("macOS");
-  const download = card?.querySelector("a[href='https://github.com/openclaw/openclaw/releases']");
-  expect(download?.textContent?.trim()).toBe("Download");
+  const download = card?.querySelector(
+    "a[href='https://github.com/Shards-inc/shardsclaw/tree/main/apps/macos']",
+  );
+  expect(download?.textContent?.trim()).toBe("Source code");
 });
 
 it("offers device pairing from the phone section only when permitted", () => {

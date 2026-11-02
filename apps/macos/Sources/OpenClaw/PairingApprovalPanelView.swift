@@ -16,7 +16,7 @@ struct PairingApprovalPanelView: View {
                         .accessibilityHidden(true)
                 }
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("OpenClaw")
+                    Text("Shardsclaw")
                         .font(.system(size: 13, weight: .semibold))
                     Text(verbatim: PairingCardPresentation.headerTitle(for: cards))
                         .font(.system(size: 23, weight: .semibold))
@@ -262,7 +262,7 @@ enum PairingCardPresentation {
         switch card.kind {
         case .node: return String(localized: "Unnamed node")
         case .device: return self.isMac(card.platform)
-            ? String(localized: "OpenClaw Mac app") : String(localized: "New device")
+            ? String(localized: "Shardsclaw Mac app") : String(localized: "New device")
         }
     }
 
@@ -410,7 +410,7 @@ enum PairingCardPresentation {
 
     private static let scopeLabels = [
         "operator.admin": "Admin access",
-        "operator.read": "Read OpenClaw data",
+        "operator.read": "Read Shardsclaw data",
         "operator.write": "Send messages and make changes",
         "operator.approvals": "Manage approvals",
         "operator.pairing": "Pair and repair devices",

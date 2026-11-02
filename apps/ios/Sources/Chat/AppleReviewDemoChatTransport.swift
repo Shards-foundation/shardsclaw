@@ -27,7 +27,7 @@ enum ScreenshotFixtureMode {
         return arguments[index + 1]
     }
 
-    static let gatewayName = "OpenClaw Gateway"
+    static let gatewayName = "Shardsclaw Gateway"
     static let gatewayAddress = "Gateway on local network"
     static let gatewayID = "screenshot-fixture-gateway"
     static var reactionsEnabled: Bool {
@@ -103,7 +103,7 @@ struct LocalChatFixture {
                 provider: "anthropic",
                 contextWindow: 200_000),
         ],
-        responsePrefix: "OpenClaw is connected to your gateway.",
+        responsePrefix: "Shardsclaw is connected to your gateway.",
         seedMessages: ProcessInfo.processInfo.arguments.contains("--openclaw-empty-chat-fixture")
             ? []
             : [
@@ -123,7 +123,7 @@ struct LocalChatFixture {
                 id: "main",
                 name: "Molty",
                 identity: ["emoji": AnyCodable("M")],
-                workspace: "OpenClaw",
+                workspace: "Shardsclaw",
                 workspacegit: false,
                 model: ["provider": AnyCodable("openai"), "model": AnyCodable("gpt-5.6-sol")],
                 agentruntime: ["kind": AnyCodable("gateway")],
@@ -134,7 +134,7 @@ struct LocalChatFixture {
                 id: "research",
                 name: "Research",
                 identity: ["emoji": AnyCodable("RS")],
-                workspace: "OpenClaw",
+                workspace: "Shardsclaw",
                 workspacegit: false,
                 model: ["provider": AnyCodable("openai"), "model": AnyCodable("gpt-5.6-sol")],
                 agentruntime: ["kind": AnyCodable("gateway")],
@@ -145,7 +145,7 @@ struct LocalChatFixture {
                 id: "automation",
                 name: "Automation",
                 identity: ["emoji": AnyCodable("AU")],
-                workspace: "OpenClaw",
+                workspace: "Shardsclaw",
                 workspacegit: false,
                 model: ["provider": AnyCodable("openai"), "model": AnyCodable("gpt-5.6-sol")],
                 agentruntime: ["kind": AnyCodable("gateway")],
@@ -179,7 +179,7 @@ struct LocalFixtureChatTransport: OpenClawChatTransport {
                     blocked: false),
                 OpenClawChatComposerSkill(
                     key: "release",
-                    name: "Release OpenClaw",
+                    name: "Release Shardsclaw",
                     baseEnabled: true,
                     missingDependencies: false,
                     blocked: false),

@@ -199,8 +199,8 @@ final class QuickChatWindowPicker {
         }
         let alert = NSAlert()
         alert.messageText = mode == .window
-            ? String(localized: "Allow OpenClaw to capture windows")
-            : String(localized: "Allow OpenClaw to capture a screen area")
+            ? String(localized: "Allow Shardsclaw to capture windows")
+            : String(localized: "Allow Shardsclaw to capture a screen area")
         alert.informativeText = String(localized: "Sending a screenshot uses macOS Screen Recording access.")
         alert.addButton(withTitle: String(localized: "Grant Access"))
         alert.addButton(withTitle: String(localized: "Cancel"))

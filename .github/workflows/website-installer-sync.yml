@@ -502,9 +502,7 @@ jobs:
       - fedora-installer
       - macos-installer
       - windows-installer
-    if: >
-      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
-      (github.event_name == 'workflow_dispatch' && inputs.sync_website)
+    if: ${{ github.repository == 'openclaw/openclaw' && ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.sync_website)) }}
     runs-on: *linux_runner_ubuntu
     env:
       OPENCLAW_GH_TOKEN: ${{ secrets.OPENCLAW_GH_TOKEN }}

@@ -388,7 +388,7 @@ export function formatDocumentTitle(options: {
   attentionCount?: number;
   brandName?: string;
 }): string {
-  const brandName = options.brandName ?? "OpenClaw";
+  const brandName = options.brandName ?? "Shardsclaw";
   const base = options.context.endsWith(brandName)
     ? options.context
     : `${options.context} — ${brandName}`;

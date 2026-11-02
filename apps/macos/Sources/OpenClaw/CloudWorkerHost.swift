@@ -94,7 +94,7 @@ struct CloudWorkerHostError: LocalizedError {
     }
 
     var errorDescription: String? {
-        "OpenClaw cloud worker host: \(self.message)"
+        "Shardsclaw cloud worker host: \(self.message)"
     }
 }
 
@@ -110,12 +110,12 @@ enum CloudWorkerHost {
             .contains(where: { $0 == self.argument || $0 == self.inspectArgument })
         else { return nil }
         guard isCloudHost, bundle.object(forInfoDictionaryKey: "OpenClawCloudWorkerHostVersion") as? Int == 1 else {
-            fputs("Cloud workers require the separately signed OpenClaw Cloud Worker app\n", stderr)
+            fputs("Cloud workers require the separately signed Shardsclaw Cloud Worker app\n", stderr)
             return 2
         }
         let mode = arguments.dropFirst().first
         guard mode == self.argument || mode == self.inspectArgument else {
-            fputs("OpenClaw Cloud Worker requires a managed --cloud-worker-host invocation\n", stderr)
+            fputs("Shardsclaw Cloud Worker requires a managed --cloud-worker-host invocation\n", stderr)
             return 2
         }
         let configuration: CloudWorkerHostConfiguration
@@ -223,7 +223,7 @@ enum CloudWorkerHost {
     @MainActor private static func run(_ configuration: CloudWorkerHostConfiguration) async throws -> Int32 {
         guard CuaDriverArtifact.bundledExecutableURL != nil else {
             throw CloudWorkerHostError(
-                "install the signed OpenClaw Cloud Worker app with its bundled CUA driver in the worker image")
+                "install the signed Shardsclaw Cloud Worker app with its bundled CUA driver in the worker image")
         }
         let desktop = LiveMacDesktopAvailabilityPlatform()
         try await self.verifyDesktopAccess(desktop)
@@ -265,7 +265,7 @@ enum CloudWorkerHost {
         let permissions = await PermissionManager.authorizationStatus([.accessibility, .screenRecording])
         guard permissions[.accessibility] == .granted, permissions[.screenRecording] == .granted else {
             throw CloudWorkerHostError(
-                "grant Accessibility and Screen Recording to OpenClaw Cloud Worker in the worker image")
+                "grant Accessibility and Screen Recording to Shardsclaw Cloud Worker in the worker image")
         }
         guard desktop.consoleState() == .unlocked else {
             throw CloudWorkerHostError("sign in and unlock the worker account's macOS desktop before dispatch")
@@ -438,7 +438,7 @@ final class CloudWorkerHostSession {
 
     func requestStop(reason: String) {
         guard !self.stopping else { return }
-        fputs("OpenClaw cloud worker host: \(reason)\n", stderr)
+        fputs("Shardsclaw cloud worker host: \(reason)\n", stderr)
         self.finish(1)
     }
 

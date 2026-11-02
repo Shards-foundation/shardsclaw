@@ -9,7 +9,7 @@ title: "Android app"
 ---
 
 <Note>
-The official Android app is available on [Google Play](https://play.google.com/store/apps/details?id=ai.openclaw.app&hl=en_IN) and, for sideloading, as a signed standalone APK on selected [GitHub Releases](https://github.com/openclaw/openclaw/releases). Not every release includes the APK and checksum. See [Install outside Google Play](/platforms/android#install-outside-google-play) to find and verify both files. It is a companion node and requires a running OpenClaw Gateway. Source: [apps/android](https://github.com/openclaw/openclaw/tree/main/apps/android) ([build instructions](https://github.com/openclaw/openclaw/blob/main/apps/android/README.md)).
+The Google Play listing and signed APK releases below are for the **upstream OpenClaw Android app**, not a Shardsclaw-published app. Shardsclaw app-store and APK distribution are not established by this source repository. The inherited source and build links point to upstream OpenClaw. The app is a companion node and requires a compatible Gateway. Existing Android application IDs remain unchanged for compatibility.
 </Note>
 
 ## Support snapshot

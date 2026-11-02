@@ -1,6 +1,6 @@
 {
-  "name": "OpenClaw",
-  "description": "Self-hosted gateway that connects Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more to AI coding agents. Run one Gateway process on your own machine and message your AI assistant from anywhere.",
+  "name": "Shardsclaw",
+  "description": "Shardsclaw is an independently maintained fork of OpenClaw: a self-hosted gateway connecting configured messaging channels to AI agents. Upstream release and service links remain externally operated.",
   "redirects": [
     {
       "source": "/cli/claws",
@@ -1336,9 +1336,17 @@
             "tab": "Get started",
             "groups": [
               {
-                "group": "Overview",
+                "group": "Shardsclaw overview",
                 "pages": [
                   "index",
+                  "concepts/features",
+                  "start/hubs",
+                  "start/docs-directory"
+                ]
+              },
+              {
+                "group": "OpenClaw upstream context (not Shardsclaw)",
+                "pages": [
                   "start/why-openclaw",
                   "start/why-openclaw/the-trust-boundary",
                   "start/why-openclaw/policy-as-code",
@@ -1346,10 +1354,7 @@
                   "start/why-openclaw/secrets",
                   "start/why-openclaw/versioned-state-guarded-upgrades",
                   "start/why-openclaw/provenance",
-                  "start/why-openclaw/openclaw-and-hermes-agent",
-                  "concepts/features",
-                  "start/hubs",
-                  "start/docs-directory"
+                  "start/why-openclaw/openclaw-and-hermes-agent"
                 ]
               },
               {
@@ -1376,110 +1381,120 @@
             "tab": "Install",
             "groups": [
               {
-                "group": "Install overview",
+                "group": "Shardsclaw source build",
                 "pages": [
-                  "install/index",
-                  "install/installer"
+                  "install/index"
                 ]
               },
               {
-                "group": "Runtimes",
+                "group": "OpenClaw upstream installation reference (not Shardsclaw)",
                 "pages": [
-                  "install/node",
-                  "install/node-compatibility",
-                  "install/bun",
-                  "install/bun-compatibility",
-                  "install/standalone",
-                  "install/nix"
-                ]
-              },
-              {
-                "group": "Maintenance",
-                "pages": [
-                  "install/backups",
-                  "install/updating",
                   {
-                    "group": "Updating",
+                    "group": "Install overview",
                     "pages": [
-                      "install/updating/update-methods",
-                      "install/updating/automatic-updates",
-                      "install/updating/rollback-and-recovery"
-                    ]
-                  },
-                  "install/update-troubleshooting",
-                  {
-                    "group": "Migrating",
-                    "pages": [
-                      "install/migrating",
-                      "install/migrating-claude",
-                      "install/migrating-hermes",
-                      "prose"
-                    ]
-                  },
-                  "install/uninstall",
-                  "install/development-channels"
-                ]
-              },
-              {
-                "group": "Containers",
-                "pages": [
-                  "install/docker",
-                  {
-                    "group": "Docker",
-                    "pages": [
-                      "install/docker/environment-variables",
-                      "install/docker/networking-and-storage",
-                      "install/docker/compose-operations",
-                      "install/docker/sandbox-and-troubleshooting"
-                    ]
-                  },
-                  "install/podman"
-                ]
-              },
-              {
-                "group": "Hosting",
-                "pages": [
-                  "vps",
-                  {
-                    "group": "App platforms",
-                    "pages": [
-                      "install/cloudflare",
-                      "install/daytona",
-                      "install/exe-dev",
-                      "install/fly",
-                      "install/northflank",
-                      "install/railway",
-                      "install/render",
-                      "install/upstash"
+                      "install/installer"
                     ]
                   },
                   {
-                    "group": "Cloud servers",
+                    "group": "Runtimes",
                     "pages": [
-                      "install/azure",
-                      "install/digitalocean",
-                      "install/gcp",
-                      "install/hetzner",
-                      "install/hostinger",
-                      "install/oracle"
+                      "install/node",
+                      "install/node-compatibility",
+                      "install/bun",
+                      "install/bun-compatibility",
+                      "install/standalone",
+                      "install/nix"
                     ]
                   },
                   {
-                    "group": "Self-hosted and local",
+                    "group": "Maintenance",
                     "pages": [
-                      "install/ansible",
-                      "install/docker-vm-runtime",
-                      "install/kubernetes",
-                      "install/macos-vm",
-                      "install/raspberry-pi"
+                      "install/backups",
+                      "install/updating",
+                      {
+                        "group": "Updating",
+                        "pages": [
+                          "install/updating/update-methods",
+                          "install/updating/automatic-updates",
+                          "install/updating/rollback-and-recovery"
+                        ]
+                      },
+                      "install/update-troubleshooting",
+                      {
+                        "group": "Migrating",
+                        "pages": [
+                          "install/migrating",
+                          "install/migrating-claude",
+                          "install/migrating-hermes",
+                          "prose"
+                        ]
+                      },
+                      "install/uninstall",
+                      "install/development-channels"
+                    ]
+                  },
+                  {
+                    "group": "Containers",
+                    "pages": [
+                      "install/docker",
+                      {
+                        "group": "Docker",
+                        "pages": [
+                          "install/docker/environment-variables",
+                          "install/docker/networking-and-storage",
+                          "install/docker/compose-operations",
+                          "install/docker/sandbox-and-troubleshooting"
+                        ]
+                      },
+                      "install/podman"
+                    ]
+                  },
+                  {
+                    "group": "Hosting",
+                    "pages": [
+                      "vps",
+                      {
+                        "group": "App platforms",
+                        "pages": [
+                          "install/cloudflare",
+                          "install/daytona",
+                          "install/exe-dev",
+                          "install/fly",
+                          "install/northflank",
+                          "install/railway",
+                          "install/render",
+                          "install/upstash"
+                        ]
+                      },
+                      {
+                        "group": "Cloud servers",
+                        "pages": [
+                          "install/azure",
+                          "install/digitalocean",
+                          "install/gcp",
+                          "install/hetzner",
+                          "install/hostinger",
+                          "install/oracle"
+                        ]
+                      },
+                      {
+                        "group": "Self-hosted and local",
+                        "pages": [
+                          "install/ansible",
+                          "install/docker-vm-runtime",
+                          "install/kubernetes",
+                          "install/macos-vm",
+                          "install/raspberry-pi"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Advanced setup",
+                    "pages": [
+                      "start/setup"
                     ]
                   }
-                ]
-              },
-              {
-                "group": "Advanced setup",
-                "pages": [
-                  "start/setup"
                 ]
               }
             ]
@@ -2292,7 +2307,9 @@
                   },
                   {
                     "group": "Decision models",
-                    "pages": ["providers/liquid-ai"]
+                    "pages": [
+                      "providers/liquid-ai"
+                    ]
                   },
                   {
                     "group": "Speech and audio",

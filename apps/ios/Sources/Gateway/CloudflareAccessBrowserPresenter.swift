@@ -48,7 +48,7 @@ final class CloudflareAccessBrowserPresenter: NSObject, @MainActor SFSafariViewC
                 try await self.prompt(
                     title: "Sign in to your website",
                     message: "Sign in to the gateway website in the browser, then tap Done. " +
-                        "You will return here to continue connecting OpenClaw.",
+                        "You will return here to continue connecting Shardsclaw.",
                     phase: .introduction,
                     intentID: intentID)
                 try self.check(intentID)
@@ -59,7 +59,7 @@ final class CloudflareAccessBrowserPresenter: NSObject, @MainActor SFSafariViewC
                 try self.check(intentID)
                 try await self.prompt(
                     title: "Continue connecting?",
-                    message: "If you finished signing in to the website, continue to securely connect OpenClaw. " +
+                    message: "If you finished signing in to the website, continue to securely connect Shardsclaw. " +
                         "The next browser step verifies your access.",
                     phase: .confirmation,
                     intentID: intentID)

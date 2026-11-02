@@ -14,7 +14,7 @@ const enLogin = {
   },
   login: {
     unsupportedBrowser: {
-      title: "Update your browser to use OpenClaw",
+      title: "Update your browser to use Shardsclaw",
       description:
         "This browser is missing features the Control UI needs to display menus and dialogs.",
       apple: "Use macOS 26.2 or iOS 26.2 or later, with Safari 26.2 or later.",
@@ -24,13 +24,13 @@ const enLogin = {
       opened: "Opened in your default browser.",
       failed: "Could not open your browser. Copy this page’s address into an up-to-date browser.",
     },
-    heading: "Connect to OpenClaw",
-    lede: "Enter the Gateway URL and secret, or open the one-time link that openclaw dashboard prints on the Gateway host.",
+    heading: "Connect to Shardsclaw",
+    lede: "Enter the Gateway URL and secret, or open the one-time link that shardsclaw dashboard prints on the Gateway host.",
     gatewayUrl: "Gateway URL",
     gatewaySettings: "Gateway settings",
     secret: "Gateway secret",
     setupCodeHint:
-      "This is a device setup code for the OpenClaw mobile app, not the Gateway secret. Paste it in the app's Gateway settings instead; the Gateway secret comes from openclaw gateway auth-token --show on the Gateway host.",
+      "This is a device setup code for the OpenClaw mobile app, not the Gateway secret. Paste it in the app's Gateway settings instead; the Gateway secret comes from shardsclaw gateway auth-token --show on the Gateway host.",
     secretPlaceholder: "Paste the token or type the password",
     runOnHost: "Run on the Gateway host",
     connection: {
@@ -53,10 +53,10 @@ const enLogin = {
       },
       profileUnavailable: {
         title: "Couldn't verify your account",
-        summary: "OpenClaw couldn't check your account right now. Please try again shortly.",
+        summary: "Shardsclaw couldn't check your account right now. Please try again shortly.",
         stepRetry: "Retry shortly.",
         stepAdmin:
-          "If this continues, ask the person who manages OpenClaw to check account access.",
+          "If this continues, ask the person who manages Shardsclaw to check account access.",
       },
       verifiedUserRequired: {
         title: "Verified identity required",
@@ -74,7 +74,7 @@ const enLogin = {
         stepAdmin:
           "Ask a Gateway administrator to assign your profile a role, or to grant or restore your access.",
         stepFindProfile:
-          "Administrators can find your profile with openclaw users list --json, then assign a role with users.setRole.",
+          "Administrators can find your profile with shardsclaw users list --json, then assign a role with users.setRole.",
         stepReconnect: "This page reconnects on its own once access is granted.",
       },
       authRequired: {
@@ -82,10 +82,10 @@ const enLogin = {
         passwordTitle: "This Gateway expects its password",
         summary:
           "The Gateway at {host} is reachable, but it needs a matching token or password before this browser can connect.",
-        stepPaste: "Paste the token from openclaw gateway auth-token --show into Gateway secret.",
+        stepPaste: "Paste the token from shardsclaw gateway auth-token --show into Gateway secret.",
         stepPassword: "Type the configured Gateway password into Gateway secret.",
         stepGenerate:
-          "If no token is configured, run openclaw doctor --generate-gateway-token on the gateway host.",
+          "If no token is configured, run shardsclaw doctor --generate-gateway-token on the gateway host.",
         stepConnect: "Click Connect again after updating the Gateway secret.",
       },
       authFailed: {
@@ -93,7 +93,7 @@ const enLogin = {
         summary:
           "{host} rejected the supplied Gateway secret. Check that it belongs to this Gateway and try again.",
         stepDashboard:
-          "Run openclaw dashboard --no-open for a fresh URL, or openclaw gateway auth-token --show to recover the token.",
+          "Run shardsclaw dashboard --no-open for a fresh URL, or shardsclaw gateway auth-token --show to recover the token.",
         stepReplace: "Replace the Gateway secret with the token for this Gateway URL.",
       },
       bootstrapInvalid: {
@@ -103,7 +103,7 @@ const enLogin = {
         stepOpen:
           "Open the fresh link that the command opens or copies in this browser. Pairing links can be used only once and expire after ten minutes.",
         stepJson:
-          "If the browser or clipboard is unavailable, run openclaw dashboard --json on the Gateway host and open its browserUrl in this browser.",
+          "If the browser or clipboard is unavailable, run shardsclaw dashboard --json on the Gateway host and open its browserUrl in this browser.",
       },
       trustedProxy: {
         title: "Proxy authentication required",
@@ -133,7 +133,7 @@ const enLogin = {
         upgradeSummary:
           "This browser is already paired with {host}, but it asked for access it was not approved for. Approve the new request on the Gateway host.",
         stepDashboard:
-          "Prefer a link? Run openclaw dashboard on the Gateway host and open the one-time URL it prints in this browser.",
+          "Prefer a link? Run shardsclaw dashboard on the Gateway host and open the one-time URL it prints in this browser.",
         stepLatest:
           "That command prints the exact approve command for the newest pending request; run that one as well.",
         stepReconnect: "Once approved, click Connect.",
@@ -170,21 +170,22 @@ const enLogin = {
           "The served Control UI and the running Gateway do not agree on the supported connection protocol.",
         refresh: "Refresh page",
         stepDashboard:
-          "Reopen the served dashboard with openclaw dashboard so the UI and Gateway come from the same install.",
+          "Reopen the served dashboard with shardsclaw dashboard so the UI and Gateway come from the same install.",
         stepDevUi:
           "If using pnpm ui:dev, rebuild or restart the dev UI against the current checkout.",
         stepRestart:
-          "Restart the Gateway after updating OpenClaw so it serves the current protocol.",
+          "Restart the Gateway after updating Shardsclaw so it serves the current protocol.",
       },
       network: {
         title: "Gateway unreachable",
         summary:
           "The browser could not reach {host}. Check the address and transport before retrying credentials.",
-        stepGateway: "Confirm the Gateway is running with openclaw status or openclaw gateway run.",
+        stepGateway:
+          "Confirm the Gateway is running with shardsclaw status or shardsclaw gateway run.",
         stepUrl:
           "Check the Gateway URL and use wss:// when the Gateway is behind HTTPS/Tailscale Serve.",
         stepDashboard:
-          "Reopen the dashboard with openclaw dashboard --no-open to recopy the current URL and auth details.",
+          "Reopen the dashboard with shardsclaw dashboard --no-open to recopy the current URL and auth details.",
       },
     },
   },

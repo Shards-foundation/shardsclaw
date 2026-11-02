@@ -14,7 +14,7 @@ enum WatchMessagingError: LocalizedError {
         case .notPaired:
             "WATCH_UNAVAILABLE: no paired Apple Watch"
         case .watchAppNotInstalled:
-            "WATCH_UNAVAILABLE: OpenClaw watch companion app is not installed"
+            "WATCH_UNAVAILABLE: Shardsclaw watch companion app is not installed"
         case .admissionUnavailable:
             "WATCH_UNAVAILABLE: Watch chat storage is not ready"
         }
@@ -189,7 +189,7 @@ final class WatchMessagingService: @preconcurrency WatchMessagingServicing {
             self.legacyChatRejectedHandler?()
             throw OpenClawWatchChatDeliveryError(
                 code: "upgrade_required",
-                message: "Update OpenClaw on iPhone and Apple Watch before sending Watch messages.")
+                message: "Update Shardsclaw on iPhone and Apple Watch before sending Watch messages.")
         case let .execApprovalResolve(event):
             self.execApprovalResolveHandler?(event)
         case let .execApprovalSnapshotRequest(event):

@@ -562,7 +562,7 @@ final class TalkRealtimeWebRTCSession: NSObject {
         self.assistantAudioFinishTask = nil
         self.delegate?.realtimeSession(
             self,
-            didChangeStatus: name == Self.controlToolName ? "Updating OpenClaw" : "Asking OpenClaw")
+            didChangeStatus: name == Self.controlToolName ? "Updating Shardsclaw" : "Asking Shardsclaw")
         let task = Task { @MainActor [weak self] in
             guard let self else { return }
             if name == Self.controlToolName {
@@ -582,7 +582,7 @@ final class TalkRealtimeWebRTCSession: NSObject {
         let statusTask = Task { @MainActor [weak self] in
             try? await Task.sleep(nanoseconds: UInt64(Self.stillWorkingDelaySeconds) * 1_000_000_000)
             guard let self, !Task.isCancelled, !self.stopped else { return }
-            self.delegate?.realtimeSession(self, didChangeStatus: "Still asking OpenClaw")
+            self.delegate?.realtimeSession(self, didChangeStatus: "Still asking Shardsclaw")
         }
         defer {
             statusTask.cancel()
@@ -648,11 +648,11 @@ final class TalkRealtimeWebRTCSession: NSObject {
             let confirmationInstruction = Self.voiceConfirmationInstruction(from: error)
             self.delegate?.realtimeSession(
                 self,
-                didChangeStatus: confirmationInstruction == nil ? "OpenClaw unavailable" : "Confirmation needed")
+                didChangeStatus: confirmationInstruction == nil ? "Shardsclaw unavailable" : "Confirmation needed")
             let fallbackMessage = confirmationInstruction ?? [
-                "OpenClaw consult did not finish quickly enough.",
+                "Shardsclaw consult did not finish quickly enough.",
                 "Give a brief spoken fallback from the realtime conversation",
-                "and ask the user to try again if they need OpenClaw-specific context.",
+                "and ask the user to try again if they need Shardsclaw-specific context.",
             ].joined(separator: " ")
             self.submitToolResult(callId: callId, result: [
                 "error": fallbackMessage,
@@ -673,7 +673,7 @@ final class TalkRealtimeWebRTCSession: NSObject {
                 method: "talk.client.steer",
                 paramsJSON: json,
                 timeoutSeconds: Self.toolCallTimeoutSeconds)
-            let message = Self.controlResultMessage(from: res) ?? "OpenClaw updated the active run."
+            let message = Self.controlResultMessage(from: res) ?? "Shardsclaw updated the active run."
             self.submitToolResult(callId: callId, result: ["result": message])
         } catch is CancellationError {
             return
@@ -683,7 +683,7 @@ final class TalkRealtimeWebRTCSession: NSObject {
             }
             Self.logger.error("realtime control tool failed: \(error.localizedDescription, privacy: .public)")
             self.submitToolResult(callId: callId, result: [
-                "error": "OpenClaw could not update the active run.",
+                "error": "Shardsclaw could not update the active run.",
             ])
         }
         guard !Task.isCancelled, !self.stopped else { return }
@@ -700,7 +700,7 @@ final class TalkRealtimeWebRTCSession: NSObject {
             ?? (record["request"] as? String)?.trimmedNonEmpty
             ?? (record["query"] as? String)?.trimmedNonEmpty
         guard let text else {
-            throw Self.failure(20, "OpenClaw control tool call missing text")
+            throw Self.failure(20, "Shardsclaw control tool call missing text")
         }
         var params: [String: Any] = [
             "sessionKey": sessionKey,
@@ -788,16 +788,16 @@ final class TalkRealtimeWebRTCSession: NSObject {
                         continue
                     }
                     if chatEvent.state == "final" {
-                        return OpenClawChatEventText.assistantText(from: chatEvent) ?? "OpenClaw finished with no text."
+                        return OpenClawChatEventText.assistantText(from: chatEvent) ?? "Shardsclaw finished with no text."
                     }
                     if chatEvent.state == "aborted" {
-                        throw Self.failure(9, "OpenClaw realtime tool call aborted")
+                        throw Self.failure(9, "Shardsclaw realtime tool call aborted")
                     }
                     if chatEvent.state == "error" {
-                        throw Self.failure(10, "OpenClaw realtime tool call failed")
+                        throw Self.failure(10, "Shardsclaw realtime tool call failed")
                     }
                 }
-                throw Self.failure(11, "OpenClaw realtime tool event stream ended")
+                throw Self.failure(11, "Shardsclaw realtime tool event stream ended")
             }
             group.addTask { [gateway, target] in
                 try await Self.waitForAgentResult(
@@ -808,10 +808,10 @@ final class TalkRealtimeWebRTCSession: NSObject {
             }
             group.addTask {
                 try await Task.sleep(nanoseconds: UInt64(timeoutSeconds) * 1_000_000_000)
-                throw Self.failure(12, "OpenClaw realtime tool call timed out")
+                throw Self.failure(12, "Shardsclaw realtime tool call timed out")
             }
             guard let result = try await group.next() else {
-                throw Self.failure(13, "OpenClaw realtime tool call did not finish")
+                throw Self.failure(13, "Shardsclaw realtime tool call did not finish")
             }
             group.cancelAll()
             return result
@@ -853,15 +853,15 @@ final class TalkRealtimeWebRTCSession: NSObject {
                     return text
                 }
             case "error":
-                throw Self.failure(14, wait.error ?? "OpenClaw realtime tool call failed")
+                throw Self.failure(14, wait.error ?? "Shardsclaw realtime tool call failed")
             case "aborted", "cancelled", "canceled":
-                throw Self.failure(15, wait.stopReason ?? "OpenClaw realtime tool call aborted")
+                throw Self.failure(15, wait.stopReason ?? "Shardsclaw realtime tool call aborted")
             default:
                 break
             }
         }
         let phase = sawProviderStart ? "provider" : "queue"
-        throw Self.failure(16, "OpenClaw realtime tool call timed out in \(phase)")
+        throw Self.failure(16, "Shardsclaw realtime tool call timed out in \(phase)")
     }
 
     private static func agentWait(

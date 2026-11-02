@@ -6,7 +6,7 @@ const enMemoryImport = {
   onboarding: {
     memoryImport: {
       title: en.onboarding.memoryImport.title,
-      body: "OpenClaw found memory from other coding assistants. Import it into your agent workspace?",
+      body: "Shardsclaw found memory from other coding assistants. Import it into your agent workspace?",
       plannedCount: "{count} ready to import",
       alreadyImported: "Already imported: {count}",
       sourceUnavailable: "Source path unavailable",
@@ -21,7 +21,7 @@ const enMemoryImport = {
       connectionChanged: "Skipped: the Gateway connection changed during the import",
       unknownError: "Request failed",
       doneTitle: "Memory import finished",
-      doneBody: "Migrated {migrated}, skipped {skipped}. You can continue setting up OpenClaw.",
+      doneBody: "Migrated {migrated}, skipped {skipped}. You can continue setting up Shardsclaw.",
     },
   },
   memoryImport: {
@@ -55,13 +55,13 @@ const enMemoryImport = {
     confirmDescription: "Copy {count} selected memory files into this agent workspace.",
     confirmReplace:
       "Existing destination files will be backed up in the migration report before replacement.",
-    confirmBackup: "OpenClaw creates a verified pre-import backup before copying memory.",
+    confirmBackup: "Shardsclaw creates a verified pre-import backup before copying memory.",
     confirmImport: "Import memory",
     disconnected: "Connect to the gateway to import memory.",
     adminRequired: "Memory import requires operator.admin access.",
     title: "Import assistant memory",
     subtitle:
-      "Review Codex consolidated memory and Claude Code auto-memory before copying it into OpenClaw.",
+      "Review Codex consolidated memory and Claude Code auto-memory before copying it into Shardsclaw.",
     agent: "Destination agent",
     replaceExisting: "Replace existing imports",
     replaceHint: "Preview conflicts again and preserve item backups before replacement.",

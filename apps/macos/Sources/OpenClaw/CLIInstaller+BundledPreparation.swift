@@ -44,7 +44,7 @@ extension CLIInstaller {
         checkCurrent: @escaping @MainActor @Sendable () async throws -> Void,
         statusHandler: @escaping @MainActor @Sendable (String) async -> Void) async throws -> String
     {
-        await statusHandler(String(localized: "Repairing the OpenClaw Gateway update…"))
+        await statusHandler(String(localized: "Repairing the Shardsclaw Gateway update…"))
         try await checkCurrent()
         // The app has drained its producer. Doctor owns core and plugin repairs,
         // while native custody continues to own service publication and activation.
@@ -125,7 +125,7 @@ extension CLIInstaller {
         }
         let state = AppProfile.current.stateDirectoryURL()
         guard let cli else {
-            await statusHandler("Preparing OpenClaw…")
+            await statusHandler("Preparing Shardsclaw…")
             if try await GatewayLaunchAgentManager.runtimePinRecord(
                 stateDirectory: state, profile: .current)?.status == .migrationPending
             { return try await manager.currentBundledRuntime().packageRoot.path }
@@ -134,7 +134,7 @@ extension CLIInstaller {
         if GatewayLaunchAgentManager.bundledRuntimeReplacementError(
             appManaged: true, installedRuntimePath: cli.prefix.last, stateDirectory: state) == nil
         {
-            await statusHandler("Preparing OpenClaw…")
+            await statusHandler("Preparing Shardsclaw…")
             guard Self.managedSetupPolicyAllowsUpdate(cli: cli) else {
                 throw GatewayHostingError(
                     message: "The Gateway update policy is operator-managed. " +

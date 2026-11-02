@@ -19,7 +19,7 @@ final class PostUpdateModel {
     }
 
     var phase: Phase = .checking
-    var title = String(localized: "Finishing your OpenClaw update")
+    var title = String(localized: "Finishing your Shardsclaw update")
     var message = String(localized: "Checking the Mac app and Gateway…")
     var details: String?
 
@@ -138,8 +138,8 @@ enum PostUpdateNotificationOutcome: Equatable {
 @MainActor
 final class PostUpdateController: NSObject, NSWindowDelegate {
     static let shared = PostUpdateController()
-    static let updateGuideURL = URL(string: "https://docs.openclaw.ai/install/updating")!
-    static let supportURL = URL(string: "https://community.openclaw.ai/")!
+    static let updateGuideURL = URL(string: "https://github.com/Shards-inc/shardsclaw/blob/main/docs/install/updating.md")!
+    static let supportURL = URL(string: "https://github.com/Shards-inc/shardsclaw/issues")!
 
     let model = PostUpdateModel()
     private var receipt: PostAppUpdateReceipt?
@@ -252,7 +252,7 @@ final class PostUpdateController: NSObject, NSWindowDelegate {
         let hosting = NSHostingController(rootView: PostUpdateView(model: model))
         let window = NSWindow(contentViewController: hosting)
         window.isRestorable = false
-        window.title = String(localized: "OpenClaw updated")
+        window.title = String(localized: "Shardsclaw updated")
         window.setContentSize(NSSize(width: 560, height: 600))
         window.styleMask = OnboardingController.windowStyleMask
         window.contentMinSize = NSSize(width: 560, height: 600)
@@ -273,7 +273,7 @@ final class PostUpdateController: NSObject, NSWindowDelegate {
         guard let receipt, task == nil else { return }
         if self.stopSupersededUpdate(receipt) { return }
         self.model.phase = .checking
-        self.model.title = String(localized: "Finishing your OpenClaw update")
+        self.model.title = String(localized: "Finishing your Shardsclaw update")
         self.model.message = String(localized: "Checking the Mac app and Gateway…")
         self.model.details = nil
         self.window?.standardWindowButton(.closeButton)?.isEnabled = false
@@ -413,9 +413,9 @@ final class PostUpdateController: NSObject, NSWindowDelegate {
         case .completeSilently:
             self.model.phase = .complete
             self.model.message = connectionMode == .local
-                ? String(format: String(localized: "OpenClaw %@ and its Gateway are ready."), receipt.toVersion)
+                ? String(format: String(localized: "Shardsclaw %@ and its Gateway are ready."), receipt.toVersion)
                 : String(
-                    format: String(localized: "OpenClaw %@ and its Mac node runtime are ready."),
+                    format: String(localized: "Shardsclaw %@ and its Mac node runtime are ready."),
                     receipt.toVersion)
             self.model.details = nil
             PostAppUpdateReceiptStore.clear(receipt: self.receipt ?? receipt)
@@ -626,36 +626,36 @@ final class PostUpdateController: NSObject, NSWindowDelegate {
         self.model.phase = .complete
         self.model.title = String(localized: "Welcome back")
         self.model.message = connectionMode == .local
-            ? String(format: String(localized: "OpenClaw %@ and its Gateway are ready."), receipt.toVersion)
-            : String(format: String(localized: "OpenClaw %@ and its Mac node runtime are ready."), receipt.toVersion)
+            ? String(format: String(localized: "Shardsclaw %@ and its Gateway are ready."), receipt.toVersion)
+            : String(format: String(localized: "Shardsclaw %@ and its Mac node runtime are ready."), receipt.toVersion)
         self.model.details = switch (notification, notificationRetryScheduled) {
         case (.retryLater, true):
-            String(localized: "Your agent could not be notified yet. OpenClaw will retry after the next app launch.")
+            String(localized: "Your agent could not be notified yet. Shardsclaw will retry after the next app launch.")
         case (.retryLater, false):
             if connectionMode == .local {
                 String(
                     localized: """
-                    OpenClaw could not notify your agent automatically. \
+                    Shardsclaw could not notify your agent automatically. \
                     The app and Gateway update are complete.
                     """)
             } else {
                 String(
                     localized: """
-                    OpenClaw could not notify your agent automatically. \
+                    Shardsclaw could not notify your agent automatically. \
                     The app and Mac node update are complete.
                     """)
             }
         case (.deliveryUnconfirmed, _):
             String(
                 localized: """
-                OpenClaw could not confirm the agent notification. \
+                Shardsclaw could not confirm the agent notification. \
                 It will not retry, to avoid a duplicate welcome.
                 """)
         case (.skippedUnsupportedGateway, _):
             String(
-                localized: "The remote Gateway is older than this Mac app, so OpenClaw skipped the agent notification.")
+                localized: "The remote Gateway is older than this Mac app, so Shardsclaw skipped the agent notification.")
         case (.skippedWhilePaused, _):
-            String(localized: "The Gateway remains paused, so OpenClaw did not wake your agent.")
+            String(localized: "The Gateway remains paused, so Shardsclaw did not wake your agent.")
         default:
             nil
         }
@@ -732,7 +732,7 @@ final class PostUpdateController: NSObject, NSWindowDelegate {
         }
 
         let text =
-            "OpenClaw updated to \(receipt.toVersion). Briefly welcome the user back and say you are updated, " +
+            "Shardsclaw updated to \(receipt.toVersion). Briefly welcome the user back and say you are updated, " +
             "then continue normally."
         guard let notificationReceipt = PostAppUpdateReceiptStore.setNotificationInFlight(
             true,
@@ -919,7 +919,7 @@ final class PostUpdateController: NSObject, NSWindowDelegate {
                 message: String(localized: "The Gateway could not be checked."),
                 details: String(
                     localized: """
-                    OpenClaw could not read the Gateway service ownership record. \
+                    Shardsclaw could not read the Gateway service ownership record. \
                     Retry after checking the Gateway LaunchAgent.
                     """))
         case .remote:
@@ -927,7 +927,7 @@ final class PostUpdateController: NSObject, NSWindowDelegate {
                 message: String(localized: "The Mac node could not be checked."),
                 details: String(
                     localized: """
-                    OpenClaw could not read the node service ownership record. \
+                    Shardsclaw could not read the node service ownership record. \
                     Retry after checking the node LaunchAgent.
                     """))
         case .unconfigured:
@@ -940,7 +940,7 @@ final class PostUpdateController: NSObject, NSWindowDelegate {
     {
         self.model.phase = .failed
         self.model.title = connectionMode == .remote
-            ? String(localized: "Finishing your OpenClaw update")
+            ? String(localized: "Finishing your Shardsclaw update")
             : String(localized: "Gateway update needs help")
         self.model.message = message
         self.model.details = details
@@ -1226,14 +1226,14 @@ extension PostUpdateController {
             message: String(localized: "The Gateway version is updated and still running on Node."),
             details: String(
                 localized: """
-                Choose Retry or relaunch OpenClaw to switch this same-version Gateway to the bundled runtime.
+                Choose Retry or relaunch Shardsclaw to switch this same-version Gateway to the bundled runtime.
                 """))
     }
 
     private func deferRuntimeVerification() {
         self.model.phase = .deferred
-        self.model.message = String(localized: "The Gateway remains paused, so OpenClaw did not wake your agent.")
-        self.model.details = String(localized: "Resume OpenClaw to finish starting and verifying the Gateway.")
+        self.model.message = String(localized: "The Gateway remains paused, so Shardsclaw did not wake your agent.")
+        self.model.details = String(localized: "Resume Shardsclaw to finish starting and verifying the Gateway.")
     }
 
     private func shouldDeferPausedLegacyRuntime(
@@ -1346,7 +1346,7 @@ extension PostUpdateController {
             guard installed else {
                 self.fail(
                     message: String(localized: "Gateway recovery failed."),
-                    details: String(localized: "The managed OpenClaw runtime could not be reinstalled."))
+                    details: String(localized: "The managed Shardsclaw runtime could not be reinstalled."))
                 return false
             }
         }
@@ -1459,7 +1459,7 @@ extension PostUpdateController {
             self.fail(
                 message: String(localized: "The Gateway could not reconnect."),
                 details: String(
-                    localized: "OpenClaw installed the update but could not verify the Gateway connection."))
+                    localized: "Shardsclaw installed the update but could not verify the Gateway connection."))
             return .failed
         }
         return .verified

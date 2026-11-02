@@ -5,15 +5,15 @@ const catalog = {
   chat: {
     permissions: {
       title: "Grant {permissions}",
-      neededOn: "OpenClaw needs access on {node} to continue this action.",
+      neededOn: "Shardsclaw needs access on {node} to continue this action.",
       openApp:
-        "Grant access in the OpenClaw Mac app on that device: Settings → This Mac → Permissions. Then tell the agent to try again.",
+        "Grant access in the Shardsclaw Mac app on that device: Settings → This Mac → Permissions. Then tell the agent to try again.",
       ready: "Access is available. You can ask the agent to try again.",
       following: "Then grant the remaining permissions: {permissions}.",
       actions: {
         "not-determined": "Grant {permissions}",
         denied: "Open System Settings",
-        "restart-required": "Relaunch OpenClaw",
+        "restart-required": "Relaunch Shardsclaw",
         "stale-grant": "Open System Settings",
         "disabled-in-openclaw": "Enable {permissions}",
       },
@@ -21,12 +21,12 @@ const catalog = {
       retryMessage: "I granted {permissions}, try again.",
       states: {
         "not-determined": "Choose Grant to review the permission request.",
-        denied: "Open System Settings to allow access for OpenClaw.",
+        denied: "Open System Settings to allow access for Shardsclaw.",
         "restart-required":
-          "If you enabled access in System Settings, relaunch OpenClaw to make it available.",
+          "If you enabled access in System Settings, relaunch Shardsclaw to make it available.",
         "stale-grant":
           "macOS may be using a stale permission grant. Open System Settings to review it.",
-        "disabled-in-openclaw": "Choose Enable to review and enable this capability in OpenClaw.",
+        "disabled-in-openclaw": "Choose Enable to review and enable this capability in Shardsclaw.",
       },
       capabilities: {
         notifications: "Notifications",
@@ -36,7 +36,7 @@ const catalog = {
         microphone: "Microphone",
         speechRecognition: "Speech Recognition",
         camera: "Camera",
-        cameraEnabled: "Camera in OpenClaw",
+        cameraEnabled: "Camera in Shardsclaw",
         location: "Location",
         computerControl: "Computer Control",
         canvas: "Canvas",

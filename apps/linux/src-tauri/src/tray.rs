@@ -377,7 +377,7 @@ pub fn open_dashboard(app: &AppHandle) {
                     .submit_connect(),
                 Err(error) => {
                     eprintln!("{error}");
-                    crate::notify::notify(&current_app, "OpenClaw", &error);
+                    crate::notify::notify(&current_app, "Shardsclaw", &error);
                 }
             }
         }) {

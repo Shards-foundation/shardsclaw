@@ -22,14 +22,14 @@ struct GatewayCompatibilityIssue: Equatable {
         self.problem = problem
         let appProtocol = minimum == maximum ? "\(maximum)" : "\(minimum)–\(maximum)"
         let gatewayProtocol = rejection.expectedProtocol.map(String.init) ?? "unknown"
-        self.versions = "OpenClaw app: \(appVersion ?? "unknown"). " +
+        self.versions = "Shardsclaw app: \(appVersion ?? "unknown"). " +
             "App protocol: \(appProtocol). Gateway protocol: \(gatewayProtocol). " +
             "The Gateway did not report its release version."
     }
 
     var message: String {
         let action = self.problem.actionCommand.map { "Run \($0) on the Gateway host, then reconnect." }
-            ?? "Update app from https://docs.openclaw.ai/platforms/macos, then reconnect."
+            ?? "Update the Shardsclaw app using https://github.com/Shards-inc/shardsclaw/blob/main/docs/platforms/macos.md, then reconnect."
         return "\(self.problem.title). \(self.versions) \(self.problem.message) \(action)"
     }
 }

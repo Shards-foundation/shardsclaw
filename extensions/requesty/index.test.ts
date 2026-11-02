@@ -71,8 +71,8 @@ describe("requesty provider plugin", () => {
     });
 
     expect(baseStreamFn.mock.calls[0]?.[2]?.headers).toEqual({
-      "X-Title": "OpenClaw",
-      "HTTP-Referer": "https://openclaw.ai",
+      "X-Title": "Shardsclaw",
+      "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
       "X-Custom": "1",
     });
   });

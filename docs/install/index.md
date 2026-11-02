@@ -1,5 +1,5 @@
 ---
-summary: "Install OpenClaw - desktop app downloads, installer script, npm/pnpm/bun, from source, Docker, and more"
+summary: "Build Shardsclaw from source; inherited OpenClaw release and installer instructions are upstream-only references."
 read_when:
   - You need an install method other than the Getting Started quickstart
   - You want to download the Windows Hub or macOS desktop app instead of the CLI
@@ -8,13 +8,36 @@ read_when:
 title: "Install"
 ---
 
-## System requirements
+<Warning>
+Shardsclaw does not publish a Shardsclaw installer or package from this source repository. The inherited download, package-manager, container, and installer instructions below install OpenClaw upstream, not Shardsclaw. For the fork, follow the source-build steps here.
+</Warning>
+
+## Build Shardsclaw from source
+
+Use the Node.js and pnpm versions declared by this checkout's `package.json` and `node-version.mjs`.
+
+```bash
+git clone https://github.com/Shards-inc/shardsclaw.git
+cd shardsclaw
+pnpm install --frozen-lockfile
+pnpm build
+pnpm ui:build
+pnpm dev
+```
+
+The fork defines `shardsclaw` as its preferred installed executable alias. From the source checkout, invoke commands through `pnpm openclaw -- <command>`. Existing `openclaw` commands and `.openclaw` state/configuration paths remain for compatibility; this rebrand does not rename user data.
+
+## OpenClaw upstream installation reference (not Shardsclaw)
+
+The following inherited reference material documents upstream OpenClaw packages and downloads. Do not use these commands as Shardsclaw installation instructions.
+
+### System requirements
 
 - **Node 24.16.0+ on 24.x, or 26.1.0+** (24.22.1+/26.12.1+ strongly recommended for security) - Node 26 is recommended; the installer provisions Node 26 on macOS and Node 24 LTS on Linux when Node is missing (see [Node.js compatibility](/install/node-compatibility)).
 - **macOS, Linux, or Windows** - Windows users can start with the native Windows Hub app, the PowerShell CLI installer, or a WSL2 Gateway. See [Windows](/platforms/windows).
 - `pnpm` is only needed if you build from source.
 
-## Download the desktop app
+### Download the desktop app
 
 Prefer a normal app download over the CLI? OpenClaw ships desktop companions:
 
@@ -31,7 +54,7 @@ and can set up a local Windows Gateway with bundled Bun or connect remotely.
 
 Both native desktop apps can provision a local Gateway during first-run setup, or connect to an existing remote Gateway.
 
-## Recommended: installer script
+### Recommended: installer script
 
 The fastest way to install. It detects your OS, installs Node if needed, installs OpenClaw, and launches onboarding.
 
@@ -69,9 +92,9 @@ To install without running onboarding:
 
 For all flags and CI/automation options, see [Installer internals](/install/installer).
 
-## Alternative install methods
+### Alternative install methods
 
-### Local prefix installer (`install-cli.sh`)
+#### Local prefix installer (`install-cli.sh`)
 
 Use this when you want OpenClaw and Node kept under a local prefix such as
 `~/.openclaw`, without depending on a system-wide Node install:
@@ -87,7 +110,7 @@ Already installed? Switch between package and git installs with
 `openclaw update --channel dev` and `openclaw update --channel stable`. See
 [Updating](/install/updating#switch-between-npm-and-git-installs).
 
-### npm, pnpm, or bun
+#### npm, pnpm, or bun
 
 If you already manage Node yourself:
 
@@ -152,7 +175,7 @@ If you already manage Node yourself:
   </Tab>
 </Tabs>
 
-### From source
+#### From source
 
 For contributors or anyone who wants to run from a local checkout:
 
@@ -185,20 +208,20 @@ Keep npm install scripts and optional dependencies enabled so pnpm can provision
 
 Or skip the global install and use `pnpm openclaw ...` from inside the repo. See [Setup](/start/setup) for full development workflows.
 
-### Standalone builds
+#### Standalone builds
 
 For application packaging or a deployment without a separate Node or Bun
 installation, build an executable and companion runtime directory from source.
 See [Standalone builds](/install/standalone) for modes, output files, signing,
 and the update boundary.
 
-### Install from the GitHub main checkout
+#### Install from the GitHub main checkout
 
 ```bash
 curl -fsSL --proto '=https' --tlsv1.2 https://openclaw.ai/install.sh | bash -s -- --install-method git --version main
 ```
 
-### Containers and package managers
+#### Containers and package managers
 
 <CardGroup cols={2}>
   <Card title="Ansible" href="/install/ansible" icon="server">
@@ -218,7 +241,7 @@ curl -fsSL --proto '=https' --tlsv1.2 https://openclaw.ai/install.sh | bash -s -
   </Card>
 </CardGroup>
 
-## Verify the install
+### Verify the install
 
 ```bash
 openclaw --version      # confirm the CLI is available
@@ -232,7 +255,7 @@ If you want managed startup after install:
 - Linux/WSL2: systemd user service via the same commands
 - Native Windows: Scheduled Task first, with a per-user Startup-folder login item fallback if task creation is denied
 
-## Next: run onboarding and connect a channel
+### Next: run onboarding and connect a channel
 
 <CardGroup cols={2}>
   <Card title="Getting started" href="/start/getting-started" icon="rocket">
@@ -243,7 +266,7 @@ If you want managed startup after install:
   </Card>
 </CardGroup>
 
-## Hosting and deployment
+### Hosting and deployment
 
 Deploy OpenClaw on a cloud server or VPS. See [Linux server](/vps) for the full
 provider picker (DigitalOcean, Hetzner, Hostinger, Fly.io, GCP, Azure, Railway,
@@ -272,7 +295,7 @@ template.
   </Card>
 </CardGroup>
 
-## Back up, update, migrate, or uninstall
+### Back up, update, migrate, or uninstall
 
 <CardGroup cols={3}>
   <Card title="Backups" href="/install/backups" icon="archive">
@@ -289,7 +312,7 @@ template.
   </Card>
 </CardGroup>
 
-## Troubleshooting: `openclaw` not found
+### Troubleshooting: `openclaw` not found
 
 Almost always a PATH issue: npm's global bin directory isn't on your shell's `PATH`. See [Node.js troubleshooting](/install/node#troubleshooting) for the full fix, including the Windows path.
 

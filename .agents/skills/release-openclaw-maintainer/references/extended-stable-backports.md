@@ -41,7 +41,7 @@ extended-stable package and publication constraints.
   unpublished advisory work through `$openclaw-ghsa-maintainer`; never expose
   private details before the security owner authorizes disclosure.
 - Use `$openclaw-testing` for proof selection, `$autoreview` before handoff,
-  and `$openclaw-pr-maintainer` for GitHub operations.
+  and `$shardsclaw-pr-maintainer` for GitHub operations.
 
 ## Flag SDK and Config Backports
 

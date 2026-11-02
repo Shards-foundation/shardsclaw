@@ -257,7 +257,7 @@ extension SettingsProTab {
                     ? String(
                         localized: "Relay remains available; direct mode adds an independent Gateway node.")
                     : String(
-                        localized: "Install the OpenClaw watch app before enabling direct mode.")),
+                        localized: "Install the Shardsclaw watch app before enabling direct mode.")),
                 value: .verbatim(
                     watchStatus.reachable
                         ? String(localized: "Reachable")
@@ -321,7 +321,7 @@ extension SettingsProTab {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Notifications are off")
                     .font(OpenClawType.subheadSemiBold)
-                Text("Enable Notifications to receive approval alerts while OpenClaw is not open.")
+                Text("Enable Notifications to receive approval alerts while Shardsclaw is not open.")
                     .font(OpenClawType.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -575,7 +575,7 @@ extension SettingsProTab {
                     OpenClawProMark(size: 96, shadowRadius: 18, interactive: true)
                         .accessibilityHidden(true)
                     VStack(spacing: 2) {
-                        Text("OpenClaw")
+                        Text("Shardsclaw")
                             .font(OpenClawType.title2SemiBold)
                         Text("Personal AI on your devices")
                             .font(OpenClawType.footnote)
@@ -604,27 +604,17 @@ extension SettingsProTab {
                     title: "Support",
                     icon: "questionmark.circle",
                     color: .blue,
-                    url: URL(string: "https://community.openclaw.ai/")!)
-                self.aboutLinkRow(
-                    title: "Website",
-                    icon: "globe",
-                    color: .blue,
-                    url: URL(string: "https://openclaw.ai")!)
+                    url: URL(string: "https://github.com/Shards-inc/shardsclaw/issues")!)
                 self.aboutLinkRow(
                     title: "Docs",
                     icon: "book.fill",
                     color: .orange,
-                    url: URL(string: "https://docs.openclaw.ai")!)
+                    url: URL(string: "https://github.com/Shards-inc/shardsclaw/tree/main/docs")!)
                 self.aboutLinkRow(
                     title: "GitHub",
                     icon: "chevron.left.slash.chevron.right",
                     color: .gray,
-                    url: URL(string: "https://github.com/openclaw/openclaw")!)
-                self.aboutLinkRow(
-                    title: "Discord",
-                    icon: "bubble.left.and.bubble.right.fill",
-                    color: .indigo,
-                    url: URL(string: "https://discord.gg/clawd")!)
+                    url: URL(string: "https://github.com/Shards-inc/shardsclaw")!)
             } footer: {
                 Text("© 2026 OpenClaw Foundation — MIT License.")
                     .font(OpenClawType.footnote)

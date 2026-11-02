@@ -115,9 +115,9 @@ key.
   </Accordion>
 
   <Accordion title="App attribution">
-    Requests to `router.requesty.ai` carry `HTTP-Referer: https://openclaw.ai` and
-    `X-Title: OpenClaw` so Requesty's dashboard can attribute usage to OpenClaw. Custom
-    headers you set elsewhere are preserved; these two are provider-owned.
+    Requests to `router.requesty.ai` carry `HTTP-Referer: https://github.com/Shards-inc/shardsclaw`
+    and `X-Title: Shardsclaw` so Requesty's dashboard can attribute usage to this fork.
+    The provider applies these defaults; custom headers supplied elsewhere are preserved.
   </Accordion>
 
   <Accordion title="Troubleshooting">

@@ -495,7 +495,7 @@ If an explicitly requested full local run fails, isolate the failed tests with
 prove a repair. For a PR CI failure, read its published classification, fix new
 failures, run `pnpm test:ci-failed <pr> --run` until those pass locally, then push
 once. Pre-existing failures follow the
-[failure-table landing rule](https://github.com/openclaw/openclaw/blob/main/.agents/skills/openclaw-pr-maintainer/references/landing.md#red-main-and-inherited-failures).
+[failure-table landing rule](https://github.com/Shards-inc/shardsclaw/blob/main/.agents/skills/shardsclaw-pr-maintainer/references/landing.md#red-main-and-inherited-failures).
 Never rerun CI just to chase green. For memory-constrained hosts explicitly
 running the full local suite:
 

@@ -220,7 +220,7 @@ extension GatewayConnectionController {
             message: message,
             actionLabel: "Retry",
             messagePresentation: .verbatim(message),
-            docsURL: URL(string: "https://docs.openclaw.ai/gateway/troubleshooting"),
+            docsURL: URL(string: "https://github.com/Shards-inc/shardsclaw/blob/main/docs/gateway/troubleshooting.md"),
             retryable: true,
             pauseReconnect: false)
     }

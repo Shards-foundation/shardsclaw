@@ -252,7 +252,7 @@ describe("provider attribution", () => {
     ],
     ["opencode", "https://opencode.ai/zen/v1", "opencode-native", "https://opencode.ai/zen/go/v1"],
   ])(
-    "identifies OpenClaw only on %s native routes",
+    "preserves the vendor originator only on %s native routes",
     (provider, baseUrl, endpointClass, otherUrl) => {
       const nativeGo = requestPolicy({
         provider,
@@ -265,7 +265,7 @@ describe("provider attribution", () => {
         attributionProvider: provider,
         allowsHiddenAttribution: false,
       });
-      expect(nativeGo.attributionHeaders).toEqual({ "User-Agent": "openclaw/2026.3.22" });
+      expect(nativeGo.attributionHeaders).toEqual({ "User-Agent": "shardsclaw/2026.3.22" });
 
       expect(
         requestPolicy({
@@ -345,8 +345,8 @@ describe("provider attribution", () => {
     {
       input: { provider: "or", api: "openai-completions", baseUrl: "https://openrouter.ai/api/v1" },
       headers: {
-        "HTTP-Referer": "https://openclaw.ai",
-        "X-OpenRouter-Title": "OpenClaw",
+        "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
+        "X-OpenRouter-Title": "Shardsclaw",
         "X-OpenRouter-Categories": "personal-agent,cli-agent",
       },
     },
@@ -357,7 +357,10 @@ describe("provider attribution", () => {
         api: "anthropic-messages",
         baseUrl: "https://ai-gateway.vercel.sh",
       },
-      headers: { "HTTP-Referer": "https://openclaw.ai", "X-Title": "OpenClaw" },
+      headers: {
+        "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
+        "X-Title": "Shardsclaw",
+      },
     },
     {
       input: {
@@ -368,7 +371,7 @@ describe("provider attribution", () => {
     },
     {
       input: { provider: "perplexity", transport: "http", capability: "other" },
-      headers: { "X-Pplx-Integration": "openclaw/2026.3.22" },
+      headers: { "X-Pplx-Integration": "shardsclaw/2026.3.22" },
     },
     {
       input: {

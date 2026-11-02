@@ -8,7 +8,7 @@
 
 ```bash
 gh api users/<login> --jq '{login,name,created_at,type}'
-.agents/skills/openclaw-pr-maintainer/scripts/github-activity.sh <login>
+.agents/skills/shardsclaw-pr-maintainer/scripts/github-activity.sh <login>
 ```
 
 - `--global` only for relevant GitHub-wide activity; up to five calls/person when enabled, never every item by default. Native caching; separate repo totals from contribution-graph totals + actual intervals. Missing/incomplete/cached/failed queries ≠ zero; private visibility affects totals. Activity ≠ patch correctness evidence.

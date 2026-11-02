@@ -6,20 +6,20 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
     />
-    <title>OpenClaw Control</title>
+    <title>Shardsclaw Control</title>
     <meta name="color-scheme" content="dark light" />
     <!-- These mirror the claw theme's --bg tokens for first paint; runtime theme application keeps them synchronized. -->
     <meta
       id="openclaw-theme-color-light"
       name="theme-color"
       media="(prefers-color-scheme: light)"
-      content="#f4f4f4"
+      content="#F0F4F8"
     />
     <meta
       id="openclaw-theme-color-dark"
       name="theme-color"
       media="(prefers-color-scheme: dark)"
-      content="#111318"
+      content="#0D1628"
     />
     <link id="openclaw-favicon-svg" rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
@@ -180,12 +180,12 @@
       }
 
       html {
-        background: #111318;
+        background: #0d1628;
         color-scheme: dark;
       }
 
       html[data-theme-mode="light"] {
-        background: #f4f4f4;
+        background: #f0f4f8;
         color-scheme: light;
       }
 
@@ -1135,19 +1135,19 @@
       hidden
     >
       <div class="mount-fallback__panel" tabindex="-1">
-        <p class="mount-fallback__eyebrow">OpenClaw Control UI</p>
+        <p class="mount-fallback__eyebrow">Shardsclaw Control UI</p>
         <h1 id="openclaw-mount-fallback-title">Control UI did not start</h1>
         <p id="openclaw-mount-fallback-summary">
           The browser loaded the static page, but the app bundle did not start. The gateway may be
-          restarting, or this page may reference assets from a different OpenClaw version.
+          restarting, or this page may reference assets from a different Shardsclaw version.
         </p>
         <ul>
-          <li>If startup fails, OpenClaw will retry the current app bundle automatically.</li>
+          <li>If startup fails, Shardsclaw will retry the current app bundle automatically.</li>
           <li>If this persists, reload or try a clean browser profile.</li>
           <li>
             See
             <a
-              href="https://docs.openclaw.ai/web/control-ui#blank-control-ui-page"
+              href="https://github.com/Shards-inc/shardsclaw/blob/main/docs/web/control-ui/connect-and-pair.md#blank-control-ui-page"
               target="_blank"
               rel="noopener noreferrer"
               >Control UI troubleshooting</a
@@ -1244,7 +1244,7 @@
           recoveryController = undefined;
           if (bootSettled) return;
           setSummary(
-            "The gateway is not reachable yet. OpenClaw will keep retrying while it restarts.",
+            "The gateway is not reachable yet. Shardsclaw will keep retrying while it restarts.",
           );
           scheduleRecovery();
         }
@@ -1295,7 +1295,7 @@
           setSummary(
             documentLoaded
               ? failureSummary
-              : "The browser is still loading the app. OpenClaw will keep waiting without interrupting the download.",
+              : "The browser is still loading the app. Shardsclaw will keep waiting without interrupting the download.",
           );
           if (documentLoaded) retryCurrentDocument();
           fallback.hidden = false;

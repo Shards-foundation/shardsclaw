@@ -46,8 +46,8 @@ it.each([
 it.each([
   [{ context: "About", brandName: "Northstar", attentionCount: 2 }, "(2) About — Northstar"],
   [{ context: "Ask Northstar", brandName: "Northstar" }, "Ask Northstar"],
-  [{ context: "Usage", attentionCount: 3 }, "(3) Usage — OpenClaw"],
-] as const)("formats document title %j", (options, title) => {
+  [{ context: "Usage", attentionCount: 3 }, "(3) Usage — Shardsclaw"],
+])("formats document title %j", (options, title) => {
   expect(formatDocumentTitle(options)).toBe(title);
 });
 

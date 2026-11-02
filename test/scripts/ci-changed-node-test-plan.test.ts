@@ -1373,7 +1373,7 @@ describe("CI changed Node test plan", () => {
   });
 });
 
-const githubActivityHelper = ".agents/skills/openclaw-pr-maintainer/scripts/github-activity.sh";
+const githubActivityHelper = ".agents/skills/shardsclaw-pr-maintainer/scripts/github-activity.sh";
 
 function listExecutableExtensionFiles(roots: string[]) {
   return listExtensionTestFilesForRoots(roots).filter(
@@ -1389,7 +1389,7 @@ describe("CI changed Node test plan", () => {
       name: "helper trio",
       changedPaths: [
         githubActivityHelper,
-        ".agents/skills/openclaw-pr-maintainer/SKILL.md",
+        ".agents/skills/shardsclaw-pr-maintainer/SKILL.md",
         "test/scripts/github-activity-helper.test.ts",
       ],
     },

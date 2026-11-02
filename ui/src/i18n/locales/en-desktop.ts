@@ -31,7 +31,7 @@ const enDesktop = {
     hostDesktopOff:
       "Desktop access is not enabled on the Gateway host. This panel shares the Gateway host's screen, not the screen of the device running this browser.",
     hostDesktopEnableHint:
-      "Enable desktop access to view and control the Gateway host in OpenClaw.",
+      "Enable desktop access to view and control the Gateway host in Shardsclaw.",
     hostScreenSharingSetupHint:
       "On the Gateway host Mac, open System Settings → General → Sharing. Turn on Screen Sharing, or allow the Gateway host account to Observe and Control in Remote Management, then check again.",
     hostDesktopServerSetupHint:

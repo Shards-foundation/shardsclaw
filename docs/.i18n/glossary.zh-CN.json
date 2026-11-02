@@ -108,6 +108,10 @@
     "target": "OpenClaw"
   },
   {
+    "source": "Shardsclaw",
+    "target": "Shardsclaw"
+  },
+  {
     "source": "FaceTime plugin",
     "target": "FaceTime 插件"
   },

@@ -1,7 +1,11 @@
 import { currentThemeBranding } from "../app/theme-branding.ts";
 import { buildExternalLinkRel, EXTERNAL_LINK_TARGET } from "../lib/external-link.ts";
 import { openExternalUrlSafe } from "../lib/open-external-url.ts";
-import { COMMUNITY_DISCORD_URL, OFFICIAL_SUPPORT_URL } from "../lib/product-links.ts";
+import {
+  SHARDSCLAW_DOCUMENTATION_URL,
+  SHARDSCLAW_ISSUES_URL,
+  SHARDSCLAW_RELEASES_URL,
+} from "../lib/product-links.ts";
 import { t } from "../lib/reactive/i18n.ts";
 import { renderSidebarMenuAction } from "./app-sidebar-dropdown.tsx";
 import type { IconName } from "./icon-data.ts";
@@ -15,15 +19,14 @@ const IDENTITY_MENU_LINKS: ReadonlyArray<{
   icon: IconName;
   label: () => string;
 }> = [
-  { href: "https://docs.openclaw.ai", icon: "book", label: () => t("common.docs") },
+  { href: SHARDSCLAW_DOCUMENTATION_URL, icon: "book", label: () => t("common.docs") },
   {
-    href: OFFICIAL_SUPPORT_URL,
+    href: SHARDSCLAW_ISSUES_URL,
     icon: "messageSquare",
     label: () => t("agentChip.getHelp"),
   },
-  { href: COMMUNITY_DISCORD_URL, icon: "users", label: () => t("agentChip.discord") },
   {
-    href: "https://docs.openclaw.ai/releases",
+    href: SHARDSCLAW_RELEASES_URL,
     icon: "scrollText",
     label: () => t("agentChip.viewChangelog"),
   },

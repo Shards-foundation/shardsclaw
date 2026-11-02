@@ -342,8 +342,8 @@ describe("provider request config", () => {
     });
 
     expect(resolved).toEqual({
-      "HTTP-Referer": "https://openclaw.ai",
-      "X-OpenRouter-Title": "OpenClaw",
+      "HTTP-Referer": "https://github.com/Shards-inc/shardsclaw",
+      "X-OpenRouter-Title": "Shardsclaw",
       "X-OpenRouter-Categories": "personal-agent,cli-agent",
       "X-Custom": "1",
     });
@@ -362,7 +362,9 @@ describe("provider request config", () => {
     expect(
       Object.keys(resolved ?? {}).filter((key) => key.toLowerCase() === "user-agent"),
     ).toHaveLength(1);
-    expect(new Headers(omitNullRequestHeaders(resolved)).get("user-agent")).toMatch(/^openclaw\//);
+    expect(new Headers(omitNullRequestHeaders(resolved)).get("user-agent")).toMatch(
+      /^shardsclaw\//,
+    );
   });
 
   it("drops forbidden header keys while merging", () => {

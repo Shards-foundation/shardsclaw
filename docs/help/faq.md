@@ -1,5 +1,5 @@
 ---
-summary: "Frequently asked questions about OpenClaw setup, configuration, and usage"
+summary: "Frequently asked questions adapted from upstream OpenClaw for Shardsclaw setup, configuration, and usage"
 read_when:
   - Answering common setup, install, onboarding, or runtime support questions
   - Triaging user-reported issues before deeper debugging
@@ -7,6 +7,14 @@ title: "FAQ"
 ---
 
 Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS, multi-agent, OAuth/API keys, model failover). For runtime diagnostics, see [Troubleshooting](/gateway/troubleshooting). For the full config reference, see [Configuration](/gateway/configuration).
+
+<Note>
+This FAQ is adapted from upstream OpenClaw documentation. Commands using the
+legacy `openclaw` CLI and `.openclaw` state paths describe compatibility
+interfaces; upstream installation, support, app, and release routes are not
+Shardsclaw services. For the fork's source setup and issue reporting, use
+[Getting started](/start/getting-started) and [Get support](/help/support).
+</Note>
 
 This page is an index. The day-to-day FAQ is split across thirteen pages, one per
 topic. The triage ladder stays on this page; open the page that matches your question.
@@ -101,7 +109,7 @@ Model Q&A - defaults, selection, aliases, switching, failover, auth profiles - l
 
 ---
 
-Still stuck? For official OpenClaw support, visit [community.openclaw.ai](https://community.openclaw.ai/). For reproducible product or documentation bugs, use the [GitHub issue chooser](https://github.com/openclaw/openclaw/issues/new/choose). Report security vulnerabilities privately through the [security policy](https://github.com/openclaw/openclaw/blob/main/SECURITY.md).
+Still stuck? For Shardsclaw-specific issue and security reporting, see [Get support](/help/support). Upstream OpenClaw community and issue links elsewhere in the inherited FAQ are external resources, not Shardsclaw-operated support.
 
 ## Where each section moved
 

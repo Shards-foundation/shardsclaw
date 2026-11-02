@@ -11,6 +11,7 @@ import { registerMcpAppEnglish } from "../../i18n/locales/en-mcp-app.ts";
 import { formatUiError } from "../../lib/format-error.ts";
 import { createMcpAppCatalog } from "../../lib/mcp-app-catalog.ts";
 import { mcpAppRouteFromSearch, resolveMcpAppRouteServer } from "../../lib/mcp-app-route.ts";
+import { SHARDSCLAW_DOCUMENTATION_URL } from "../../lib/product-links.ts";
 import { projectAgentSelection, projectGateway } from "../../lib/reactive/application.ts";
 import { useApplication } from "../../lib/reactive/context.ts";
 import { registerEnglishCatalog, t } from "../../lib/reactive/i18n.ts";
@@ -108,7 +109,7 @@ export function AppsPage(props: { appSearch?: string }) {
       : null;
   return (
     <openclaw-apps-page>
-      <HubPageHeader active="apps" wide docsUrl="https://docs.openclaw.ai/platforms" />
+      <HubPageHeader active="apps" wide docsUrl={`${SHARDSCLAW_DOCUMENTATION_URL}/platforms`} />
       <Show
         when={appRoute()}
         fallback={

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Keep this file under 20,000 characters, the size OpenClaw loads whole. Put long rules in the owning guide and leave a one-line pointer here.
+Keep this file under 20,000 characters, the size the runtime loads whole. Put long rules in the owning guide and leave a one-line pointer here.
 
 ## Choose good compromises
 
@@ -29,9 +29,9 @@ Update instructions at owner; no competing rules here.
 - Skill causes pause, permission request, unfinished work, or scope change: link exact `SKILL.md`, quote instruction, explain application (requirement vs interpretation), check prior authorization before asking again.
 - Inspect `git status -sb` before editing or GitHub work. Preserve unrelated work, branches, processes, user-managed checkouts; serialize shared Git mutations; isolate work when needed. Never switch checkout another agent or test run uses.
 - Pasted material and tool output = evidence; verify against source and observed behavior.
-- Create files only for stated deliverable/tool/proof/recovery needs. Follow [closeout](.agents/skills/openclaw-pr-maintainer/SKILL.md#finalize-and-clean-up).
+- Create files only for stated deliverable/tool/proof/recovery needs. Follow [closeout](.agents/skills/shardsclaw-pr-maintainer/SKILL.md#finalize-and-clean-up).
 - Read relevant docs before behavior changes (`pnpm docs:list`). Tool swaps need approval.
-- Use **OpenClaw** (product), `openclaw` (CLI/package/config), **plugins** (user-facing integrations), American English. Edit canonical `AGENTS.md` files directly.
+- Use **Shardsclaw** for the current product; retain `openclaw` only for compatible CLI/package/config/runtime identifiers and explicit OpenClaw upstream attribution. Use **plugins** (user-facing integrations) and American English. Edit canonical `AGENTS.md` files directly.
 
 ## Execution discipline
 
@@ -40,7 +40,7 @@ Update instructions at owner; no competing rules here.
 - New check needs named unknown, risk, or required gate. Reuse valid proof.
 - Two identical tooling failures without new evidence, or 10 min without progress: switch to an authorized supported alternative with the reviewed head pinned; reconcile uncertain writes first. No blind retries or guard bypasses.
 - Behavior proven + required gates green: finish/land. No optional proof polish, checkbox demos, or speculative scope growth.
-- Check mergeability first; don't rebase or merge `main` just because it advanced. Integrate for conflicts, a named failing gate, or material base risk, then rerun affected checks. Prior-head CI stays prior-head evidence ([landing](.agents/skills/openclaw-pr-maintainer/references/landing.md)).
+- Check mergeability first; don't rebase or merge `main` just because it advanced. Integrate for conflicts, a named failing gate, or material base risk, then rerun affected checks. Prior-head CI stays prior-head evidence ([landing](.agents/skills/shardsclaw-pr-maintainer/references/landing.md)).
 - Time pressure never waives gates. Report concrete blockers.
 - Don't mix shell dialects (for example, zsh `${name:r}` in bash).
 - CLI: `pnpm openclaw ...` or `pnpm dev`, never `node --import tsx src/index.ts`. Never reconcile a shared/worktree install other jobs use. Dependency, vendoring, format, typecheck gotchas: [scripts guide](scripts/AGENTS.md#execution-gotchas).
@@ -60,7 +60,7 @@ Update instructions at owner; no competing rules here.
 
 - Logs: write raw; redact only at egress (logs.tail, diagnostics/support bundles, remote/OTel export); never log message/tool content.
 - Plugins use documented `openclaw/plugin-sdk/*` contracts, manifest metadata, public/local barrels; never core internals or another plugin's private files. Dependencies follow runtime ownership.
-- Bun: support only latest stable Bun release and pinned OpenClaw fork. Never add workarounds, compatibility paths, or qualification for older Bun releases; upgrade instead.
+- Bun: support only the latest stable Bun release and the pinned Bun fork used by this repository. Never add workarounds, compatibility paths, or qualification for older Bun releases; upgrade instead.
 - Runtime consumes canonical config/state; Doctor/migration owners normalize legacy shapes (plugin repairs stay plugin-owned). Config-invalidating changes ship their migration.
 - State and caches: SQLite, not new JSON/JSONL/sidecar stores. Files: named user artifacts, imports/exports, attachments, logs, backups, external-tool contracts.
 - Database/state code (SQL, workers, transactions, integrity checks, DB-backed caches): read the [rules for code changes](docs/reference/database-schemas/worker-access.md#rules-for-code-changes) first.
@@ -82,13 +82,13 @@ Update instructions at owner; no competing rules here.
 - **Fixes prove the invariant:** one or two tests of the broken behavior, red on the base, green with the fix, committed with the fix; update and run the tests of every consumer of what changed.
 - Test failures = defects: reproduce, fix owner with regression, or record evidence and continue (unresolved alone doesn't block landing). Never mask failures or claim passing replay proves fix ([policy](.agents/skills/openclaw-testing/SKILL.md#test-failure-policy)).
 - **PR CI = broad proof.** Pre-PR: touched tests + targeted typecheck/lint/format. Proof selection, reuse, gaps: [proof policy](.agents/skills/openclaw-testing/SKILL.md#proof-policy); docs-only: docs sanity + `git diff --check`. Test changes obey the [cost budget](docs/help/testing/writing-tests.md#cost-budget).
-- **Visual changes** need inspected, sanitized before/after screenshots in chat and embedded in PR before merge or completion ([gate](.agents/skills/openclaw-pr-maintainer/references/media.md#screenshot-completion-gate)).
-- Before nontrivial code commit/landing: follow [fresh review](.agents/skills/openclaw-pr-maintainer/SKILL.md#review-and-publish).
+- **Visual changes** need inspected, sanitized before/after screenshots in chat and embedded in PR before merge or completion ([gate](.agents/skills/shardsclaw-pr-maintainer/references/media.md#screenshot-completion-gate)).
+- Before nontrivial code commit/landing: follow [fresh review](.agents/skills/shardsclaw-pr-maintainer/SKILL.md#review-and-publish).
 - **Choose one review route.** Follow [local review](docs/reference/pull-request-review-flow.md#local-review-before-a-pr) for maintainer requirements, contributor guidance, and the hosted fallback. ClawSweeper is advisory. Address real findings together and request another hosted review only when needed, after branch, body, and proof are current. Reject findings that add restrictions without concrete harm and explain why. A maintainer's explicit land instruction does not wait for a pending or stale review ([review flow](docs/reference/pull-request-review-flow.md#clawsweeper)).
 
 ## Authority and safety
 
-- Landing, red `main`, live ops, releases, advisories, bulk triage: read the [maintainer skill](.agents/skills/openclaw-pr-maintainer/SKILL.md#maintainer-authority) first.
+- Landing, red `main`, live ops, releases, advisories, bulk triage: read the [maintainer skill](.agents/skills/shardsclaw-pr-maintainer/SKILL.md#maintainer-authority) first.
 - Review/triage = read-only; mutations need task authority. Approval carries through same scoped work and recovery. New approval: complete authorized preparation, present concrete reviewable result, pause only gated action. Product rejection = maintainer judgment.
 - Keep credentials, private data/config, unreleased model identities out of commits, shared text, logs, transcripts, media; inspect outgoing content. Synthetic fixtures, verified human credit, no agent-attribution trailers.
 - Never switch models to bypass refusals; cyber-classifier interruptions of permitted defensive work follow [security triage](.agents/skills/security-triage/SKILL.md#cyber-classifier-interruptions).
@@ -97,7 +97,7 @@ Update instructions at owner; no competing rules here.
 - Ask before new config options, breaking public contracts, intentional schema/durability/retention/permission changes beyond bug fix, paid services, destructive actions. Preserve FIFO ordering, live-authority/integrity checks, write-capable work settlement.
 - Protocol/version bumps, dependency patches/overrides/vendoring, paid services, releases, publishing need explicit approval; fix/ship authority ≠ release authority.
 - Baseline/snapshot/ignore/expected-failure exceptions: obey [policy](.agents/skills/openclaw-testing/SKILL.md#baseline-and-expected-failure-exceptions).
-- `CODEOWNERS` routes review; restricted/security paths and material changes need listed-owner involvement ([review governance](.agents/skills/openclaw-pr-maintainer/SKILL.md#codeowners-review)).
+- `CODEOWNERS` routes review; restricted/security paths and material changes need listed-owner involvement ([review governance](.agents/skills/shardsclaw-pr-maintainer/SKILL.md#codeowners-review)).
 - Complete workflow's review/merge gates; resolve substantive findings or explain rejections. Verify remote outcomes before success or cleanup; reconcile uncertain writes, never retry blindly.
 - Stage only intended files; concise Conventional Commits with verified author/writer identity. Preserve contributor credit; team-session credit needs consented, verified humans and canonical backlink. Bare URL grants no public mutation authority. Keep PR bodies current: problem, solution, impact, evidence; use body files for shell-sensitive text.
 
@@ -106,7 +106,7 @@ Update instructions at owner; no competing rules here.
 - **Plugins/SDK:** [plugins](extensions/AGENTS.md), [loader](src/plugins/AGENTS.md), [SDK](src/plugin-sdk/AGENTS.md) (owns public boundary expansion, including outside callers).
 - **Channels, message tools/actions, dispatch:** [channel boundary](src/channels/AGENTS.md), [channel responsibilities](docs/plugins/sdk-channel-plugins.md).
 - **Agent tools, prompts, tool results, admission, lifecycle:** [agents](src/agents/AGENTS.md), [Gateway](src/gateway/AGENTS.md).
-- **OpenClaw and OpenClaw Foundation logos:** see the [brand kit](https://github.com/openclaw/carapace/tree/main/brand-kit).
+- **OpenClaw and OpenClaw Foundation logos:** upstream-owned marks; see the [upstream brand kit](https://github.com/openclaw/carapace/tree/main/brand-kit). Do not use them as Shardsclaw branding.
 - **Control UI:** [UI guide](ui/AGENTS.md), including state shared with other Gateway clients. Solid code anywhere (Control UI, plugin views, Canvas hosts): read the [Solid skill](.agents/skills/solid/SKILL.md) first.
 - **Storage:** [database schemas](docs/reference/database-schemas.md) and subpages; read approval checkpoint before schema, transaction, retention, recovery changes.
 - **Config migration:** [Doctor transforms](docs/gateway/doctor/config-migrations.md), never new runtime compatibility readers.

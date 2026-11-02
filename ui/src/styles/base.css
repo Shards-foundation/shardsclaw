@@ -11,11 +11,11 @@
 }
 
 :root {
-  --bg: #0e1015;
-  --bg-accent: #13151b;
-  --bg-elevated: #191c24;
-  --bg-hover: #1f2330;
-  --bg-muted: #1f2330;
+  --bg: #0d1628;
+  --bg-accent: #111f35;
+  --bg-elevated: #182a42;
+  --bg-hover: #1f314a;
+  --bg-muted: #1f314a;
 
   /* Interaction layers follow the host surface and the theme's own ink. */
   --surface-hover-amount: 6%;
@@ -30,32 +30,32 @@
   );
   --navigation-selected-border: transparent;
 
-  --card: #161920;
-  --card-foreground: #f0f0f2;
+  --card: #142339;
+  --card-foreground: #e3eaf2;
   --card-highlight: rgba(255, 255, 255, 0.04);
-  --popover: #191c24;
-  --popover-foreground: #f0f0f2;
+  --popover: #182840;
+  --popover-foreground: #e3eaf2;
   --chat-send-foreground: var(--primary-foreground);
   --chat-composer-surface: var(--popover);
   --chat-user-surface: var(--accent-subtle);
   --session-hovercard-surface: color-mix(in srgb, var(--card) 94%, black 6%);
   --session-hovercard-attribution-surface: color-mix(in srgb, var(--text) 6%, transparent);
 
-  --panel: #0e1015;
-  --panel-strong: #191c24;
-  --panel-hover: #1f2330;
-  --chrome: rgba(14, 16, 21, 0.96);
-  --chrome-strong: rgba(14, 16, 21, 0.98);
+  --panel: #0d1628;
+  --panel-strong: #15243b;
+  --panel-hover: #1b2d44;
+  --chrome: rgba(13, 22, 40, 0.96);
+  --chrome-strong: rgba(13, 22, 40, 0.98);
 
   /* Keep secondary copy AA on its host surface; emphasis gets brighter ink
      without pushing ordinary body text into a high-glare contrast range. */
 
-  --text: #bcbcc0;
-  --text-strong: #f4f4f5;
-  --chat-text: #bcbcc0;
-  --muted: #8b8b94;
-  --muted-strong: #898990;
-  --muted-foreground: #8b8b94;
+  --text: #bfcbdd;
+  --text-strong: #ecf2f8;
+  --chat-text: #bfcbdd;
+  --muted: #91a1b5;
+  --muted-strong: #aab6c5;
+  --muted-foreground: #91a1b5;
   /* Low-emphasis chrome follows the actual surface; secondary copy keeps --muted. */
   --text-tertiary: color-mix(in srgb, var(--text) 48.4%, transparent);
   --icon-interactive: var(--text-tertiary);
@@ -77,11 +77,11 @@
   --github-item-bg: color-mix(in srgb, var(--text) 6%, var(--bg));
   --github-item-hover-bg: color-mix(in srgb, var(--text) 10%, var(--bg));
 
-  --border: #1e2028;
-  --border-strong: #2e3040;
-  --border-hover: #3e4050;
-  --input: #1e2028;
-  --ring: #ff5c5c;
+  --border: #263953;
+  --border-strong: #344962;
+  --border-hover: #435b77;
+  --input: #1c2b43;
+  --ring: #24d6c1;
 
   /* Shared rail chrome. Light and dark themes inherit their actual colors
      through --border/--accent while keeping one geometry contract. */
@@ -115,14 +115,14 @@
   --resize-handle-active-color: color-mix(in srgb, var(--text) 42%, transparent);
 
   /*
-   * Accent - Punchy signature red
+   * Accent - Electric teal
    */
-  --accent: #ff5c5c;
-  --accent-hover: #ff7070;
-  --accent-muted: #ff5c5c;
-  --accent-subtle: rgba(255, 92, 92, 0.1);
-  --accent-foreground: #0e1015;
-  --accent-glow: rgba(255, 92, 92, 0.2);
+  --accent: #24d6c1;
+  --accent-hover: #61e9d8;
+  --accent-muted: #24d6c1;
+  --accent-subtle: rgba(36, 214, 193, 0.1);
+  --accent-foreground: #0d1628;
+  --accent-glow: rgba(36, 214, 193, 0.2);
   --inbox-attention: #e5243b;
   --inbox-attention-foreground: #ffffff;
 
@@ -143,19 +143,19 @@
      feedback that never costs readability. */
   --link: color-mix(in srgb, var(--accent-hover) 85%, var(--text));
   --link-hover: color-mix(in srgb, var(--link) 82%, var(--text));
-  --selection-bg: #5a7593;
-  --selection-fg: #ffffff;
-  --primary: #d13c3c;
+  --selection-bg: #2b6e7d;
+  --selection-fg: #f1f8fb;
+  --primary: #18b3a4;
   /* Imported palettes supply a fill/ink pair, not a hover pair. Keep their
      contrast intact; built-in palettes override with audited hover colors. */
   --primary-hover: var(--primary);
-  --primary-foreground: #ffffff;
+  --primary-foreground: #0d1628;
 
-  --secondary: #161920;
-  --secondary-foreground: #f0f0f2;
-  --accent-2: #14b8a6;
-  --accent-2-muted: rgba(20, 184, 166, 0.7);
-  --accent-2-subtle: rgba(20, 184, 166, 0.1);
+  --secondary: #172840;
+  --secondary-foreground: #dce6f3;
+  --accent-2: #b4c4d8;
+  --accent-2-muted: rgba(180, 196, 216, 0.7);
+  --accent-2-subtle: rgba(180, 196, 216, 0.1);
 
   /* Theme-invariant presentation colors. */
   --task-suggestion-action-fg: #fafafa;
@@ -520,26 +520,26 @@
 
 /* The claw family deepens text-bearing primary and destructive fills. */
 :root[data-theme="dark"] {
-  --bg-content: #0e1015;
-  --muted: #8e8e97;
-  --muted-strong: #8e8e95;
-  --muted-foreground: #8e8e97;
-  --primary-hover: #c22e2e;
+  --bg-content: #0d1628;
+  --muted: #91a1b5;
+  --muted-strong: #aab6c5;
+  --muted-foreground: #91a1b5;
+  --primary-hover: #0f9a90;
   --destructive: #d32f2f;
   --destructive-hover: #bc2a2a;
 }
 
 :root[data-theme="light"] {
-  --bg-content: #f8f8f8;
-  --text: #353535;
-  --text-strong: #202020;
-  --chat-text: #353535;
-  --muted: #5e5e5e;
-  --muted-strong: #525252;
-  --muted-foreground: #5e5e5e;
-  --card-foreground: #202020;
-  --popover-foreground: #202020;
-  --secondary-foreground: #353535;
+  --bg-content: #f5f8fb;
+  --text: #334257;
+  --text-strong: #1e2a3b;
+  --chat-text: #334257;
+  --muted: #5d6d83;
+  --muted-strong: #495a70;
+  --muted-foreground: #5d6d83;
+  --card-foreground: #1e2a3b;
+  --popover-foreground: #1e2a3b;
+  --secondary-foreground: #334257;
   --primary-hover: var(--accent-hover);
 }
 
@@ -549,12 +549,12 @@
   --media-control-bg: rgba(12, 16, 24, 0.64);
   --media-control-bg-hover: rgba(12, 16, 24, 0.78);
   /* Imported light palettes retain the warm defaults; built-ins own their canvas below. */
-  --bg: #faf9f7;
-  --bg-accent: #f4f1ec;
+  --bg: #f0f4f8;
+  --bg-accent: #e8eef5;
   --bg-elevated: #ffffff;
-  --bg-hover: #efebe4;
-  --bg-muted: #efebe4;
-  --bg-content: #f4f1ec;
+  --bg-hover: #e0e9f2;
+  --bg-muted: #e0e9f2;
+  --bg-content: #f5f8fb;
   --chat-user-surface: color-mix(in srgb, var(--accent) 15%, var(--bg));
 
   --surface-hover-amount: 4%;
@@ -568,44 +568,44 @@
   --subagent-avatar-tint-strength: 100%;
 
   --card: #ffffff;
-  --card-foreground: #211e1a;
-  --card-highlight: rgba(60, 42, 24, 0.03);
+  --card-foreground: #1e2a3b;
+  --card-highlight: rgba(15, 34, 62, 0.03);
   --popover: #ffffff;
-  --popover-foreground: #211e1a;
+  --popover-foreground: #1e2a3b;
   --session-hovercard-surface: var(--card);
   --session-hovercard-attribution-surface: color-mix(in srgb, var(--text) 4%, transparent);
 
-  --panel: #faf9f7;
-  --panel-strong: #f4f1ec;
-  --panel-hover: #e9e4dc;
-  --chrome: rgba(250, 249, 247, 0.96);
-  --chrome-strong: rgba(250, 249, 247, 0.98);
+  --panel: #f0f4f8;
+  --panel-strong: #e8eef5;
+  --panel-hover: #dfe8f1;
+  --chrome: rgba(240, 244, 248, 0.96);
+  --chrome-strong: rgba(240, 244, 248, 0.98);
 
-  --text: #403c35;
-  --text-strong: #211e1a;
-  --chat-text: #403c35;
-  --muted: #6e6960;
-  --muted-strong: #56524a;
-  --muted-foreground: #6e6960;
+  --text: #334257;
+  --text-strong: #1e2a3b;
+  --chat-text: #334257;
+  --muted: #5d6d83;
+  --muted-strong: #495a70;
+  --muted-foreground: #5d6d83;
   /* Enabled glyphs stay distinct from the lighter decorative tier. */
   --icon-interactive: color-mix(in srgb, var(--text) 60%, transparent);
   --rail-header-action-color: color-mix(in srgb, var(--text) 70%, transparent);
   --github-item-bg: color-mix(in srgb, var(--text) 5%, var(--bg));
   --github-item-hover-bg: color-mix(in srgb, var(--text) 9%, var(--bg));
 
-  --border: #e8e4dc;
-  --border-strong: #d6d0c5;
-  --border-hover: #b4ac9e;
-  --input: #e8e4dc;
-  --ring: #bd4531;
+  --border: #d6e0eb;
+  --border-strong: #bbcada;
+  --border-hover: #9eafbf;
+  --input: #e4ebf3;
+  --ring: #0a786f;
 
-  --accent: #bd4531;
-  --accent-hover: #a83c29;
-  --accent-muted: #bd4531;
-  --accent-subtle: rgba(189, 69, 49, 0.08);
+  --accent: #0a786f;
+  --accent-hover: #0a6d65;
+  --accent-muted: #0a786f;
+  --accent-subtle: rgba(10, 120, 111, 0.08);
   --accent-foreground: #ffffff;
-  --accent-glow: rgba(189, 69, 49, 0.12);
-  --primary: #bd4531;
+  --accent-glow: rgba(10, 120, 111, 0.12);
+  --primary: #0a786f;
   --primary-foreground: #ffffff;
 
   /* Original lobster artwork reads well on light surfaces. */
@@ -613,11 +613,11 @@
   --lobster-icon-shade: #991b1b;
   --lobster-icon-eye: #050810;
 
-  --secondary: #f4f1ec;
-  --secondary-foreground: #403c35;
-  --accent-2: #0d9488;
-  --accent-2-muted: rgba(13, 148, 136, 0.75);
-  --accent-2-subtle: rgba(13, 148, 136, 0.08);
+  --secondary: #e8eef5;
+  --secondary-foreground: #334257;
+  --accent-2: #607893;
+  --accent-2-muted: rgba(96, 120, 147, 0.75);
+  --accent-2-subtle: rgba(96, 120, 147, 0.08);
 
   --session-color-tint: 9%;
   --session-color-hover-tint: 14%;

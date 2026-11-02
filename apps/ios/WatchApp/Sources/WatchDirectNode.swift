@@ -214,7 +214,7 @@ final class WatchDirectNode {
         self.isForeground = false
         self.stopConnection()
         if self.isEnabled, self.isConfigured {
-            self.statusText = String(localized: "Reconnects when OpenClaw is active")
+            self.statusText = String(localized: "Reconnects when Shardsclaw is active")
         }
     }
 

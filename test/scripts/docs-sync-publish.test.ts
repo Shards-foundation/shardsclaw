@@ -2,6 +2,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { afterEach, expect, it } from "vitest";
+import { parse } from "yaml";
 import {
   applyLocaleNavLabelOverlay,
   composeDocsConfig,
@@ -338,5 +339,67 @@ it("keeps generated locale navigation aligned with English routes", () => {
         tab.groups?.map((group) => collectPages(group).map(localize)),
       );
     }
+  }
+});
+
+it("keeps upstream-owned documentation and Vercel publishers disabled in the fork", () => {
+  const docsSync = parse(fs.readFileSync(".github/workflows/docs-sync-publish.yml", "utf8")) as {
+    jobs: Record<string, { if?: string }>;
+  };
+  expect(docsSync.jobs["sync-publish-repo"]?.if).toContain(
+    "github.repository == 'openclaw/openclaw'",
+  );
+
+  const vercel = parse(
+    fs.readFileSync(".github/workflows/vercel-container-registry-publish.yml", "utf8"),
+  ) as { jobs: Record<string, { if?: string }> };
+  for (const job of ["validate_recovery", "approve_recovery", "publish"]) {
+    expect(vercel.jobs[job]?.if, `${job} must be upstream-only`).toContain(
+      "github.repository == 'openclaw/openclaw'",
+    );
+  }
+});
+
+it("gates inherited external release and publishing jobs to the upstream repository", () => {
+  const gatedJobs: Array<[string, string]> = [
+    ["openclaw-npm-release.yml", "publish_openclaw_npm"],
+    ["openclaw-release-publish.yml", "publish_android"],
+    ["openclaw-release-publish.yml", "publish"],
+    ["openclaw-release-publish.yml", "publish_docker"],
+    ["openclaw-release-publish.yml", "publish_vcr"],
+    ["openclaw-release-publish.yml", "finalize_github_release"],
+    ["openclaw-release-publish.yml", "finalize_github_release_before_docker"],
+    ["openclaw-release-publish.yml", "dispatch_linux_mirror"],
+    ["openclaw-release-publish.yml", "publish_linux"],
+    ["openclaw-release-publish.yml", "publish_windows"],
+    ["plugin-clawhub-release.yml", "publish_plugins_clawhub"],
+    ["plugin-npm-release.yml", "publish_plugins_npm"],
+    ["plugin-clawhub-recovery.yml", "recover"],
+    ["docker-release.yml", "publish"],
+    ["docker-image-refresh.yml", "publish"],
+    ["docker-channel-promote.yml", "promote"],
+    ["website-installer-sync.yml", "sync-website"],
+    ["docs-translate-trigger-release.yml", "dispatch-translate"],
+    ["linux-app-release.yml", "publish"],
+    ["windows-node-release.yml", "promote_signed_windows_installers"],
+    ["release-validation-skill-runner.yml", "publish"],
+    ["pr-crabbox-gate-publisher.yml", "publish"],
+  ];
+  const workflows = new Map<string, { jobs: Record<string, { if?: string }> }>();
+  for (const [file] of gatedJobs) {
+    if (!workflows.has(file)) {
+      workflows.set(
+        file,
+        parse(fs.readFileSync(`.github/workflows/${file}`, "utf8")) as {
+          jobs: Record<string, { if?: string }>;
+        },
+      );
+    }
+  }
+  for (const [file, job] of gatedJobs) {
+    expect(
+      workflows.get(file)?.jobs[job]?.if,
+      `${file} job ${job} must be upstream-only`,
+    ).toContain("github.repository == 'openclaw/openclaw'");
   }
 });

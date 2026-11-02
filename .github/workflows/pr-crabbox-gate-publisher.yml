@@ -25,6 +25,7 @@ concurrency:
 
 jobs:
   publish:
+    if: ${{ github.repository == 'openclaw/openclaw' }}
     name: Run AWS proof and publish gate
     runs-on: ubuntu-24.04
     environment: qa-live-shared

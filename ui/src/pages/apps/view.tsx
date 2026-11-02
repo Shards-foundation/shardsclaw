@@ -7,7 +7,11 @@ import { BrandIcon, Icon } from "../../components/solid/icon.tsx";
 import { registerAppsEnglish } from "../../i18n/locales/en-apps.ts";
 import { buildExternalLinkRel, EXTERNAL_LINK_TARGET } from "../../lib/external-link.ts";
 import "../../styles/apps.css";
-import { COMMUNITY_DISCORD_URL, OFFICIAL_SUPPORT_URL } from "../../lib/product-links.ts";
+import {
+  SHARDSCLAW_DOCUMENTATION_URL,
+  SHARDSCLAW_ISSUES_URL,
+  SHARDSCLAW_REPOSITORY_URL,
+} from "../../lib/product-links.ts";
 import { registerEnglishCatalog, t } from "../../lib/reactive/i18n.ts";
 
 registerEnglishCatalog(registerAppsEnglish);
@@ -80,8 +84,10 @@ const externalCta = (href: string, labelKey: string): AppCardCta => ({
   href,
   labelKey,
 });
+const sourceCta = (path: string) =>
+  externalCta(`${SHARDSCLAW_REPOSITORY_URL}/tree/main/${path}`, "appsPage.ctaSourceCode");
 const docsCta = (path: string) =>
-  externalCta(`https://docs.openclaw.ai${path}`, "appsPage.ctaDocs");
+  externalCta(`${SHARDSCLAW_REPOSITORY_URL}/blob/main/docs/${path}`, "appsPage.ctaDocs");
 
 const APP_SECTIONS: readonly AppSection[] = [
   {
@@ -93,26 +99,14 @@ const APP_SECTIONS: readonly AppSection[] = [
         gradient: ["#38bdf8", "#1d4ed8"],
         icon: appsBrandIcons.apple,
         copyKey: "appsPage.cards.ios",
-        ctas: [
-          externalCta(
-            "https://apps.apple.com/app/openclaw-ai-that-does-things/id6780396132",
-            "appsPage.ctaAppStore",
-          ),
-          docsCta("/platforms/ios"),
-        ],
+        ctas: [sourceCta("apps/ios"), docsCta("platforms/ios.md")],
       },
       {
         id: "android",
         gradient: ["#34d399", "#047857"],
         icon: appsBrandIcons.android,
         copyKey: "appsPage.cards.android",
-        ctas: [
-          externalCta(
-            "https://play.google.com/store/apps/details?id=ai.openclaw.app",
-            "appsPage.ctaPlayStore",
-          ),
-          docsCta("/platforms/android"),
-        ],
+        ctas: [sourceCta("apps/android"), docsCta("platforms/android.md")],
       },
     ],
   },
@@ -126,7 +120,7 @@ const APP_SECTIONS: readonly AppSection[] = [
         icon: appsBrandIcons.watch,
         copyKey: "appsPage.cards.appleWatch",
         badge: "appsPage.badgeBundledIos",
-        ctas: [docsCta("/platforms/ios")],
+        ctas: [docsCta("platforms/ios.md")],
       },
       {
         id: "wear-os",
@@ -134,7 +128,7 @@ const APP_SECTIONS: readonly AppSection[] = [
         icon: appsBrandIcons.watch,
         copyKey: "appsPage.cards.wearOs",
         badge: "appsPage.badgeBundledAndroid",
-        ctas: [docsCta("/platforms/android")],
+        ctas: [docsCta("platforms/android.md")],
       },
     ],
   },
@@ -147,10 +141,7 @@ const APP_SECTIONS: readonly AppSection[] = [
         gradient: ["#a855f7", "#6b21a8"],
         icon: appsBrandIcons.apple,
         copyKey: "appsPage.cards.macos",
-        ctas: [
-          externalCta("https://github.com/openclaw/openclaw/releases", "appsPage.ctaDownload"),
-          docsCta("/platforms/macos"),
-        ],
+        ctas: [sourceCta("apps/macos"), docsCta("platforms/macos.md")],
       },
       {
         id: "windows",
@@ -159,10 +150,10 @@ const APP_SECTIONS: readonly AppSection[] = [
         copyKey: "appsPage.cards.windows",
         ctas: [
           externalCta(
-            "https://github.com/openclaw/openclaw-windows-node/releases/latest",
-            "appsPage.ctaDownload",
+            "https://github.com/openclaw/openclaw-windows-node",
+            "appsPage.ctaUpstreamSource",
           ),
-          docsCta("/platforms/windows"),
+          docsCta("platforms/windows.md"),
         ],
       },
       {
@@ -170,10 +161,7 @@ const APP_SECTIONS: readonly AppSection[] = [
         gradient: ["#fbbf24", "#b45309"],
         icon: appsBrandIcons.linux,
         copyKey: "appsPage.cards.linux",
-        ctas: [
-          externalCta("https://github.com/openclaw/openclaw/releases", "appsPage.ctaDownload"),
-          docsCta("/platforms/linux"),
-        ],
+        ctas: [sourceCta("apps/linux"), docsCta("platforms/linux.md")],
       },
     ],
   },
@@ -186,13 +174,7 @@ const APP_SECTIONS: readonly AppSection[] = [
         gradient: ["#f59e0b", "#ea580c"],
         icon: appsBrandIcons.chrome,
         copyKey: "appsPage.cards.chrome",
-        ctas: [
-          externalCta(
-            "https://chromewebstore.google.com/detail/openclaw/kcdjddhmeafeomebliikmbpblkmkfoig",
-            "appsPage.ctaChromeWebStore",
-          ),
-          externalCta("https://docs.openclaw.ai/tools/chrome-extension", "appsPage.ctaSetupGuide"),
-        ],
+        ctas: [docsCta("tools/chrome-extension.md")],
       },
       {
         id: "plugins",
@@ -211,17 +193,17 @@ const APP_SECTIONS: readonly AppSection[] = [
 const COMMUNITY_LINKS: ReadonlyArray<{ href: string; icon: () => JSX.Element; labelKey: string }> =
   [
     {
-      href: OFFICIAL_SUPPORT_URL,
+      href: SHARDSCLAW_ISSUES_URL,
       icon: () => <Icon name="messageSquare" />,
-      labelKey: "appsPage.linkSupport",
+      labelKey: "appsPage.linkIssues",
     },
     {
-      href: COMMUNITY_DISCORD_URL,
-      icon: () => <BrandIcon name="discord" />,
-      labelKey: "appsPage.linkDiscord",
+      href: SHARDSCLAW_REPOSITORY_URL,
+      icon: () => <BrandIcon name="github" />,
+      labelKey: "appsPage.linkRepository",
     },
     {
-      href: "https://docs.openclaw.ai",
+      href: SHARDSCLAW_DOCUMENTATION_URL,
       icon: () => <Icon name="book" />,
       labelKey: "appsPage.linkDocs",
     },

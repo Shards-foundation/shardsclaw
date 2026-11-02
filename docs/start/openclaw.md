@@ -6,6 +6,14 @@ read_when:
 title: "Personal assistant setup"
 ---
 
+<Note>
+This page is an **upstream OpenClaw reference** retained for its setup details
+and provenance; it is not a statement of Shardsclaw package, app, or support
+availability. To run Shardsclaw, build from the [source guide](/start/getting-started).
+The `openclaw` CLI and `.openclaw` data/config paths below are intentionally
+retained for compatibility.
+</Note>
+
 OpenClaw is a self-hosted gateway that connects Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more to AI agents. This guide covers the "personal assistant" setup: a dedicated WhatsApp number that behaves like your always-on AI assistant. Setting up a shared gateway for several people instead? See [Team setup](/start/teams).
 
 ## Good defaults first

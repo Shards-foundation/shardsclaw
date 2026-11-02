@@ -205,7 +205,7 @@ final class WebChatManager {
         let controller = WebChatSwiftUIWindowController(
             sessionKey: transport.sessionKey,
             transport: transport,
-            windowTitle: "OpenClaw Swarm Fixture",
+            windowTitle: "Shardsclaw Swarm Fixture",
             windowAutosaveName: "OpenClawSwarmFixture")
         self.install(
             controller,
@@ -235,7 +235,7 @@ final class WebChatManager {
             do {
                 let name: String
                 switch target {
-                case .primary: name = "OpenClaw Chat"
+                case .primary: name = "Shardsclaw Chat"
                 case .local: name = "This Mac"
                 case let .profile(id):
                     guard let profile = try await MacGatewayProfileStore.shared.profiles().first(where: { $0.id == id })
@@ -317,7 +317,7 @@ final class WebChatManager {
             connection: connection,
             gatewayID: chatStoreID,
             gatewayTarget: target,
-            windowTitle: "\(name) — OpenClaw",
+            windowTitle: "\(name) — Shardsclaw",
             windowAutosaveName: "OpenClawChatWindow-\(autosaveID)")
         self.install(controller, target: target, route: route, connection: connection)
     }

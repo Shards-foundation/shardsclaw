@@ -75,7 +75,7 @@ describe("proxy stream wrappers", () => {
       { baseUrl: "https://openrouter.ai/api/v1" },
     );
 
-    expect(calls[0]?.headers?.["HTTP-Referer"]).toBe("https://openclaw.ai");
+    expect(calls[0]?.headers?.["HTTP-Referer"]).toBe("https://github.com/Shards-inc/shardsclaw");
     expect(calls[0]?.headers?.["X-OpenRouter-Cache"]).toBe("true");
     expect(calls[0]?.headers?.["X-OpenRouter-Cache-TTL"]).toBe("900");
   });

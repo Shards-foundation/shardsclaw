@@ -11,7 +11,7 @@ export function buildOpenClawControlSection({
   restartCommandsEnabled: boolean;
 }): string[] {
   return [
-    "## OpenClaw Control",
+    "## Shardsclaw Control",
     "Do not invent commands.",
     hasOpenClaw
       ? hasGateway

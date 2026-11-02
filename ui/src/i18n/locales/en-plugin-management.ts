@@ -34,7 +34,7 @@ const enPluginManagement = {
     },
   },
   custodian: {
-    pluginPlaceholder: "Ask OpenClaw about {plugin}",
+    pluginPlaceholder: "Ask Shardsclaw about {plugin}",
     pluginIntroTitle: "Ask about {plugin}",
     pluginStarterPurpose: "What does it do?",
     pluginStarterTools: "What tools does it have?",
@@ -43,24 +43,24 @@ const enPluginManagement = {
     pluginPromptTools: "What tools does {plugin} provide?",
     pluginPromptSetup: "How do I set up {plugin}?",
     pluginHelpQuestion: "Explain {setting}",
-    pluginHelpFailed: "Could not prepare the setting question. Try Ask OpenClaw again.",
+    pluginHelpFailed: "Could not prepare the setting question. Try Ask Shardsclaw again.",
     pluginHelpUnset: "Not set",
     pluginHelpValue: "Current value: {value}",
-    title: "OpenClaw",
+    title: "Shardsclaw",
     subtitleCaretaker: "System setup and care.",
     exitSetup: "Exit setup",
     hatchDraft: "Wake up, my friend!",
-    placeholder: "Message OpenClaw…",
+    placeholder: "Message Shardsclaw…",
     sensitivePlaceholder: "Enter sensitive value…",
     sensitiveReply: "Sensitive reply sent",
     cancel: "Cancel",
     send: "Send",
-    thinking: "OpenClaw is thinking",
+    thinking: "Shardsclaw is thinking",
     earlier: "Earlier",
-    requestFailed: "OpenClaw could not reply. Try again.",
+    requestFailed: "Shardsclaw could not reply. Try again.",
     connectionChanged: "The Gateway connection changed. Retry to continue this setup.",
     sessionRestarted:
-      "{error} OpenClaw started a fresh session; earlier messages remain for context.",
+      "{error} Shardsclaw started a fresh session; earlier messages remain for context.",
     unsupportedGateway:
       "This Gateway does not offer openclaw.chat. Update the Gateway and reconnect to continue setup.",
     accessRequired:
@@ -76,26 +76,26 @@ const enPluginManagement = {
       thisGateway: "this Gateway",
       alternatives: "Or use another AI",
       signInTitle: "Connect ChatGPT to get started",
-      signInBody: "OpenClaw is ready to connect your ChatGPT account.",
+      signInBody: "Shardsclaw is ready to connect your ChatGPT account.",
       signIn: "Sign in with ChatGPT",
       startingSignIn: "Opening ChatGPT sign-in...",
       unavailableTitle: "Your AI needs a little help",
-      unavailableBody: "OpenClaw could not connect an AI automatically.",
+      unavailableBody: "Shardsclaw could not connect an AI automatically.",
       nativeSetup: "Open AI setup",
       commandHint: "To connect an AI, run",
       differentGateway: "Use a different Gateway",
       reviewPermissions: "Review permissions",
-      failed: "OpenClaw could not finish AI setup. Try again.",
+      failed: "Shardsclaw could not finish AI setup. Try again.",
       safety:
-        "OpenClaw can take actions using the permissions and services you enable. Review prompts and only connect tools you trust.",
+        "Shardsclaw can take actions using the permissions and services you enable. Review prompts and only connect tools you trust.",
     },
     panel: {
-      title: "OpenClaw",
-      toggle: "Toggle Ask OpenClaw",
-      close: "Close Ask OpenClaw",
-      resize: "Resize Ask OpenClaw",
-      dockBottom: "Dock Ask OpenClaw at bottom",
-      dockRight: "Dock Ask OpenClaw at right",
+      title: "Shardsclaw",
+      toggle: "Toggle Ask Shardsclaw",
+      close: "Close Ask Shardsclaw",
+      resize: "Resize Ask Shardsclaw",
+      dockBottom: "Dock Ask Shardsclaw at bottom",
+      dockRight: "Dock Ask Shardsclaw at right",
     },
     history: {
       button: "History",
@@ -103,7 +103,7 @@ const enPluginManagement = {
       description: "What changed on this system, newest first.",
       loading: "Loading recent changes…",
       empty: "No recorded changes yet.",
-      requestFailed: "OpenClaw could not load change history.",
+      requestFailed: "Shardsclaw could not load change history.",
       loadMore: "Load more",
       loadingMore: "Loading more…",
       changedPaths: "Changed paths ({count})",
@@ -126,9 +126,9 @@ const enPluginManagement = {
       channelDegraded: "{channel} is degraded — ask me what happened",
       channelFallback: "A channel",
       dismiss: "Dismiss this update",
-      channelSetupTitle: "Reach OpenClaw outside this app",
+      channelSetupTitle: "Reach Shardsclaw outside this app",
       channelSetupBody:
-        "The web app already works. Add a channel only if you want to message OpenClaw from another service.",
+        "The web app already works. Add a channel only if you want to message Shardsclaw from another service.",
       channelSetupAction: "Set up a channel",
       channelSetupDismiss: "Keep using the web app",
       channelStatusErrorTitle: "Channel status is unavailable",
@@ -139,7 +139,7 @@ const enPluginManagement = {
     installTrust: {
       title: "Plugin code",
       description:
-        "Plugins can run code inside the Gateway. If a plugin includes native web UI, that code also runs in the OpenClaw web app with the signed-in user’s Gateway permissions. Only install plugins you trust.",
+        "Plugins can run code inside the Gateway. If a plugin includes native web UI, that code also runs in the Shardsclaw web app with the signed-in user’s Gateway permissions. Only install plugins you trust.",
     },
     bundleTrust: {
       title: "Bundle contents",
@@ -149,7 +149,7 @@ const enPluginManagement = {
     nativeUi: {
       title: "Includes native web UI",
       description:
-        "This plugin runs code in the OpenClaw web app. It can read and modify the app’s interface and use the Gateway permissions of the signed-in user. Only enable plugins you trust.",
+        "This plugin runs code in the Shardsclaw web app. It can read and modify the app’s interface and use the Gateway permissions of the signed-in user. Only enable plugins you trust.",
     },
     compatibilityDeprecatedDated:
       "Uses OpenClaw APIs that retire on {date}. It keeps working until then; check for a plugin update.",
@@ -223,7 +223,7 @@ const enPluginManagement = {
       permissions: "Permissions",
       actions: "Actions for {name}",
       reset: "Reset value",
-      ask: "Ask OpenClaw",
+      ask: "Ask Shardsclaw",
     },
     credentials: {
       stored: "••••••••",
@@ -268,8 +268,8 @@ const enPluginManagement = {
     },
     detailCapabilities: "Capabilities",
     uiCapabilities: {
-      page: { name: "Pages", description: "Adds pages to OpenClaw." },
-      navigation: { name: "Navigation", description: "Adds links to OpenClaw navigation." },
+      page: { name: "Pages", description: "Adds pages to Shardsclaw." },
+      navigation: { name: "Navigation", description: "Adds links to Shardsclaw navigation." },
       panel: { name: "Panels", description: "Adds interface panels." },
       action: { name: "Actions", description: "Adds buttons or menu actions." },
       accessory: {
@@ -331,7 +331,10 @@ const enPluginManagement = {
         name: "Transcripts",
         description: "Capture or import transcripts from supported sources.",
       },
-      migrationProviders: { name: "Migration", description: "Bring supported data into OpenClaw." },
+      migrationProviders: {
+        name: "Migration",
+        description: "Bring supported data into Shardsclaw.",
+      },
     },
     breadcrumb: "Breadcrumb",
     settingsDescription: "Configure installed plugins, access, and lifecycle.",
@@ -451,7 +454,7 @@ const enPluginManagement = {
     detailSensitive: "Sensitive",
     detailMinimumGateway: "Minimum Gateway version",
     detailPluginApi: "Plugin API",
-    detailBuiltWith: "Built with OpenClaw",
+    detailBuiltWith: "Built with Shardsclaw",
     detailSdkVersion: "Plugin SDK",
     detailSourceCommit: "Source commit",
     detailSourcePath: "Source path",
@@ -517,7 +520,7 @@ const enPluginManagement = {
     reload: "Reload",
     installSaved: "Installation of {name} was saved. {error}",
     installSavedNotApplied:
-      "Installation of {name} was saved, but the Gateway has not applied it. {error} Fix the reported problem, then run openclaw plugins reload {name}.",
+      "Installation of {name} was saved, but the Gateway has not applied it. {error} Fix the reported problem, then run shardsclaw plugins reload {name}.",
     runtimeFailurePhase: "Runtime phase: {phase}.",
     enableAction: "Enable",
     working: "Working…",
@@ -525,7 +528,7 @@ const enPluginManagement = {
     detailPackage: "Package",
     detailPluginId: "Plugin ID",
     offlineBody: "Connect to browse installed and recommended plugins.",
-    optionalCapability: "Optional OpenClaw capability.",
+    optionalCapability: "Optional Shardsclaw capability.",
     enabled: "Enabled",
     disabled: "Disabled",
     available: "Available",
@@ -556,7 +559,7 @@ const enPluginManagement = {
     installDestinationChanged:
       "The Gateway or operator changed. Install the plugin again to request a fresh review.",
     installBlockedByUpdate:
-      "Installation blocked: an OpenClaw upgrade is in progress, try again when it finishes.",
+      "Installation blocked: an Shardsclaw upgrade is in progress, try again when it finishes.",
   },
 } satisfies TranslationMap;
 

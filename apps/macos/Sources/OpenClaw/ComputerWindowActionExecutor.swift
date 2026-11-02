@@ -613,7 +613,7 @@ final class ComputerWindowActionExecutor {
         // Same-process AX callbacks run on Peekaboo's detached queue and trap in AppKit's main-actor accessors.
         guard processIdentifier != getpid() else {
             throw ComputerActionService.ComputerActionError.refused(
-                "Peekaboo cannot inspect OpenClaw's own windows; use the CUA provider to target OpenClaw")
+                "Peekaboo cannot inspect Shardsclaw's own windows; use the CUA provider to target Shardsclaw")
         }
     }
 
