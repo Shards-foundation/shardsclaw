@@ -1,14 +1,23 @@
-# Shardsclaw Rebrand — Final Audit
+# Shardsclaw Rebrand — Verification and Publication Audit
 
 **Audit date:** 2026-11-02
 **Prepared on branch:** `chore/shardsclaw-rebrand`
 **Publication target:** [Shards-inc/shardsclaw](https://github.com/Shards-inc/shardsclaw), public as requested
+**Publication state as of 2026-11-04:** published publicly to `Shards-inc/shardsclaw`; the full-history rebrand is on the default `main` branch and the temporary staging ref was removed
 
 ## Scope and lineage
 
 The rebrand is based on source snapshot `1485127247484e77ce18e2bf048ee57bf9cded57`, which had 121,766 reachable commits before the new rebrand commit. The change is additive; no ancestor is rewritten. At audit time, upstream `origin/main` had advanced four commits beyond the captured snapshot. Those later commits are not included: the approved rebrand and its verification are scoped to the captured source tree, and importing unrelated changes would require a new audit.
 
 The target path returned 404 during the authenticated pre-publication check. The approved publication is a first push to that exact public repository, without initializing a separate README or license and without force. The existing upstream remote remains unchanged.
+
+## Publication status as of 2026-11-04
+
+The public target was created without a seed README or license. The initial full-history push attempted a 9.74 GiB pack and failed with HTTP 500. Following GitHub's [2 GiB push-limit guidance](https://docs.github.com/en/get-started/using-git/troubleshooting-the-2-gb-push-limit) and [repository push-rate guidance](https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits), a resumable sequence of 24 non-force first-parent checkpoints was prepared, with a 10-second pause between pushes. All checkpoints completed and were verified at the remote staging ref, which reached rebrand commit `717f4743559f06d58ac7498a443dec8544bb1753`.
+
+The first 119.86 MiB checkpoint was initially rejected because the then-active GitHub App credentials lacked `workflows` permission to create or update `.github/workflows/ci.yml`; neither credential created a remote ref. After reconnection, GitHub's live installation permission map included `workflows:write`. The full-history rebrand commit was then published to `main` with a non-force push and verified at `717f4743559f06d58ac7498a443dec8544bb1753`. GitHub had made the temporary staging branch the default, so the default was changed to `main` before the staging ref was removed.
+
+Final checks confirmed that `main` is the public repository's default branch and contains rebrand commit `717f4743559f06d58ac7498a443dec8544`; the temporary staging ref is absent. GitHub-created Dependabot branches remain in the repository and were not altered.
 
 The change covers public documentation and project metadata, product identity and original shard-and-claw artwork, UI and mobile display/localization surfaces, provider attribution, maintainer guidance, and safeguards against inherited publishing workflows writing to upstream destinations.
 
@@ -37,6 +46,8 @@ The detailed residual-match policy and end-state counts are in [`rebrand-invento
 **Localization — PASS.** Canonical UI sync ran with translation-provider access disabled; verification reported no missing fallback keys across 21 UI locales. `ui:i18n:verify`, `native:i18n:verify` (4,543 entries unchanged), and `android:i18n:check` (21 locales) passed.
 
 ## Limitations and non-blocking findings
+
+**Dependabot alerts — follow-up.** During publication, GitHub reported 40 vulnerability alerts on the default branch: 1 critical, 12 high, 21 moderate, and 6 low. Dependency remediation was outside the scope of this rebrand; GitHub-generated Dependabot branches were left untouched.
 
 **Full unit suite — BLOCKED before tests.** `pnpm test:unit` did not start because its protective preflight exited 2 with: “Cannot verify that test preparation is separate from managed Gateway artifacts. Use the existing isolated test runner; no checkout artifacts were rebuilt.” This is recorded as blocked before test execution, not as a test failure.
 
