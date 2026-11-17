@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/Blaizzy/mlx-audio-swift",
-            exact: "0.1.8"),
+            exact: "0.1.9"),
         .package(path: "../shared/OpenClawMLXTTSProtocol"),
     ],
     targets: [
